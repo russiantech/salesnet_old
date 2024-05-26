@@ -18,10 +18,10 @@ class BaseModel(db.Model):
     deleted = db.Column(db.Boolean(), default=False)
     active =  db.Column(db.Boolean(), default=True)
 
-cate_listing = db.Table(
-    'cate_listing',
+category_listing = db.Table(
+    'category_listing',
     db.Model.metadata,
-    db.Column('cate_id', db.Integer, db.ForeignKey('cate.id')),
+    db.Column('cate_id', db.Integer, db.ForeignKey('category.id')),
     db.Column('listing_id', db.Integer, db.ForeignKey('listing.id'))
 )
 tag_listing = db.Table(
@@ -45,8 +45,8 @@ user_permissions = db.Table(
     db.Column('permission_id', db.Integer, db.ForeignKey('permission.id'), primary_key=True),
     keep_existing=True
 )
-usr_role = db.Table(
-    'usr_role',
+user_roles = db.Table(
+    'user_roles',
     db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
     db.Column('role_id', db.Integer, db.ForeignKey('role.id')),
     keep_existing=True
@@ -121,7 +121,7 @@ class User(db.Model, SearchableMixin, PaginatedAPIMixin, UserMixin):
     bank = db.Column(db.JSON, default=None) # socials: { 'bank': 'Opay', 'acct_no':'7026561327' }
     socials = db.Column(db.JSON, default=None) # socials: { 'fb': '@chrisjsm', 'insta': '@chris', 'twit': '@chris','linkedin': '', 'whats':'@techa' }
     src = db.Column(db.String(50))
-    cate = db.Column(db.String(50))
+    category = db.Column(db.String(50))
     ip = db.Column(db.String(50))
     online = db.Column(db.Boolean(), default=False)  # 1-online, 0-offline
     status = db.Column(db.Boolean(), default=True)  # [ active(1), not active(0)]
@@ -146,7 +146,7 @@ class User(db.Model, SearchableMixin, PaginatedAPIMixin, UserMixin):
     favorites = db.relationship('FavoriteProduct', backref='user', lazy='dynamic')
     promotions = db.relationship('Promotion', backref='user', lazy='dynamic')
     analytics = db.relationship('AnalyticsEvent', backref='user', lazy='dynamic')
-    roles = db.relationship('Role', secondary=usr_role, back_populates='user', lazy='dynamic')
+    roles = db.relationship('Role', secondary=user_roles, back_populates='user', lazy='dynamic')
     followed = db.relationship('User', secondary=followers, primaryjoin=(followers.c.follower_id == id),
         secondaryjoin=(followers.c.followed_id == id), backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
 
@@ -236,7 +236,7 @@ class User(db.Model, SearchableMixin, PaginatedAPIMixin, UserMixin):
             'bank': json.loads(str(self.bank)) if self.bank else None,
             'socials': json.loads(str(self.socials)) if self.socials else None,
             'gender': self.gender,
-            'cate': self.cate,
+            'category': self.category,
             'online': self.online,
             'verified': self.verified,
             'is_vendor': self.is_vendor,
@@ -528,7 +528,7 @@ class Role(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True, nullable=False)
     desc = db.Column(db.String(255))
-    user = db.relationship('User', secondary=usr_role, back_populates='roles', lazy='dynamic') #FK linking role->user(many->many-rel)
+    user = db.relationship('User', secondary=user_roles, back_populates='roles', lazy='dynamic') #FK linking role->user(many->many-rel)
     permissions = db.relationship('Permission', secondary=role_permissions, backref='roles', lazy='dynamic')
 
 class Listing(db.Model, SearchableMixin, PaginatedAPIMixin):
@@ -542,7 +542,7 @@ class Listing(db.Model, SearchableMixin, PaginatedAPIMixin):
         'fuel_type']
     id = db.Column(db.Integer, primary_key=True)
     page_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    cate_id = db.Column(db.Integer, db.ForeignKey('cate.id'), nullable=False)
+    cate_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
     title = db.Column(db.String(80), nullable=False)
     images = db.Column(db.JSON, nullable=False)
     currency = db.Column(db.String(50))
@@ -600,8 +600,8 @@ class Listing(db.Model, SearchableMixin, PaginatedAPIMixin):
     wishlist = db.relationship('Wishlist', secondary=wishlist_listing, back_populates='listing', lazy='dynamic')
     tag = db.relationship('Tag', secondary=tag_listing, back_populates='listing', lazy='dynamic')
     promotion = db.relationship('Promotion', secondary=promotion_listing, back_populates='listing', lazy='dynamic')
-    #cate = db.relationship('Cate', back_populates='listing', lazy=True, primaryjoin='Listing.cate_id == Cate.id')
-    cate = db.relationship('Cate', secondary=cate_listing, lazy='dynamic', back_populates='listing')
+    #category = db.relationship('Category', back_populates='listing', lazy=True, primaryjoin='Listing.cate_id == Category.id')
+    category = db.relationship('Category', secondary=category_listing, lazy='dynamic', back_populates='listing')
     reviews = db.relationship('Review', backref='listing', lazy='dynamic')
     favorite = db.relationship('FavoriteProduct', backref='listing', lazy='dynamic')
 
@@ -763,9 +763,9 @@ class Listing(db.Model, SearchableMixin, PaginatedAPIMixin):
         if new_user and 'password' in data:
             self.set_password(data['password']) """
 
-class Cate(db.Model, SearchableMixin, PaginatedAPIMixin):  #levels-> (super1->main2->sub3->mini4)
+class Category(db.Model, SearchableMixin, PaginatedAPIMixin):  #levels-> (super1->main2->sub3->mini4)
     """ Self refferential multi-level/Nested categorization """
-    __tablename__ = 'cate'
+    __tablename__ = 'category'
     __searchable__=['name', 'children', 'photo']
     id = db.Column(db.Integer, primary_key=True)
     lev = db.Column(db.Integer, default=0)
@@ -773,9 +773,9 @@ class Cate(db.Model, SearchableMixin, PaginatedAPIMixin):  #levels-> (super1->ma
     desc = db.Column(db.String(100))
     photo = db.Column(db.String(50))
     dept = db.Column(db.String(50))
-    parent_id = db.Column(db.Integer, db.ForeignKey('cate.id'))
-    children = db.relationship('Cate', backref='parent', remote_side=[id] )
-    listing = db.relationship('Listing', secondary=cate_listing, lazy='dynamic', back_populates='cate')
+    parent_id = db.Column(db.Integer, db.ForeignKey('category.id'))
+    children = db.relationship('Category', backref='parent', remote_side=[id] )
+    listing = db.relationship('Listing', secondary=category_listing, lazy='dynamic', back_populates='category')
     deleted = db.Column(db.Boolean(), default=False)  # 0-deleted, 1-not-deleted
     created = db.Column(db.DateTime(timezone=True), default=datetime.utcnow)
     updated = db.Column(db.DateTime(timezone=True), default=datetime.utcnow)

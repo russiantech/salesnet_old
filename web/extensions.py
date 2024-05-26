@@ -12,7 +12,9 @@ from flask_login import LoginManager
 from flask_mail import Mail
 from flask_moment import Moment
 #from flask_session import Session
-from flask_oauthlib.client import OAuth
+#from flask_oauthlib.client import OAuth //flask_oauth not actively maintained
+from authlib.integrations.flask_client import OAuth
+
 from flask_caching import Cache
 from flask_limiter import Limiter
 from elasticsearch import Elasticsearch
@@ -20,7 +22,7 @@ from flask_socketio import SocketIO
 from redis import Redis
 from flask import request
 from blinker import Namespace
-from web.models import db, Cate, User
+from web.models import db, Category, User
 
 from web.utils import categorylist
 from web.account.forms import PostForm
@@ -75,7 +77,7 @@ def setup_logging(app):
 def make_available():
     # Load categories
     num_categories_to_load = 150
-    q_categories = Cate.query.order_by(Cate.id.asc()).limit(num_categories_to_load).all()
+    q_categories = Category.query.order_by(Category.id.asc()).limit(num_categories_to_load).all()
     categories = categorylist.build_category_tree(q_categories) 
 
     # Create instances of PostForm and SearchForm

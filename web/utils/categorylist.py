@@ -1,7 +1,7 @@
     
 """ from flask import Blueprint
-from web.models import Cate
-cate = Cate.query.order_by(Cate.id).all()
+from web.models import Category
+cate = Category.query.order_by(Category.id).all()
  """
 """ data = [
 

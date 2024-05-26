@@ -1,7 +1,7 @@
 
 from flask import (g, redirect, render_template, stream_template, request, Blueprint, url_for, jsonify, current_app, session)
 from web.extensions import cache, db
-from web.models import User, Item, Cate
+from web.models import User, Item, Category
 from web.utils import categorylist
 from flask_login import current_user, login_required
 from  sqlalchemy.sql.expression import func
@@ -67,11 +67,11 @@ def build_category_tree(categories, parent_id=None):
 @main.route('/category', methods=['GET', 'POST'])
 def your_view_function():
     
-    cate = Cate.query.order_by(Cate.id).all()
+    cate = Category.query.order_by(Category.id).all()
 
     """ num_categories_to_load = 150
     random_categories = (
-        Cate.query.order_by(func.rand())  # Use func.rand() for MySQL, func.random() for PostgreSQL
+        Category.query.order_by(func.rand())  # Use func.rand() for MySQL, func.random() for PostgreSQL
         .limit(num_categories_to_load)
         .all()
     )

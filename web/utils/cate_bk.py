@@ -1,4 +1,4 @@
-cate = Cate.query.order_by(Cate.id).all()
+cate = Category.query.order_by(Category.id).all()
 
     length = [ { c.id } for c in cate if c.parent == None and c.lev == 0 ] #length of parent category
     

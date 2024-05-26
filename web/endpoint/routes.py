@@ -5,7 +5,7 @@ from  sqlalchemy.sql.expression import func, select
 from sqlalchemy import exc
 
 from web.models import (
-    db, User, Listing, Cate, Order
+    db, User, Listing, Category, Order
 )
 
 from web.account.forms import OrderForm, payOptionChoice
@@ -43,7 +43,7 @@ for pair in printNested(nesteddict):
 def cate(r=None):
 
     try:
-        cate = Cate.query.order_by(Cate.id).all()
+        cate = Category.query.order_by(Category.id).all()
         cate = [ {'id': c.id, 'parent': c.parent, 'name': c.name, 'lev': c.lev } for c in cate ]
 
         cat = { 
