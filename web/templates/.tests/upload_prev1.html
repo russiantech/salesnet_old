@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="{{url_for('static', filename='css/vendor/ecicons.min.css')}}" />
+<!-- css All Plugins Files -->
+<link rel="stylesheet" href="{{url_for('static', filename='css/plugins/animate.css')}}" />
+<link rel="stylesheet" href="{{url_for('static', filename='css/plugins/swiper-bundle.min.css')}}" />
+<link rel="stylesheet" href="{{url_for('static', filename='css/plugins/jquery-ui.min.css')}}" />
+<link rel="stylesheet" href="{{url_for('static', filename='css/plugins/countdownTimer.css')}}" />
+<link rel="stylesheet" href="{{url_for('static', filename='css/plugins/slick.min.css')}}" />
+<link rel="stylesheet" href="{{url_for('static', filename='css/plugins/bootstrap.css')}}" />
+<!-- Main Style -->
+<!-- <link rel="stylesheet" href="{{url_for('static', filename='css/demo1.css')}}" /> -->
+<link rel="stylesheet" href="{{url_for('static', filename='css/demo3.css')}}" />
+
+<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" />
+
+<script>
+    function trgger(e){
+document.getElementById(e).click();
+new Showprogress();
+}
+function Showprogress() {
+var indicator = document.querySelector('div.indicator'); 
+var preview = document.querySelector('div.preview');
+var divand = document.createElement('div');
+divand.setAttribute('id', 'progressand');
+divand.style.display = "none";	
+indicator.appendChild(divand);
+var div = document.createElement('div');
+div.setAttribute('class', 'progress');
+divand.appendChild(div);
+var dynamic = document.createElement('div');
+dynamic.setAttribute('id', 'dynamic');
+dynamic.setAttribute('class', 'progress-bar progress-bar-striped bg-info progress-bar-animated');
+dynamic.setAttribute('role', 'progressbar');
+dynamic.setAttribute('aria-valuenow', '0');
+dynamic.setAttribute('aria-valuemin', '0');
+dynamic.setAttribute('aria-valuemax', '100');
+dynamic.style.width = "0%";
+div.appendChild(dynamic);
+var percent = document.createElement('span');
+percent.setAttribute('class', 'percent');
+percent.textContent = '0%';
+dynamic.appendChild(percent);
+var load = document.createElement('div');
+load.setAttribute('class', 'ml-auto mr-auto lds-contuner');
+load.setAttribute('id', 'loader');
+load.style.display = "none";
+preview.appendChild(load);
+var loader = document.createElement('div');
+loader.setAttribute('class', 'lds-ellipsis');
+load.appendChild(loader);	
+for (let x = 0; x < 4; x++) {
+  var divm = document.createElement('div');
+  loader.appendChild(divm);
+}
+}
+function previewFiles() {
+var preview = document.querySelector('div.preview');
+var files   = document.querySelector('input[type=file]').files;
+function readAndPreview(file) {
+  if ( /\.(jpe?g|png|gif|mp4|webm|ogg|ogv|mp3|wav)$/i.test(file.name)) {	
+    if (file.size < 10 * 1024 * 1024) { // MAX 10 mb
+         var reader = new FileReader();
+         var spc = '\u00A0';
+            function returnFileSize(n) {
+               if(n < 1024) {
+                  return n + ' octets';
+               } else if(n >= 1024 && n < 1048576) {
+                  return (n/1024).toFixed(1)+spc+'Ko';
+               } else if(n >= 1048576) {
+                  return (n/1048576).toFixed(1)+spc+'Mo';
+               }
+            }
+            function abortRead() {
+               reader.abort();
+            }
+            reader.onloadstart = function(e) {
+           document.querySelector("#progressand").style.display = "block";
+           document.querySelector("#loader").style.display = "block";
+        }
+            reader.onprogress = function(e) {
+               if (e.lengthComputable) {
+                  var percentLoaded = Math.round((e.loaded / e.total) * 99);
+                  if (percentLoaded < 99) {
+                    document.querySelector('#dynamic').style.width = percentLoaded + '%';
+                    document.querySelector('.percent').textContent = percentLoaded + '%';
+                  }
+               }
+            }
+            reader.onloadend = function(e) {
+                document.querySelector('#dynamic').style.width = '100%';
+                document.querySelector('.percent').textContent = '100%';
+                setTimeout(function(){
+           $("#progressand").remove();	
+           $("#loader").remove();	
+                }, 900);
+        }
+           reader.onabort = function(e) {
+              return iziError(failed, 'File read cancelled');
+           }
+         reader.addEventListener('error', function ()  {
+               return iziError(failed, 'Error occurred reading file: ${file.name}');
+         })	   
+         reader.addEventListener("load", function () {
+             var div = document.createElement('div');
+             div.setAttribute('class', 'Imgpreview mb-3');// animated zoomIn
+             preview.appendChild(div);
+             var i = document.createElement('i');
+             i.setAttribute('class', 'material-icons remove');
+             i.textContent = "close";
+             div.appendChild(i);
+             if ( /\.(jpe?g|png|gif|)$/i.test(file.name)) {
+                 var image = new Image();
+           //image.addEventListener("load", function () {/*image.width+'×'+image.height*/})
+                 image.setAttribute('data-tippy-content',file.name+spc+'\u002f'+spc+'file size'+spc+returnFileSize(file.size));
+           image.setAttribute('onclick', 'this.classList.toggle("Imgpreview-zoom");');
+                 image.src = this.result;
+                 div.appendChild(image);
+           } else if ( /\.(mp4|webm|ogg|ogv)$/i.test(file.name)) {
+                 var video = document.createElement('video');
+                 video.setAttribute('width', '100%');
+                 video.setAttribute('data-tippy-content',file.name+spc+'\u002f'+spc+'file size'+spc+returnFileSize(file.size));
+           video.setAttribute('onclick', 'this.classList.toggle("Imgpreview-zoom");');
+                 video.muted = false;
+                 video.volume = 0;
+                 video.autoplay = true;
+                 video.loop = true;
+                 video.preload = "auto";
+                 video.src = this.result;
+                 div.appendChild(video);
+           } else if ( /\.(mp3|wav|ogg)$/i.test(file.name)) {
+               var audio = document.createElement('audio');
+               audio.setAttribute('data-tippy-content', file.name+spc+'\u002f'+spc+'file size'+spc+returnFileSize(file.size));
+               audio.setAttribute('controlslist', 'nodownload');
+               audio.controls = true;
+               audio.preload = "auto";
+               audio.src = this.result;
+               div.appendChild(audio);
+           }
+           tippy([image, video, audio]);
+             $(i).click(function(){
+               $(div).removeClass('zoomIn').addClass('flipOutX');// hinge
+               setTimeout(function(){$(i).parent(div).remove();},500);
+             });
+         }, false);
+         reader.readAsDataURL(file);  
+     } else {
+         return iziToast.error({title: 'failed',message: 'max 10 MB',iconText: 'error_outline'});
+     } 
+  } else {
+    return  iziToast.error({title: 'failed',message: 'Please provide valid file. Accepted formats include .mp4, mp3, .png, .jpg, and .gif.',iconText: 'error_outline'});
+  }
+} 
+if (files) {
+  [].forEach.call(files, readAndPreview);
+}
+}
+</script>
+
+<div class="media mb-3">
+            <img src="https://s3.amazonaws.com/creativetim_bucket/new_logo.png" class="mr-3 images" alt="...">
+            <div class="media-body">
+              <textarea class="autosize" placeholder="add..." rows="1" id="note" data-emoji="true"></textarea>
+              <div class="position-relative">
+                <input type="file" class="d-none" accept="audio/*|video/*|video/x-m4v|video/webm|video/x-ms-wmv|video/x-msvideo|video/3gpp|video/flv|video/x-flv|video/mp4|video/quicktime|video/mpeg|video/ogv|.ts|.mkv|image/*|image/heic|image/heif" onchange="previewFiles()" id="inputUp" multiple>
+                <a class="mediaUp mr-4"><i class="material-icons mr-2"  data-tippy="add (Video, Audio, Photo)" onclick="trgger('inputUp')">perm_media</i></a>
+              </div>
+            </div>
+          </div>
+
+<style>
+
+#preview{
+padding: 24px 24px 16px;
+}
+.Imgpreview img {
+width: 140px!important;
+height: 140px!important;
+border-radius: 10px;
+box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
+margin: auto;
+-webkit-transform: scale(1);
+transform: scale(1);
+-webkit-transition: all .5s;
+transition: all .5s;
+cursor: zoom-in;
+}
+img.Imgpreview-zoom {
+-ms-transform: scale(2.7);
+-webkit-transform: scale(2.7);
+transform: scale(2.7);
+z-index: 1090!important;
+background-color: #eee;
+/*box-shadow: 0 0 100px 300px #00a6ff;*/
+cursor: zoom-out!important;
+position: relative;
+}
+video.Imgpreview-zoom {
+-ms-transform: scale(2.7)!important;
+-webkit-transform: scale(2.7)!important;
+transform: scale(2.7)!important;
+z-index: 1090!important;
+background-color: #eee!important;
+/* box-shadow: 0 0 100px 300px #00a6ff; */
+cursor: zoom-out!important;
+position: relative!important;
+}
+span.percent {
+background-color: #17c2d8;
+position: absolute;
+bottom: 9.5px;
+font-size: 10px;
+line-height: 10px;
+padding: 2px 3px 2px 4px;
+right: -1.4em;
+border-radius: 2px;
+}
+span.percent:after {
+left: 50%;
+border: solid transparent;
+content: " ";
+height: 0;
+width: 0;
+position: absolute;
+pointer-events: none;
+border-color: rgba(255, 255, 255, 0);
+border-top-color: #17c2d8;
+border-width: 5px;
+margin-left: -5px;
+top: 100%;
+}
+.progress{
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+overflow: visible;	
+}
+.progress-bar{
+border-top-left-radius: 10px;
+position: relative;
+}
+.Imgpreview {
+margin: 0 auto;
+}
+.Imgpreview i.remove{
+border-radius: 50%;
+position: absolute;
+background-color: #e7e7e7;
+cursor: pointer;
+font-size: medium;
+padding: 3px;
+font-weight: 900;
+z-index: 1080;
+}	
+.Imgpreview video {
+width: 140px!important;
+height: 140px!important;
+border-radius: 10px;
+box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
+margin: auto;
+cursor: zoom-in;
+-webkit-transform: scale(1);
+transform: scale(1);
+-webkit-transition: all .5s;
+transition: all .5s;
+cursor: zoom-in;
+object-position: 50% 50%;
+object-fit: cover;
+}
+.Imgpreview audio {
+width: 400px!important;
+margin: auto;
+border-radius: 100rem;
+box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
+}
+</style>
+
+  </body>
+</html>

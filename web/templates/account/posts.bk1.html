@@ -1,0 +1,53 @@
+<head>
+    <title>Photo Upload with Preview</title>
+    <style>
+        .preview-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .preview-item {
+            margin: 10px;
+        }
+        img{
+            height:10px;
+            width:10px;
+        }
+    </style>
+</head>
+<body>
+<form method="POST" enctype="multipart/form-data" id="upload-form">
+    {{ form.csrf_token }}
+    {{ form.photos(size=20) }}<br>
+
+        <!-- {% for _ in range(2) %}
+        <label for="image">Upload Image:</label>
+        {{ form.photos(size=20) }}<br>
+    {% endfor %} -->
+    
+    <input type="submit" value="Upload">
+</form>
+<div id="preview-container"></div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const photoFields = document.querySelectorAll('[name^="photos"]');
+    const previewContainer = document.getElementById("preview-container");
+
+    photoFields.forEach((field) => {
+        field.addEventListener("change", (event) => {
+            const files = event.target.files;
+            for (const file of files) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = document.createElement("img");
+                    img.src = e.target.result;
+                    img.className = "preview-item";
+                    previewContainer.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    });
+});
+</script>
+</body>

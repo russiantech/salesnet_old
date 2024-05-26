@@ -1,0 +1,539 @@
+{% include 'incs/quickv.html' %}
+
+<!-- Modal end -->
+<!-- FB Chat Messenger -->
+<div class="ec-fb-style fb-right-bottom">
+    <!-- Start Floating Panel Container -->
+    <div class="fb-panel">
+        <!-- Panel Content -->
+        <div class="fb-header">
+            <img src="{{url_for('static', filename='images/user/1.jpg')}}" alt="pic" />
+            <h2>Chris James</h2>
+            <p>Technical Manager</p>
+        </div>
+        <div class="fb-body">
+            <p><b>Hey there &#128515;</b></p>
+            <p>Need help ? just send me a message.</p>
+        </div>
+        <div class="fb-footer">
+            <a href="/" target="_blank" class="fb-msg-button">
+                <span>Send Message</span>
+                <svg width="13px" height="10px" viewBox="0 0 13 10">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+            </a>
+        </div>
+    </div>
+    <!--/ End Floating Panel Container -->
+    <!-- Start Right Floating Button -->
+    <div class="fb-button fb-right-bottom">
+        <img class="fa-messenger" src="{{url_for('static', filename='images/favicon/favicon.svg')}}" alt="icon" />
+    </div>
+    <!--/ End Right Floating Button -->
+</div>
+<!-- FB Chat Messenger end -->
+
+<!-- Newsletter Modal Start -->
+<div id="ec-popnews-box" style="display: block;">
+    <div id="ec-popnews-close"><i class="ecicon eci-close"></i></div>
+    <div class="row">
+        <div class="col-md-6 disp-no-767">
+            <img src="{{url_for('static', filename='images/banner/newsletter-6.png')}}" alt="newsletter">
+        </div>
+        <div class="col-md-6">
+            <div id="ec-popnews-box-content">
+                <h2>Stay home, stay safe &amp; get your daily needs from Salesnet.</h2>
+                <p>Subscribe to the internet of sales to get in touch and get the future update. </p>
+                <form id="ec-popnews-form" action="#" method="post">
+                    <input type="email" name="newsemail" placeholder="Email Address" required="">
+                    <button type="button" class="btn btn-primary" name="subscribe">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ec-popnews-bg"></div>
+<div id="ec-popnews-box">
+    <div id="ec-popnews-close"><i class="ecicon eci-close"></i></div>
+    <div id="ec-popnews-box-content">
+        <h6>Newsletter : ..internet of sales..</h6>
+        <p>Subscribe to stay updated about new products/servces, discounts and promos from salesnet.</p>
+        <form id="ec-popnews-form" action="#" method="post">
+            <input type="email" required name="newsemail" placeholder="Valid Email Address" required />
+            <button type="submit" class="btn btn-secondary" name="subscribe">Keep Me Updated</button>
+        </form>
+    </div>
+</div>
+<!-- Newsletter Modal end -->
+
+<!-- successfully toast Start -->
+<div id="addtocart_toast" class="addtocart_toast">
+    <div class="desc">Success!!! Shopping Basket Updated</div>
+</div>
+<div id="wishlist_toast" class="wishlist_toast">
+    <div class="desc">Congrats!!! Favorite Item Saved For You</div>
+</div>
+<!--successfully toast end -->
+
+
+
+ <!-- Modal -->
+ <div class="modal fade" id="edit_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="ec-vendor-block-img space-bottom-30">
+                        <div class="ec-vendor-block-bg cover-upload">
+                            <div class="thumb-upload">
+                                <div class="thumb-edit">
+                                    <input type='file' id="thumbUpload01" class="ec-image-upload" accept=".png, .jpg, .jpeg" />
+                                    <label><i class="fi-rr-edit"></i></label>
+                                </div>
+                                <div class="thumb-preview ec-preview">
+                                    <div class="image-thumb-preview">
+                                        <img class="image-thumb-preview ec-image-preview v-img"
+                                            src="{{url_for('static', filename='images/banner/8.jpg')}}" alt="edit" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ec-vendor-block-detail">
+                            <div class="thumb-upload">
+                                <div class="thumb-edit">
+                                    <input type='file' id="thumbUpload02" class="ec-image-upload" accept=".png, .jpg, .jpeg" />
+                                    <label><i class="fi-rr-edit"></i></label>
+                                </div>
+                                <div class="thumb-preview ec-preview">
+                                    <div class="image-thumb-preview">
+                                        <img class="image-thumb-preview ec-image-preview v-img"
+                                            src="{{url_for('static', filename='images/user/1.jpg')}}" alt="edit" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ec-vendor-upload-detail">
+                            <form class="row g-3">
+                                <div class="col-md-6 space-t-15">
+                                    <label class="form-label">First name</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-6 space-t-15">
+                                    <label class="form-label">Last name</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-12 space-t-15">
+                                    <label class="form-label">Address 1</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-12 space-t-15">
+                                    <label class="form-label">Address 2</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-12 space-t-15">
+                                    <label class="form-label">Address 3</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-6 space-t-15">
+                                    <label class="form-label">Email id 1</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-6 space-t-15">
+                                    <label class="form-label">Email id 2</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-6 space-t-15">
+                                    <label class="form-label">Phone number 1</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-6 space-t-15">
+                                    <label class="form-label">Phone number 2</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-12 space-t-15">
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <a href="#" class="btn btn-lg btn-secondary qty_close" data-bs-dismiss="modal"
+                                        aria-label="Close">Close</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal end -->
+
+
+ <!-- Modal Post-->
+ <div class="modal fade" id="post_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-xl modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row" id="modalContentPlaceholder">
+
+                        <div class="ec-vendor-dashboard-card" id="target-post-div">
+                            <div class="ec-vendor-card-body">
+                                <div class="row"> 
+                                    <div class="col-8">    
+                                        
+                                        <div class="">
+                                            <div class="bg-body-tertiary p-5 rounded">
+                                                <h1>Item For Sale</h1>
+                                                <p class="lead">Create a single listing for one or more items to sell.</p>
+                                                <a class="btn btn-lg rounded btn-primary" href="" role="button">Post An Item</a>
+                                              </div>
+                                            <div class="bg-body-tertiary p-5 rounded">
+                                                <h1>Vehicle For Sale</h1>
+                                                <p class="lead">Sell a car, truck or other type of vehicle..</p>
+                                                <a class="btn btn-lg rounded btn-primary" href="" role="button">Post A Vehicle</a>
+                                              </div>
+                                            <div class="bg-body-tertiary p-5 rounded">
+                                                <h1>Home For Sale/Rent</h1>
+                                                <p class="lead">List a house or apartment for sale or rent.</p>
+                                                <a class="btn btn-lg rounded btn-primary" href="" role="button">Post A House</a>
+                                              </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal end -->
+{#
+    /*-----  Vendor Upload Page  -----*/
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-img-upload {
+      margin-bottom: -10px;
+      position: sticky;
+      top: 30px;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-img-upload .ec-vendor-main-img .avatar-upload {
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-img-upload .ec-vendor-main-img .avatar-upload .avatar-edit {
+      position: absolute;
+      right: 5px;
+      z-index: 1;
+      top: 5px;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-img-upload .ec-vendor-main-img .avatar-upload .avatar-edit input {
+      opacity: 0;
+      width: 50px;
+      height: 50px;
+      padding: 0;
+      border-radius: 50%;
+      position: absolute;
+      z-index: 1;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-img-upload .ec-vendor-main-img .avatar-upload .avatar-edit input + label {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      width: 50px;
+      height: 50px;
+      padding: 10px;
+      margin-bottom: 0;
+      border-radius: 100%;
+      background: #ffffff;
+      border: 1px solid transparent;
+      -webkit-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
+              box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
+      border: 1px solid #eeeeee;
+      cursor: pointer;
+      font-weight: normal;
+      -webkit-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-img-upload .ec-vendor-main-img .avatar-upload .avatar-edit input + label .svg_img {
+      opacity: 0.6;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-img-upload .ec-vendor-main-img .avatar-upload .avatar-edit input + label:hover {
+      -webkit-box-shadow: none;
+              box-shadow: none;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-img-upload .ec-vendor-main-img .avatar-upload .avatar-preview {
+      width: 100%;
+      height: 100%;
+      padding: 15px;
+      position: relative;
+      border: 1px solid #eeeeee;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-img-upload .ec-vendor-main-img .avatar-upload .avatar-preview > div {
+      width: 100%;
+      height: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-img-upload .ec-vendor-main-img .avatar-upload .avatar-preview .imagePreview img {
+      margin: auto;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-img-upload .ec-vendor-main-img .thumb-upload-set {
+      display: -webkit-inline-box;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      width: 100%;
+      -ms-flex-wrap: wrap-reverse;
+          flex-wrap: wrap-reverse;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-img-upload .ec-vendor-main-img .thumb-upload-set .thumb-upload {
+      width: 65px;
+      margin: 2px 7px 10px 7px;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      display: inline-block;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-img-upload .ec-vendor-main-img .thumb-upload-set .thumb-upload .thumb-edit {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      z-index: 1;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-img-upload .ec-vendor-main-img .thumb-upload-set .thumb-upload input {
+      opacity: 0;
+      width: 30px;
+      height: 30px;
+      padding: 0;
+      border-radius: 50%;
+      position: absolute;
+      z-index: 1;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-img-upload .ec-vendor-main-img .thumb-upload-set .thumb-upload input + label {
+      width: 30px;
+      height: 30px;
+      padding: 4px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      margin-bottom: 0;
+      border-radius: 100%;
+      background: #ffffff;
+      border: 1px solid transparent;
+      -webkit-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
+              box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
+      border: 1px solid #eeeeee;
+      cursor: pointer;
+      font-weight: normal;
+      -webkit-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-img-upload .ec-vendor-main-img .thumb-upload-set .thumb-upload input + label i {
+      line-height: 5px;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-img-upload .ec-vendor-main-img .thumb-upload-set .thumb-upload input + label .svg_img {
+      opacity: 0.6;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-img-upload .ec-vendor-main-img .thumb-upload-set .thumb-upload input + label:hover {
+      -webkit-box-shadow: none;
+              box-shadow: none;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-img-upload .ec-vendor-main-img .thumb-upload-set .thumb-upload .thumb-preview {
+      padding: 2px;
+      position: relative;
+      border: 1px solid #eeeeee;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-img-upload .ec-vendor-main-img .thumb-upload-set .thumb-upload .thumb-preview > div {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-img-upload .ec-vendor-main-img .thumb-upload-set .thumb-upload .thumb-preview img {
+      width: 76px;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail .mb-25 {
+      margin-bottom: 25px;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail form label {
+      width: 100%;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail form label span {
+      font-size: 13px;
+      color: #999;
+      font-weight: 300;
+      text-transform: none;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail form input,
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail form textarea,
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail form select {
+      width: 100%;
+      margin-bottom: 30px;
+      padding: 0 15px;
+      border-radius: 0;
+      border: 1px solid #eeeeee !important;
+      background-color: transparent;
+      color: #777;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail form input[type=text],
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail form select {
+      height: 50px;
+      -webkit-box-shadow: none;
+              box-shadow: none;
+      outline: none;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail form input[type=color] {
+      width: 25px !important;
+      height: 25px !important;
+      padding: 0;
+      border-radius: 0 !important;
+      display: -webkit-inline-box;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      margin: 4px;
+      min-height: 25px;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail form input[type=color] i {
+      border-radius: 0;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail form .form-checkbox-box {
+      height: 30px;
+      margin-top: 5px;
+      display: inline-block;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail form .form-check {
+      height: 20px;
+      margin: 0 5px 0 0;
+      padding: 0;
+      display: -webkit-inline-box;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail form .form-check input {
+      width: 20px !important;
+      height: 20px !important;
+      margin: 0;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail form .form-check label {
+      width: 20px;
+      margin: 5px 5px 2px 7px;
+      line-height: 11px;
+      color: #999;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail form textarea {
+      padding: 15px;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail .bootstrap-tagsinput {
+      width: 100%;
+      margin-bottom: 30px;
+      background-color: transparent;
+      border: 1px solid #eeeeee;
+      display: inline-block;
+      padding: 5px 10px;
+      color: #555;
+      vertical-align: middle;
+      border-radius: 0;
+      line-height: 22px;
+      cursor: text;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail .bootstrap-tagsinput input {
+      height: 40px;
+      border: none !important;
+      -webkit-box-shadow: none;
+              box-shadow: none;
+      outline: none;
+      background-color: transparent;
+      padding: 0 5px;
+      margin: 0;
+      width: auto;
+      max-width: inherit;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail .bootstrap-tagsinput input:focus {
+      border: none;
+      -webkit-box-shadow: none;
+              box-shadow: none;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail .bootstrap-tagsinput input::-webkit-input-placeholder {
+      color: #999;
+      opacity: 1; /* Firefox */
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail .bootstrap-tagsinput input::-moz-placeholder {
+      color: #999;
+      opacity: 1; /* Firefox */
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail .bootstrap-tagsinput input:-ms-input-placeholder {
+      color: #999;
+      opacity: 1; /* Firefox */
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail .bootstrap-tagsinput input::-ms-input-placeholder {
+      color: #999;
+      opacity: 1; /* Firefox */
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail .bootstrap-tagsinput input::placeholder {
+      color: #999;
+      opacity: 1; /* Firefox */
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail .bootstrap-tagsinput input:-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: #999;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail .bootstrap-tagsinput input::-ms-input-placeholder {
+      /* Microsoft Edge */
+      color: #999;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail .bootstrap-tagsinput .tag {
+      margin-right: 2px;
+      color: #777;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail .bootstrap-tagsinput .tag [data-role=remove] {
+      margin-left: 8px;
+      cursor: pointer;
+      color: #f96e6e;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail .bootstrap-tagsinput .tag [data-role=remove]:after {
+      content: "×";
+      padding: 0px 2px;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail .bootstrap-tagsinput .tag [data-role=remove]:hover {
+      -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+              box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail .bootstrap-tagsinput .tag [data-role=remove]:hover:active {
+      -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+              box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail .bootstrap-tagsinput.form-control input::-moz-placeholder {
+      color: #777;
+      opacity: 1;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail .bootstrap-tagsinput.form-control input:-ms-input-placeholder {
+      color: #777;
+    }
+    .ec-vendor-uploads .ec-vendor-card-body .ec-vendor-upload-detail .bootstrap-tagsinput.form-control input::-webkit-input-placeholder {
+      color: #777;
+    }   
+        </style> 
+    #}

@@ -1,0 +1,1854 @@
+{% include 'incs/quickv.html' %}
+
+<!-- Modal end -->
+<!-- FB Chat Messenger -->
+<div class="ec-fb-style fb-right-bottom">
+    <!-- Start Floating Panel Container -->
+    <div class="fb-panel">
+        <!-- Panel Content -->
+        <div class="fb-header">
+            <img src="{{url_for('static', filename='images/user/1.jpg')}}" alt="pic" />
+            <h2>Chris James</h2>
+            <p>Technical Manager</p>
+        </div>
+        <div class="fb-body">
+            <p><b>Hey there &#128515;</b></p>
+            <p>Need help ? just send me a message.</p>
+        </div>
+        <div class="fb-footer">
+            <a href="/" target="_blank" class="fb-msg-button">
+                <span>Send Message</span>
+                <svg width="13px" height="10px" viewBox="0 0 13 10">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+            </a>
+        </div>
+    </div>
+    <!--/ End Floating Panel Container -->
+    <!-- Start Right Floating Button -->
+    <div class="fb-button fb-right-bottom">
+        <img class="fa-messenger" src="{{url_for('static', filename='images/favicon/favicon.svg')}}" alt="icon" />
+    </div>
+    <!--/ End Right Floating Button -->
+</div>
+<!-- FB Chat Messenger end -->
+
+<!-- Newsletter Modal Start -->
+<div id="ec-popnews-box" style="display: block;">
+    <div id="ec-popnews-close"><i class="ecicon eci-close"></i></div>
+    <div class="row">
+        <div class="col-md-6 disp-no-767">
+            <img src="{{url_for('static', filename='images/banner/newsletter-6.png')}}" alt="newsletter">
+        </div>
+        <div class="col-md-6">
+            <div id="ec-popnews-box-content">
+                <h2>Stay home, stay safe &amp; get your daily needs from Salesnet.</h2>
+                <p>Subscribe to the internet of sales to get in touch and get the future update. </p>
+                <form id="ec-popnews-form" action="#" method="post">
+                    <input type="email" name="newsemail" placeholder="Email Address" required="">
+                    <button type="button" class="btn btn-primary" name="subscribe">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ec-popnews-bg"></div>
+<div id="ec-popnews-box">
+    <div id="ec-popnews-close"><i class="ecicon eci-close"></i></div>
+    <div id="ec-popnews-box-content">
+        <h6>Newsletter : ..internet of sales..</h6>
+        <p>Subscribe to stay updated about new products/servces, discounts and promos from salesnet.</p>
+        <form id="ec-popnews-form" action="#" method="post">
+            <input type="email" required name="newsemail" placeholder="Valid Email Address" required />
+            <button type="submit" class="btn btn-secondary" name="subscribe">Keep Me Updated</button>
+        </form>
+    </div>
+</div>
+<!-- Newsletter Modal end -->
+
+<!-- successfully toast Start -->
+<div id="addtocart_toast" class="addtocart_toast">
+    <div class="desc">Success!!! Shopping Basket Updated</div>
+</div>
+<div id="wishlist_toast" class="wishlist_toast">
+    <div class="desc">Congrats!!! Favorite Item Saved For You</div>
+</div>
+<!--successfully toast end -->
+
+
+<div class="modal fade" id="post_modal1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Multi-step Form</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="multiStepForm" enctype="multipart/form-data">
+                    <section class="card card-body border-0 shadow-sm col-12 " id="basic-info">
+                        <h2 class="h4 mb-4"><i class="fi-info-circle text-primary fs-5 mt-n1 me-2"></i>Basic info</h2>
+                        
+                        <div class="row">
+                            <div class="col-sm-6 mb-3">
+                          <label class="form-label" for="ap-title">Title <span class="text-danger">*</span></label>
+                          <input class="form-control" type="text" id="ap-title" placeholder="Title for your property" value="Pine Apartments" required="">
+                          <span class="form-text">48 characters left</span>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                          <label class="form-label" for="ap-title">Price <span class="text-danger">*</span></label>
+                          <input class="form-control" type="text" id="ap-title" placeholder="Title for your property" value="Pine Apartments" required="">
+                          <span class="form-text">48 characters left</span>
+                        </div>
+                    </div>
+
+                        <div class="row">
+                          <div class="col-sm-6 mb-3">
+                            <label class="form-label" for="ap-category">Category <span class="text-danger">*</span></label>
+                            <select class="form-select" id="ap-category" required="">
+                              <option value="" disabled="" hidden="">Choose category</option>
+                              <option value="Rent">For rent</option>
+                              <option value="Sell">For sale</option>
+                            </select>
+                          </div>
+                          <div class="col-sm-6 mb-3">
+                            <label class="form-label" for="ap-type">Property type <span class="text-danger">*</span></label>
+                            <select class="form-select" id="ap-type" required="">
+                              <option value="" disabled="" hidden="">Choose property type</option>
+                              <option value="Apartment">Apartment</option>
+                              <option value="House">House</option>
+                              <option value="Commercial">Commercial</option>
+                              <option value="Commercial">Daily rental</option>
+                              <option value="New building">New building</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-label fw-bold pt-3 pb-2">Are you listing on Finder as part of a company?</div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" id="ap-company" name="ap-business-type">
+                          <label class="form-check-label" for="ap-company">I am a registered business</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" id="ap-individual" name="ap-business-type" checked="">
+                          <label class="form-check-label" for="ap-individual">I am a private seller</label>
+                        </div>
+
+                      </section>
+
+                      <section class="card card-body border-0 shadow-sm p-4 mb-4" id="contacts">
+                        <h2 class="h4 mb-4"><i class="fi-phone text-primary fs-5 mt-n1 me-2"></i>Contacts</h2>
+                        <div class="row">
+                          <div class="col-sm-6 mb-3">
+                            <label class="form-label" for="ap-fn">First name <span class="text-danger">*</span></label>
+                            <input class="form-control" type="text" id="ap-fn" value="Annette" placeholder="Enter your first name" required="">
+                          </div>
+                          <div class="col-sm-6 mb-3">
+                            <label class="form-label" for="ap-sn">Second name <span class="text-danger">*</span></label>
+                            <input class="form-control" type="text" id="ap-sn" value="Black" placeholder="Enter your second name" required="">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-6 mb-3">
+                            <label class="form-label" for="ap-email">Email<span class="text-danger">*</span></label>
+                            <input class="form-control" type="text" id="ap-email" value="annette_black@email.com" placeholder="Enter your email">
+                          </div>
+                          <div class="col-sm-6 mb-3">
+                            <label class="form-label" for="ap-phone">Phone number <span class="text-danger">*</span></label>
+                            <input class="form-control" type="tel" id="ap-phone" data-format="custom" data-delimiter="-" data-blocks="3 3 4" value="302-555-0107" placeholder="000-000-0000">
+                          </div>
+                        </div>
+                        <label class="form-label" for="ap-company-name">Company</label>
+                        <input class="form-control" type="text" id="ap-company-name" placeholder="Enter company name">
+                      </section>
+
+                      <section class="card card-body border-0 shadow-sm p-4 mb-4" id="details">
+                        <h2 class="h4 mb-4"><i class="fi-edit text-primary fs-5 mt-n1 me-2"></i>Property details</h2>
+                        <div class="mb-4" style="max-width: 25rem;">
+                          <label class="form-label" for="ap-area">Total area, sq.m</label>
+                          <input class="form-control" type="number" id="ap-area" min="20" placeholder="Enter your area" value="56" required="">
+                        </div>
+
+                        <!--property-details-->
+                        <div class="row">
+                        <div class="col-md-4 mb-4">
+                          <label class="form-label d-block fw-bold mb-2 pb-1">Bedrooms</label>
+                          <div class="btn-group btn-group-sm" role="group" aria-label="Choose number of bedrooms">
+                            <input class="btn-check" type="radio" id="studio" name="bedrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="studio">Studio</label>
+                            <input class="btn-check" type="radio" id="bedrooms-1" name="bedrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="bedrooms-1">1</label>
+                            <input class="btn-check" type="radio" id="bedrooms-2" name="bedrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="bedrooms-2">2</label>
+                            <input class="btn-check" type="radio" id="bedrooms-3" name="bedrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="bedrooms-3">3</label>
+                            <input class="btn-check" type="radio" id="bedrooms-4" name="bedrooms" checked="">
+                            <label class="btn btn-outline-secondary fw-normal" for="bedrooms-4">4</label>
+                            <input class="btn-check" type="radio" id="bedrooms-5" name="bedrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="bedrooms-5">5+</label>
+                          </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                          <label class="form-label d-block fw-bold mb-2 pb-1">Bathrooms</label>
+                          <div class="btn-group btn-group-sm" role="group" aria-label="Choose number of bathrooms">
+                            <input class="btn-check" type="radio" id="bathrooms-1" name="bathrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="bathrooms-1">1</label>
+                            <input class="btn-check" type="radio" id="bathrooms-2" name="bathrooms" checked="">
+                            <label class="btn btn-outline-secondary fw-normal" for="bathrooms-2">2</label>
+                            <input class="btn-check" type="radio" id="bathrooms-3" name="bathrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="bathrooms-3">3</label>
+                            <input class="btn-check" type="radio" id="bathrooms-4" name="bathrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="bathrooms-4">4</label>
+                          </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                          <label class="form-label d-block fw-bold mb-2 pb-1">Parking spots</label>
+                          <div class="btn-group btn-group-sm" role="group" aria-label="Choose number of parking spots">
+                            <input class="btn-check" type="radio" id="parking-1" name="parking">
+                            <label class="btn btn-outline-secondary fw-normal" for="parking-1">1</label>
+                            <input class="btn-check" type="radio" id="parking-2" name="parking" checked="">
+                            <label class="btn btn-outline-secondary fw-normal" for="parking-2">2</label>
+                            <input class="btn-check" type="radio" id="parking-3" name="parking">
+                            <label class="btn btn-outline-secondary fw-normal" for="parking-3">3</label>
+                            <input class="btn-check" type="radio" id="parking-4" name="parking">
+                            <label class="btn btn-outline-secondary fw-normal" for="parking-4">4</label>
+                          </div>
+                        </div>
+                        </div>
+
+                        <div class="mb-4">
+                          <label class="form-label d-block fw-bold mb-2 pb-1">Amenities</label>
+                          <div class="row">
+                            <div class="col-sm-4">
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="wifi" checked="">
+                                <label class="form-check-label" for="wifi">WiFi</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="air-condition" checked="">
+                                <label class="form-check-label" for="air-condition">Air conditioning</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="balcony">
+                                <label class="form-check-label" for="balcony">Balcony</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="garage">
+                                <label class="form-check-label" for="garage">Garage</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="gym">
+                                <label class="form-check-label" for="gym">Gym</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="free-parking" checked="">
+                                <label class="form-check-label" for="free-parking">Free parking</label>
+                              </div>
+                            </div>
+                            <div class="col-sm-4">
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="pets-friendly">
+                                <label class="form-check-label" for="pets-friendly">Pets-friendly</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="pool">
+                                <label class="form-check-label" for="pool">Pool</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="bar">
+                                <label class="form-check-label" for="bar">Bar</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="tv" checked="">
+                                <label class="form-check-label" for="tv">TV</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="linens" checked="">
+                                <label class="form-check-label" for="linens">Linens</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="heating" checked="">
+                                <label class="form-check-label" for="heating">Heating</label>
+                              </div>
+                            </div>
+                            <div class="col-sm-4">
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="dishwasher">
+                                <label class="form-check-label" for="dishwasher">Dishwasher</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="iron" checked="">
+                                <label class="form-check-label" for="iron">Iron</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="hair-dryer" checked="">
+                                <label class="form-check-label" for="hair-dryer">Hair dryer</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="kitchen" checked="">
+                                <label class="form-check-label" for="kitchen">Kitchen</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="breakfast">
+                                <label class="form-check-label" for="breakfast">Breakfast</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="security-cameras">
+                                <label class="form-check-label" for="security-cameras">Security cameras</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mb-4">
+                          <label class="form-label d-block fw-bold mb-2 pb-1">Pets</label>
+                          <div class="row">
+                            <div class="col-sm-4">
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="allow-cats">
+                                <label class="form-check-label" for="allow-cats">Cats allowed</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="allow-dogs">
+                                <label class="form-check-label" for="allow-dogs">Dogs allowed</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <label class="form-label" for="ap-description">Description </label>
+                        <textarea class="form-control" id="ap-description" rows="5" placeholder="Describe your property"></textarea><span class="form-text">1500 characters left</span>
+                      
+                    </section>
+
+                 
+                    <section class="d-sm-flex justify-content-between pt-2">
+                        <a class="btn btn-outline-primary rounded btn-lg d-block mb-3 mb-sm-2" href="#preview-modal" data-bs-toggle="modal">
+                            <i class="fi-eye-on ms-n1 me-2"></i>Preview</a>
+
+                            <div class="bg-body-tertiary p-2 rounded">
+                                <button class="btn btn-lg rounded btn-primary d-block mb-2"  role="button">Post My Listing Now</button>
+                              </div> 
+
+                        </section>
+
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- Modal -->
+ <div class="modal fade" id="edit_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="ec-vendor-block-img space-bottom-30">
+                        <div class="ec-vendor-block-bg cover-upload">
+                            <div class="thumb-upload">
+                                <div class="thumb-edit">
+                                    <input type='file' id="thumbUpload01" class="ec-image-upload" accept=".png, .jpg, .jpeg" />
+                                    <label><i class="fi-rr-edit"></i></label>
+                                </div>
+                                <div class="thumb-preview ec-preview">
+                                    <div class="image-thumb-preview">
+                                        <img class="image-thumb-preview ec-image-preview v-img"
+                                            src="{{url_for('static', filename='images/banner/8.jpg')}}" alt="edit" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ec-vendor-block-detail">
+                            <div class="thumb-upload">
+                                <div class="thumb-edit">
+                                    <input type='file' id="thumbUpload02" class="ec-image-upload" accept=".png, .jpg, .jpeg" />
+                                    <label><i class="fi-rr-edit"></i></label>
+                                </div>
+                                <div class="thumb-preview ec-preview">
+                                    <div class="image-thumb-preview">
+                                        <img class="image-thumb-preview ec-image-preview v-img"
+                                            src="{{url_for('static', filename='images/user/1.jpg')}}" alt="edit" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ec-vendor-upload-detail">
+                            <form class="row g-3">
+                                <div class="col-md-6 space-t-15">
+                                    <label class="form-label">First name</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-6 space-t-15">
+                                    <label class="form-label">Last name</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-12 space-t-15">
+                                    <label class="form-label">Address 1</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-12 space-t-15">
+                                    <label class="form-label">Address 2</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-12 space-t-15">
+                                    <label class="form-label">Address 3</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-6 space-t-15">
+                                    <label class="form-label">Email id 1</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-6 space-t-15">
+                                    <label class="form-label">Email id 2</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-6 space-t-15">
+                                    <label class="form-label">Phone number 1</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-6 space-t-15">
+                                    <label class="form-label">Phone number 2</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-12 space-t-15">
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <a href="#" class="btn btn-sm btn-secondary qty_close" data-bs-dismiss="modal"
+                                        aria-label="Close">Close</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal end -->
+
+ <!-- Modal Post-->
+
+ <div class="modal fade" id="post_modal">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+
+                    <section class="card card-body border-0 shadow-sm col-12 " id="basic-info">
+                        <h2 class="h4 mb-4"><i class="fi-info-circle text-primary fs-5 mt-n1 me-2"></i>Basic info</h2>
+                        
+                        <div class="row">
+                            <div class="col-sm-6 mb-3">
+                          <label class="form-label" for="ap-title">Title <span class="text-danger">*</span></label>
+                          <input class="form-control" type="text" id="ap-title" placeholder="Title for your property" value="Pine Apartments" required="">
+                          <span class="form-text">48 characters left</span>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                          <label class="form-label" for="ap-title">Price <span class="text-danger">*</span></label>
+                          <input class="form-control" type="text" id="ap-title" placeholder="Title for your property" value="Pine Apartments" required="">
+                          <span class="form-text">48 characters left</span>
+                        </div>
+                    </div>
+
+                        <div class="row">
+                          <div class="col-sm-6 mb-3">
+                            <label class="form-label" for="ap-category">Category <span class="text-danger">*</span></label>
+                            <select class="form-select" id="ap-category" required="">
+                              <option value="" disabled="" hidden="">Choose category</option>
+                              <option value="Rent">For rent</option>
+                              <option value="Sell">For sale</option>
+                            </select>
+                          </div>
+                          <div class="col-sm-6 mb-3">
+                            <label class="form-label" for="ap-type">Property type <span class="text-danger">*</span></label>
+                            <select class="form-select" id="ap-type" required="">
+                              <option value="" disabled="" hidden="">Choose property type</option>
+                              <option value="Apartment">Apartment</option>
+                              <option value="House">House</option>
+                              <option value="Commercial">Commercial</option>
+                              <option value="Commercial">Daily rental</option>
+                              <option value="New building">New building</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-label fw-bold pt-3 pb-2">Are you listing on Finder as part of a company?</div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" id="ap-company" name="ap-business-type">
+                          <label class="form-check-label" for="ap-company">I am a registered business</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" id="ap-individual" name="ap-business-type" checked="">
+                          <label class="form-check-label" for="ap-individual">I am a private seller</label>
+                        </div>
+
+                      </section>
+
+                      <section class="card card-body border-0 shadow-sm p-4 mb-4" id="contacts">
+                        <h2 class="h4 mb-4"><i class="fi-phone text-primary fs-5 mt-n1 me-2"></i>Contacts</h2>
+                        <div class="row">
+                          <div class="col-sm-6 mb-3">
+                            <label class="form-label" for="ap-fn">First name <span class="text-danger">*</span></label>
+                            <input class="form-control" type="text" id="ap-fn" value="Annette" placeholder="Enter your first name" required="">
+                          </div>
+                          <div class="col-sm-6 mb-3">
+                            <label class="form-label" for="ap-sn">Second name <span class="text-danger">*</span></label>
+                            <input class="form-control" type="text" id="ap-sn" value="Black" placeholder="Enter your second name" required="">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-6 mb-3">
+                            <label class="form-label" for="ap-email">Email<span class="text-danger">*</span></label>
+                            <input class="form-control" type="text" id="ap-email" value="annette_black@email.com" placeholder="Enter your email">
+                          </div>
+                          <div class="col-sm-6 mb-3">
+                            <label class="form-label" for="ap-phone">Phone number <span class="text-danger">*</span></label>
+                            <input class="form-control" type="tel" id="ap-phone" data-format="custom" data-delimiter="-" data-blocks="3 3 4" value="302-555-0107" placeholder="000-000-0000">
+                          </div>
+                        </div>
+                        <label class="form-label" for="ap-company-name">Company</label>
+                        <input class="form-control" type="text" id="ap-company-name" placeholder="Enter company name">
+                      </section>
+
+                      <section class="card card-body border-0 shadow-sm p-4 mb-4" id="details">
+                        <h2 class="h4 mb-4"><i class="fi-edit text-primary fs-5 mt-n1 me-2"></i>Property details</h2>
+                        <div class="mb-4" style="max-width: 25rem;">
+                          <label class="form-label" for="ap-area">Total area, sq.m</label>
+                          <input class="form-control" type="number" id="ap-area" min="20" placeholder="Enter your area" value="56" required="">
+                        </div>
+
+                        <!--property-details-->
+                        <div class="row">
+                        <div class="col-md-4 mb-4">
+                          <label class="form-label d-block fw-bold mb-2 pb-1">Bedrooms</label>
+                          <div class="btn-group btn-group-sm" role="group" aria-label="Choose number of bedrooms">
+                            <input class="btn-check" type="radio" id="studio" name="bedrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="studio">Studio</label>
+                            <input class="btn-check" type="radio" id="bedrooms-1" name="bedrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="bedrooms-1">1</label>
+                            <input class="btn-check" type="radio" id="bedrooms-2" name="bedrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="bedrooms-2">2</label>
+                            <input class="btn-check" type="radio" id="bedrooms-3" name="bedrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="bedrooms-3">3</label>
+                            <input class="btn-check" type="radio" id="bedrooms-4" name="bedrooms" checked="">
+                            <label class="btn btn-outline-secondary fw-normal" for="bedrooms-4">4</label>
+                            <input class="btn-check" type="radio" id="bedrooms-5" name="bedrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="bedrooms-5">5+</label>
+                          </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                          <label class="form-label d-block fw-bold mb-2 pb-1">Bathrooms</label>
+                          <div class="btn-group btn-group-sm" role="group" aria-label="Choose number of bathrooms">
+                            <input class="btn-check" type="radio" id="bathrooms-1" name="bathrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="bathrooms-1">1</label>
+                            <input class="btn-check" type="radio" id="bathrooms-2" name="bathrooms" checked="">
+                            <label class="btn btn-outline-secondary fw-normal" for="bathrooms-2">2</label>
+                            <input class="btn-check" type="radio" id="bathrooms-3" name="bathrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="bathrooms-3">3</label>
+                            <input class="btn-check" type="radio" id="bathrooms-4" name="bathrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="bathrooms-4">4</label>
+                          </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                          <label class="form-label d-block fw-bold mb-2 pb-1">Parking spots</label>
+                          <div class="btn-group btn-group-sm" role="group" aria-label="Choose number of parking spots">
+                            <input class="btn-check" type="radio" id="parking-1" name="parking">
+                            <label class="btn btn-outline-secondary fw-normal" for="parking-1">1</label>
+                            <input class="btn-check" type="radio" id="parking-2" name="parking" checked="">
+                            <label class="btn btn-outline-secondary fw-normal" for="parking-2">2</label>
+                            <input class="btn-check" type="radio" id="parking-3" name="parking">
+                            <label class="btn btn-outline-secondary fw-normal" for="parking-3">3</label>
+                            <input class="btn-check" type="radio" id="parking-4" name="parking">
+                            <label class="btn btn-outline-secondary fw-normal" for="parking-4">4</label>
+                          </div>
+                        </div>
+                        </div>
+
+                        <div class="mb-4">
+                          <label class="form-label d-block fw-bold mb-2 pb-1">Amenities</label>
+                          <div class="row">
+                            <div class="col-sm-4">
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="wifi" checked="">
+                                <label class="form-check-label" for="wifi">WiFi</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="air-condition" checked="">
+                                <label class="form-check-label" for="air-condition">Air conditioning</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="balcony">
+                                <label class="form-check-label" for="balcony">Balcony</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="garage">
+                                <label class="form-check-label" for="garage">Garage</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="gym">
+                                <label class="form-check-label" for="gym">Gym</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="free-parking" checked="">
+                                <label class="form-check-label" for="free-parking">Free parking</label>
+                              </div>
+                            </div>
+                            <div class="col-sm-4">
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="pets-friendly">
+                                <label class="form-check-label" for="pets-friendly">Pets-friendly</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="pool">
+                                <label class="form-check-label" for="pool">Pool</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="bar">
+                                <label class="form-check-label" for="bar">Bar</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="tv" checked="">
+                                <label class="form-check-label" for="tv">TV</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="linens" checked="">
+                                <label class="form-check-label" for="linens">Linens</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="heating" checked="">
+                                <label class="form-check-label" for="heating">Heating</label>
+                              </div>
+                            </div>
+                            <div class="col-sm-4">
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="dishwasher">
+                                <label class="form-check-label" for="dishwasher">Dishwasher</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="iron" checked="">
+                                <label class="form-check-label" for="iron">Iron</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="hair-dryer" checked="">
+                                <label class="form-check-label" for="hair-dryer">Hair dryer</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="kitchen" checked="">
+                                <label class="form-check-label" for="kitchen">Kitchen</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="breakfast">
+                                <label class="form-check-label" for="breakfast">Breakfast</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="security-cameras">
+                                <label class="form-check-label" for="security-cameras">Security cameras</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mb-4">
+                          <label class="form-label d-block fw-bold mb-2 pb-1">Pets</label>
+                          <div class="row">
+                            <div class="col-sm-4">
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="allow-cats">
+                                <label class="form-check-label" for="allow-cats">Cats allowed</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="allow-dogs">
+                                <label class="form-check-label" for="allow-dogs">Dogs allowed</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <label class="form-label" for="ap-description">Description </label>
+                        <textarea class="form-control" id="ap-description" rows="5" placeholder="Describe your property"></textarea><span class="form-text">1500 characters left</span>
+                      
+                    </section>
+
+                       <!--photos & videos --->
+                       <section class="card card-body border-0 shadow-sm p-4 mb-4" id="photos">
+                        <h2 class="h4 mb-4"><i class="fi-image text-primary fs-5 mt-n1 me-2"></i>Photos / video</h2>
+                        <div class="alert alert-info mb-4" role="alert">
+                          <div class="d-flex"><i class="fi-alert-circle me-2 me-sm-3"></i>
+                            <p class="fs-sm mb-1">The maximum photo size is 8 MB. Formats: jpeg, jpg, png. Put the main picture first.
+                                <br>The maximum video size is 10 MB. Formats: mp4, mov.</p>
+                          </div>
+                        </div>
+
+                       
+                        <div class="container mt-5">
+                          <h3 class="mb-3">Bootstrap Dropzone with Previews</h3>
+                          <div id="myDropzone" class="dropzone"></div>
+                          <div class="row mt-3" id="preview-container"></div>
+                        </div>
+
+                          <div class="container">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <!-- Hidden input for FilePond -->
+                                  <input type="file" class="filepond" name="filepond" multiple>
+                                  <!-- Custom upload button -->
+                                  <label for="file-upload" class="custom-file-upload">
+                                    <i class="fa fa-cloud-upload"></i> Upload Images
+                                    <i class="ecicon eci-cloud-upload"></i>
+                                  </label>
+                                  <!-- Upload button -->
+                                  <button id="upload-button" class="btn btn-primary">Start Upload</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row preview-container d-flex"></div>
+                          
+                          
+<style>
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.custom-file-upload:hover {
+  background-color: #0056b3;
+}
+
+/* Hide the file input */
+.file-upload {
+  display: none1;
+}
+
+.file-preview {
+     margin:auto;
+    margin: -10px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap; 
+}
+
+.file-preview img{
+    /*display:flex; */
+    width: 140px!important;
+    height: 140px!important;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
+    /*margin: auto; */
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: all .5s;
+    transition: all .5s;
+    cursor: zoom-in;
+}
+
+.file-preview video {
+    width: 140px!important;
+    height: 140px!important;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
+    /* margin: auto; */
+    cursor: zoom-in;
+    -webkit-transform: scale(1);
+    /* transform: scale(1); */
+    -webkit-transition: all .5s;
+    /* transition: all .5s; */
+    /* cursor: zoom-in; */
+    /* object-position: 50% 50%; */
+    object-fit: cover;
+}
+
+</style>   
+          
+                            </div>
+                            
+                      </section>
+
+                      <style>
+
+                        .file-uploader {
+                          margin-bottom: 0;
+                          border: $border-width dashed $gray-400;
+                          border-radius: $border-radius-lg;
+                          font-family: $font-family-sans-serif;
+                          cursor: pointer;
+                        }
+                        
+                        .filepond--root .filepond--drop-label {
+                          min-height: 10rem;
+                          > label { cursor: pointer; }
+                        }
+                        
+                        .filepond--panel,
+                        .filepond--panel-root {
+                          background-color: transparent !important;
+                        }
+                        
+                        .filepond--image-preview {
+                          background-color: $gray-900 !important;
+                        }
+                        
+                        .filepond--credits { display: none; }
+                        
+                        @include media-breakpoint-up(sm) {
+                          .file-uploader-grid {
+                            .filepond--item {
+                              width: calc(50% - .5em);
+                            }
+                          }
+                        }
+                        
+                        [data-filepond-item-state*='error'] .filepond--item-panel,
+                        [data-filepond-item-state*='invalid'] .filepond--item-panel {
+                            background-color: $danger;
+                        }
+                        
+                        [data-filepond-item-state='processing-complete'] .filepond--item-panel {
+                          background-color: $success;
+                        }
+                        /******************************************************/
+
+                        /*!
+ * FilePond 4.30.4
+ * Licensed under MIT, https://opensource.org/licenses/MIT/
+ * Please visit https://pqina.nl/filepond/ for details.
+ */
+/* eslint-disable */
+.filepond--assistant {
+    position: absolute;
+    overflow: hidden;
+    height: 1px;
+    width: 1px;
+    padding: 0;
+    border: 0;
+    clip: rect(1px,1px,1px,1px);
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    white-space: nowrap
+}
+
+.filepond--browser.filepond--browser {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    left: 1em;
+    top: 1.75em;
+    width: calc(100% - 2em);
+    opacity: 0;
+    font-size: 0
+}
+
+.filepond--data {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+    visibility: hidden;
+    pointer-events: none;
+    contain: strict
+}
+
+.filepond--drip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    opacity: .1;
+    pointer-events: none;
+    border-radius: .5em;
+    background: rgba(0,0,0,.01)
+}
+
+.filepond--drip-blob {
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+    width: 8em;
+    height: 8em;
+    margin-left: -4em;
+    margin-top: -4em;
+    background: #292625;
+    border-radius: 50%
+}
+
+.filepond--drip-blob,.filepond--drop-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    will-change: transform,opacity
+}
+
+.filepond--drop-label {
+    right: 0;
+    margin: 0;
+    color: #4f4f4f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.filepond--drop-label.filepond--drop-label label {
+    display: block;
+    margin: 0;
+    padding: .5em
+}
+
+.filepond--drop-label label {
+    cursor: default;
+    font-size: .875em;
+    font-weight: 400;
+    text-align: center;
+    line-height: 1.5
+}
+
+.filepond--label-action {
+    text-decoration: underline;
+    -webkit-text-decoration-skip: ink;
+    text-decoration-skip-ink: auto;
+    -webkit-text-decoration-color: #a7a4a4;
+    text-decoration-color: #a7a4a4;
+    cursor: pointer
+}
+
+.filepond--root[data-disabled] .filepond--drop-label label {
+    opacity: .5
+}
+
+.filepond--file-action-button.filepond--file-action-button {
+    font-size: 1em;
+    width: 1.625em;
+    height: 1.625em;
+    font-family: inherit;
+    line-height: inherit;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    will-change: transform,opacity
+}
+
+.filepond--file-action-button.filepond--file-action-button span {
+    position: absolute;
+    overflow: hidden;
+    height: 1px;
+    width: 1px;
+    padding: 0;
+    border: 0;
+    clip: rect(1px,1px,1px,1px);
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    white-space: nowrap
+}
+
+.filepond--file-action-button.filepond--file-action-button svg {
+    width: 100%;
+    height: 100%
+}
+
+.filepond--file-action-button.filepond--file-action-button:after {
+    position: absolute;
+    left: -.75em;
+    right: -.75em;
+    top: -.75em;
+    bottom: -.75em;
+    content: ""
+}
+
+.filepond--file-action-button {
+    cursor: auto;
+    color: #fff;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,.5);
+    background-image: none;
+    box-shadow: 0 0 0 0 hsla(0,0%,100%,0);
+    transition: box-shadow .25s ease-in
+}
+
+.filepond--file-action-button:focus,.filepond--file-action-button:hover {
+    box-shadow: 0 0 0 .125em hsla(0,0%,100%,.9)
+}
+
+.filepond--file-action-button[disabled] {
+    color: hsla(0,0%,100%,.5);
+    background-color: rgba(0,0,0,.25)
+}
+
+.filepond--file-action-button[hidden] {
+    display: none
+}
+
+.filepond--action-edit-item.filepond--action-edit-item {
+    width: 2em;
+    height: 2em;
+    padding: .1875em
+}
+
+.filepond--action-edit-item.filepond--action-edit-item[data-align*=center] {
+    margin-left: -.1875em
+}
+
+.filepond--action-edit-item.filepond--action-edit-item[data-align*=bottom] {
+    margin-bottom: -.1875em
+}
+
+.filepond--action-edit-item-alt {
+    border: none;
+    line-height: inherit;
+    background: transparent;
+    font-family: inherit;
+    color: inherit;
+    outline: none;
+    padding: 0;
+    margin: 0 0 0 .25em;
+    pointer-events: all;
+    position: absolute
+}
+
+.filepond--action-edit-item-alt svg {
+    width: 1.3125em;
+    height: 1.3125em
+}
+
+.filepond--action-edit-item-alt span {
+    font-size: 0;
+    opacity: 0
+}
+
+.filepond--file-info {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    margin: 0 .5em 0 0;
+    min-width: 0;
+    will-change: transform,opacity;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.filepond--file-info * {
+    margin: 0
+}
+
+.filepond--file-info .filepond--file-info-main {
+    font-size: .75em;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%
+}
+
+.filepond--file-info .filepond--file-info-sub {
+    font-size: .625em;
+    opacity: .5;
+    transition: opacity .25s ease-in-out;
+    white-space: nowrap
+}
+
+.filepond--file-info .filepond--file-info-sub:empty {
+    display: none
+}
+
+.filepond--file-status {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin: 0;
+    min-width: 2.25em;
+    text-align: right;
+    will-change: transform,opacity;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.filepond--file-status * {
+    margin: 0;
+    white-space: nowrap
+}
+
+.filepond--file-status .filepond--file-status-main {
+    font-size: .75em;
+    line-height: 1.2
+}
+
+.filepond--file-status .filepond--file-status-sub {
+    font-size: .625em;
+    opacity: .5;
+    transition: opacity .25s ease-in-out
+}
+
+.filepond--file-wrapper.filepond--file-wrapper {
+    border: none;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    height: 100%
+}
+
+.filepond--file-wrapper.filepond--file-wrapper>legend {
+    position: absolute;
+    overflow: hidden;
+    height: 1px;
+    width: 1px;
+    padding: 0;
+    border: 0;
+    clip: rect(1px,1px,1px,1px);
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    white-space: nowrap
+}
+
+.filepond--file {
+    position: static;
+    display: flex;
+    height: 100%;
+    align-items: flex-start;
+    padding: .5625em;
+    color: #fff;
+    border-radius: .5em
+}
+
+.filepond--file .filepond--file-status {
+    margin-left: auto;
+    margin-right: 2.25em
+}
+
+.filepond--file .filepond--processing-complete-indicator {
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    z-index: 3
+}
+
+.filepond--file .filepond--file-action-button,.filepond--file .filepond--processing-complete-indicator,.filepond--file .filepond--progress-indicator {
+    position: absolute
+}
+
+.filepond--file [data-align*=left] {
+    left: .5625em
+}
+
+.filepond--file [data-align*=right] {
+    right: .5625em
+}
+
+.filepond--file [data-align*=center] {
+    left: calc(50% - .8125em)
+}
+
+.filepond--file [data-align*=bottom] {
+    bottom: 1.125em
+}
+
+.filepond--file [data-align=center] {
+    top: calc(50% - .8125em)
+}
+
+.filepond--file .filepond--progress-indicator {
+    margin-top: .1875em
+}
+
+.filepond--file .filepond--progress-indicator[data-align*=right] {
+    margin-right: .1875em
+}
+
+.filepond--file .filepond--progress-indicator[data-align*=left] {
+    margin-left: .1875em
+}
+
+[data-filepond-item-state*=error] .filepond--file-info,[data-filepond-item-state*=invalid] .filepond--file-info,[data-filepond-item-state=cancelled] .filepond--file-info {
+    margin-right: 2.25em
+}
+
+[data-filepond-item-state~=processing] .filepond--file-status-sub {
+    opacity: 0
+}
+
+[data-filepond-item-state~=processing] .filepond--action-abort-item-processing~.filepond--file-status .filepond--file-status-sub {
+    opacity: .5
+}
+
+[data-filepond-item-state=processing-error] .filepond--file-status-sub {
+    opacity: 0
+}
+
+[data-filepond-item-state=processing-error] .filepond--action-retry-item-processing~.filepond--file-status .filepond--file-status-sub {
+    opacity: .5
+}
+
+[data-filepond-item-state=processing-complete] .filepond--action-revert-item-processing svg {
+    -webkit-animation: fall .5s linear .125s both;
+    animation: fall .5s linear .125s both
+}
+
+[data-filepond-item-state=processing-complete] .filepond--file-status-sub {
+    opacity: .5
+}
+
+[data-filepond-item-state=processing-complete] .filepond--file-info-sub,[data-filepond-item-state=processing-complete] .filepond--processing-complete-indicator:not([style*=hidden])~.filepond--file-status .filepond--file-status-sub {
+    opacity: 0
+}
+
+[data-filepond-item-state=processing-complete] .filepond--action-revert-item-processing~.filepond--file-info .filepond--file-info-sub {
+    opacity: .5
+}
+
+[data-filepond-item-state*=error] .filepond--file-wrapper,[data-filepond-item-state*=error] .filepond--panel,[data-filepond-item-state*=invalid] .filepond--file-wrapper,[data-filepond-item-state*=invalid] .filepond--panel {
+    -webkit-animation: shake .65s linear both;
+    animation: shake .65s linear both
+}
+
+[data-filepond-item-state*=busy] .filepond--progress-indicator svg {
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+
+    to {
+        -webkit-transform: rotate(1turn);
+        transform: rotate(1turn)
+    }
+}
+
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+
+    to {
+        -webkit-transform: rotate(1turn);
+        transform: rotate(1turn)
+    }
+}
+
+@-webkit-keyframes shake {
+    10%,90% {
+        -webkit-transform: translateX(-.0625em);
+        transform: translateX(-.0625em)
+    }
+
+    20%,80% {
+        -webkit-transform: translateX(.125em);
+        transform: translateX(.125em)
+    }
+
+    30%,50%,70% {
+        -webkit-transform: translateX(-.25em);
+        transform: translateX(-.25em)
+    }
+
+    40%,60% {
+        -webkit-transform: translateX(.25em);
+        transform: translateX(.25em)
+    }
+}
+
+@keyframes shake {
+    10%,90% {
+        -webkit-transform: translateX(-.0625em);
+        transform: translateX(-.0625em)
+    }
+
+    20%,80% {
+        -webkit-transform: translateX(.125em);
+        transform: translateX(.125em)
+    }
+
+    30%,50%,70% {
+        -webkit-transform: translateX(-.25em);
+        transform: translateX(-.25em)
+    }
+
+    40%,60% {
+        -webkit-transform: translateX(.25em);
+        transform: translateX(.25em)
+    }
+}
+
+@-webkit-keyframes fall {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(.5);
+        transform: scale(.5);
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out
+    }
+
+    70% {
+        opacity: 1;
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+        -webkit-animation-timing-function: ease-in-out;
+        animation-timing-function: ease-in-out
+    }
+
+    to {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out
+    }
+}
+
+@keyframes fall {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(.5);
+        transform: scale(.5);
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out
+    }
+
+    70% {
+        opacity: 1;
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+        -webkit-animation-timing-function: ease-in-out;
+        animation-timing-function: ease-in-out
+    }
+
+    to {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out
+    }
+}
+
+.filepond--hopper[data-hopper-state=drag-over]>* {
+    pointer-events: none
+}
+
+.filepond--hopper[data-hopper-state=drag-over]:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100
+}
+
+.filepond--progress-indicator {
+    z-index: 103
+}
+
+.filepond--file-action-button {
+    z-index: 102
+}
+
+.filepond--file-status {
+    z-index: 101
+}
+
+.filepond--file-info {
+    z-index: 100
+}
+
+.filepond--item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    padding: 0;
+    margin: .25em;
+    will-change: transform,opacity
+}
+
+.filepond--item>.filepond--panel {
+    z-index: -1
+}
+
+.filepond--item>.filepond--panel .filepond--panel-bottom {
+    box-shadow: 0 .0625em .125em -.0625em rgba(0,0,0,.25)
+}
+
+.filepond--item>.filepond--file-wrapper,.filepond--item>.filepond--panel {
+    transition: opacity .15s ease-out
+}
+
+.filepond--item[data-drag-state] {
+    cursor: -webkit-grab;
+    cursor: grab
+}
+
+.filepond--item[data-drag-state]>.filepond--panel {
+    transition: box-shadow .125s ease-in-out;
+    box-shadow: 0 0 0 transparent
+}
+
+.filepond--item[data-drag-state=drag] {
+    cursor: -webkit-grabbing;
+    cursor: grabbing
+}
+
+.filepond--item[data-drag-state=drag]>.filepond--panel {
+    box-shadow: 0 .125em .3125em rgba(0,0,0,.325)
+}
+
+.filepond--item[data-drag-state]:not([data-drag-state=idle]) {
+    z-index: 2
+}
+
+.filepond--item-panel {
+    background-color: #64605e
+}
+
+[data-filepond-item-state=processing-complete] .filepond--item-panel {
+    background-color: #369763
+}
+
+[data-filepond-item-state*=error] .filepond--item-panel,[data-filepond-item-state*=invalid] .filepond--item-panel {
+    background-color: #c44e47
+}
+
+.filepond--item-panel {
+    border-radius: .5em;
+    transition: background-color .25s
+}
+
+.filepond--list-scroller {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    will-change: transform
+}
+
+.filepond--list-scroller[data-state=overflow] .filepond--list {
+    bottom: 0;
+    right: 0
+}
+
+.filepond--list-scroller[data-state=overflow] {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    -webkit-mask: linear-gradient(180deg,#000 calc(100% - .5em),transparent);
+    mask: linear-gradient(180deg,#000 calc(100% - .5em),transparent)
+}
+
+.filepond--list-scroller::-webkit-scrollbar {
+    background: transparent
+}
+
+.filepond--list-scroller::-webkit-scrollbar:vertical {
+    width: 1em
+}
+
+.filepond--list-scroller::-webkit-scrollbar:horizontal {
+    height: 0
+}
+
+.filepond--list-scroller::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,.3);
+    border-radius: 99999px;
+    border: .3125em solid transparent;
+    background-clip: content-box
+}
+
+.filepond--list.filepond--list {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    will-change: transform
+}
+
+.filepond--list {
+    left: .75em;
+    right: .75em
+}
+
+.filepond--root[data-style-panel-layout~=integrated] {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    margin: 0
+}
+
+.filepond--root[data-style-panel-layout~=circle] .filepond--panel-root,.filepond--root[data-style-panel-layout~=integrated] .filepond--panel-root {
+    border-radius: 0
+}
+
+.filepond--root[data-style-panel-layout~=circle] .filepond--panel-root>*,.filepond--root[data-style-panel-layout~=integrated] .filepond--panel-root>* {
+    display: none
+}
+
+.filepond--root[data-style-panel-layout~=circle] .filepond--drop-label,.filepond--root[data-style-panel-layout~=integrated] .filepond--drop-label {
+    bottom: 0;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 7
+}
+
+.filepond--root[data-style-panel-layout~=circle] .filepond--item-panel,.filepond--root[data-style-panel-layout~=integrated] .filepond--item-panel {
+    display: none
+}
+
+.filepond--root[data-style-panel-layout~=compact] .filepond--list-scroller,.filepond--root[data-style-panel-layout~=integrated] .filepond--list-scroller {
+    overflow: hidden;
+    height: 100%;
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+.filepond--root[data-style-panel-layout~=compact] .filepond--list,.filepond--root[data-style-panel-layout~=integrated] .filepond--list {
+    left: 0;
+    right: 0;
+    height: 100%
+}
+
+.filepond--root[data-style-panel-layout~=compact] .filepond--item,.filepond--root[data-style-panel-layout~=integrated] .filepond--item {
+    margin: 0
+}
+
+.filepond--root[data-style-panel-layout~=compact] .filepond--file-wrapper,.filepond--root[data-style-panel-layout~=integrated] .filepond--file-wrapper {
+    height: 100%
+}
+
+.filepond--root[data-style-panel-layout~=compact] .filepond--drop-label,.filepond--root[data-style-panel-layout~=integrated] .filepond--drop-label {
+    z-index: 7
+}
+
+.filepond--root[data-style-panel-layout~=circle] {
+    border-radius: 99999rem;
+    overflow: hidden
+}
+
+.filepond--root[data-style-panel-layout~=circle]>.filepond--panel {
+    border-radius: inherit
+}
+
+.filepond--root[data-style-panel-layout~=circle]>.filepond--panel>* {
+    display: none
+}
+
+.filepond--root[data-style-panel-layout~=circle] .filepond--file-info,.filepond--root[data-style-panel-layout~=circle] .filepond--file-status {
+    display: none
+}
+
+.filepond--root[data-style-panel-layout~=circle] .filepond--action-edit-item {
+    opacity: 1!important;
+    visibility: visible!important
+}
+
+@media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance:none) and (stroke-color:transparent) {
+        .filepond--root[data-style-panel-layout~=circle] {
+            will-change:transform
+        }
+    }
+}
+
+.filepond--panel-root {
+    border-radius: .5em;
+    background-color: #f1f0ef
+}
+
+.filepond--panel {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    margin: 0;
+    height: 100%!important;
+    pointer-events: none
+}
+
+.filepond-panel:not([data-scalable=false]) {
+    height: auto!important
+}
+
+.filepond--panel[data-scalable=false]>div {
+    display: none
+}
+
+.filepond--panel[data-scalable=true] {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    background-color: transparent!important;
+    border: none!important
+}
+
+.filepond--panel-bottom,.filepond--panel-center,.filepond--panel-top {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0
+}
+
+.filepond--panel-bottom,.filepond--panel-top {
+    height: .5em
+}
+
+.filepond--panel-top {
+    border-bottom-left-radius: 0!important;
+    border-bottom-right-radius: 0!important;
+    border-bottom: none!important
+}
+
+.filepond--panel-top:after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    background-color: inherit
+}
+
+.filepond--panel-bottom,.filepond--panel-center {
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    -webkit-transform: translate3d(0,.5em,0);
+    transform: translate3d(0,.5em,0)
+}
+
+.filepond--panel-bottom {
+    border-top-left-radius: 0!important;
+    border-top-right-radius: 0!important;
+    border-top: none!important
+}
+
+.filepond--panel-bottom:before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    left: 0;
+    right: 0;
+    top: -1px;
+    background-color: inherit
+}
+
+.filepond--panel-center {
+    height: 100px!important;
+    border-top: none!important;
+    border-bottom: none!important;
+    border-radius: 0!important
+}
+
+.filepond--panel-center:not([style]) {
+    visibility: hidden
+}
+
+.filepond--progress-indicator {
+    position: static;
+    width: 1.25em;
+    height: 1.25em;
+    color: #fff;
+    margin: 0;
+    pointer-events: none;
+    will-change: transform,opacity
+}
+
+.filepond--progress-indicator svg {
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+    transform-box: fill-box
+}
+
+.filepond--progress-indicator path {
+    fill: none;
+    stroke: currentColor
+}
+
+.filepond--list-scroller {
+    z-index: 6
+}
+
+.filepond--drop-label {
+    z-index: 5
+}
+
+.filepond--drip {
+    z-index: 3
+}
+
+.filepond--root>.filepond--panel {
+    z-index: 2
+}
+
+.filepond--browser {
+    z-index: 1
+}
+
+.filepond--root {
+    box-sizing: border-box;
+    position: relative;
+    margin-bottom: 1em;
+    font-size: 1rem;
+    line-height: normal;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+    /* font-weight:450; */
+    /* text-align:left; */
+    /* text-rendering:optimizeLegibility; */
+    /* direction:ltr; */
+    /* contain:layout style size; */
+}
+
+.filepond--root * {
+    box-sizing: inherit;
+    line-height: inherit
+}
+
+.filepond--root :not(text) {
+    font-size: inherit
+}
+
+.filepond--root[data-disabled] {
+    pointer-events: none
+}
+
+.filepond--root[data-disabled] .filepond--list-scroller {
+    pointer-events: all
+}
+
+.filepond--root[data-disabled] .filepond--list {
+    pointer-events: none
+}
+
+.filepond--root .filepond--drop-label {
+    min-height: 4.75em
+}
+
+.filepond--root .filepond--list-scroller {
+    margin-top: 1em;
+    margin-bottom: 1em
+}
+
+.filepond--root .filepond--credits {
+    position: absolute;
+    right: 0;
+    opacity: .175;
+    line-height: .85;
+    font-size: 11px;
+    color: inherit;
+    text-decoration: none;
+    z-index: 3;
+    bottom: -14px
+}
+
+.filepond--root .filepond--credits[style] {
+    top: 0;
+    bottom: auto;
+    margin-top: 14px
+}
+
+                        </style>
+
+
+                    <section class="d-sm-flex justify-content-between pt-2">
+                        <a class="btn btn-outline-primary rounded btn-lg d-block mb-3 mb-sm-2" href="#preview-modal" data-bs-toggle="modal">
+                            <i class="fi-eye-on ms-n1 me-2"></i>Preview</a>
+
+                            <div class="bg-body-tertiary p-2 rounded">
+                                <button class="btn btn-lg rounded btn-primary d-block mb-2"  role="button">Post My Listing Now</button>
+                              </div> 
+
+                        </section>
+
+                        {#
+                        <div class="ec-vendor-dashboard-card" id="target-post-div">
+                            <div class="ec-vendor-card-body">
+                                <div class="row"> 
+                                    <div class="col-7 align-items-center">    
+                                        
+                                        <form method="post" action="" enctype="multipart/form-data">
+                                        <div class="centered">
+                                            
+                                            <!-- <div class="bg-body-tertiary p-2 rounded">
+                                                <h4>Item For Sale</h4>
+                                                <p class="lead">Create a single listing for one or more items to sell.</p>
+                                                <a class="btn btn-sm rounded btn-primary" href="{{url_for('acct.post', type='item')}}" role="button">Post An Item</a>
+                                              </div>
+                                            <div class="bg-body-tertiary p-2 rounded">
+                                                <h4>Food Item(s)</h4>
+                                                <p class="lead">Sell Your Different Food Varieties On Salesnet.</p>
+                                                <a class="btn btn-sm rounded btn-primary" href="{{url_for('acct.post', type='food')}}" role="button">Post Item Food</a>
+                                              </div>
+                                            <div class="bg-body-tertiary p-2 rounded">
+                                                <h4>Vehicle For Sale</h4>
+                                                <p class="lead">Sell a car, truck or other type of vehicle..</p>
+                                                <a class="btn btn-sm rounded btn-primary" href="{{url_for('acct.post', type='vehicle')}}" role="button">Post A Vehicle</a>
+                                              </div>
+                                            <div class="bg-body-tertiary p-2 rounded">
+                                                <h4>Offer  Service(s)</h4>
+                                                <p class="lead">Offering Digital Services?.</p>
+                                                <a class="btn btn-sm rounded btn-primary" href="{{url_for('acct.post', type='service')}}" role="button">Post A Service(s)</a>
+                                              </div>
+                                        </div> -->
+                                     
+
+                                    </form>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        #}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal end -->

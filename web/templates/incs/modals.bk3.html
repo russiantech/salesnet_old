@@ -1,0 +1,867 @@
+{% include 'incs/quickv.html' %}
+
+<!-- Modal end -->
+<!-- FB Chat Messenger -->
+<div class="ec-fb-style fb-right-bottom">
+    <!-- Start Floating Panel Container -->
+    <div class="fb-panel">
+        <!-- Panel Content -->
+        <div class="fb-header">
+            <img src="{{url_for('static', filename='images/user/1.jpg')}}" alt="pic" />
+            <h2>Chris James</h2>
+            <p>Technical Manager</p>
+        </div>
+        <div class="fb-body">
+            <p><b>Hey there &#128515;</b></p>
+            <p>Need help ? just send me a message.</p>
+        </div>
+        <div class="fb-footer">
+            <a href="/" target="_blank" class="fb-msg-button">
+                <span>Send Message</span>
+                <svg width="13px" height="10px" viewBox="0 0 13 10">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+            </a>
+        </div>
+    </div>
+    <!--/ End Floating Panel Container -->
+    <!-- Start Right Floating Button -->
+    <div class="fb-button fb-right-bottom">
+        <img class="fa-messenger" src="{{url_for('static', filename='images/favicon/favicon.svg')}}" alt="icon" />
+    </div>
+    <!--/ End Right Floating Button -->
+</div>
+<!-- FB Chat Messenger end -->
+
+<!-- Newsletter Modal Start -->
+<div id="ec-popnews-box" style="display: block;">
+    <div id="ec-popnews-close"><i class="ecicon eci-close"></i></div>
+    <div class="row">
+        <div class="col-md-6 disp-no-767">
+            <img src="{{url_for('static', filename='images/banner/newsletter.png')}}" alt="newsletter">
+            <!-- <img src="{{url_for('static', filename='images/banner/nl.jpg')}}" alt="newsletter"> -->
+        </div>
+        <div class="col-md-6">
+            <div id="ec-popnews-box-content">
+                <h2>Stay home, stay safe &amp; get your daily needs from Salesnet.</h2>
+                <p>Subscribe to the internet of sales to get in touch and get the future update. </p>
+                <form id="ec-popnews-form" action="#" method="post">
+                    <input type="email" name="newsemail" placeholder="Email Address" required="">
+                    <button type="button" class="btn btn-primary" name="subscribe">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ec-popnews-bg"></div>
+<div id="ec-popnews-box">
+    <div id="ec-popnews-close"><i class="ecicon eci-close"></i></div>
+    <div id="ec-popnews-box-content">
+        <h6>Newsletter : ..internet of sales..</h6>
+        <p>Subscribe to stay updated about new products/servces, discounts and promos from salesnet.</p>
+        <form id="ec-popnews-form" action="#" method="post">
+            <input type="email" required name="newsemail" placeholder="Valid Email Address" required />
+            <button type="submit" class="btn btn-secondary" name="subscribe">Keep Me Updated</button>
+        </form>
+    </div>
+</div>
+<!-- Newsletter Modal end -->
+
+<!-- successfully toast Start -->
+<div id="addtocart_toast" class="addtocart_toast">
+    <div class="desc">Success!!! Shopping Basket Updated</div>
+</div>
+<div id="wishlist_toast" class="wishlist_toast">
+    <div class="desc">Congrats!!! Favorite Item Saved For You</div>
+</div>
+<!--successfully toast end -->
+
+<div class="modal fade" id="post_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Post Ur Listing</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="multiStepForm" enctype="multipart/form-data">
+
+                  <section class="card card-body border-0 shadow-sm col-12 " id="basic-info">
+                    <h2 class="h4 mb-4"><i class="fi-info-circle text-primary fs-5 mt-n1 me-2"></i>Basic info</h2>
+                    <div class="row">
+                        <div class="col-sm-6 mb-3">
+                      <label class="form-label" for="ap-title">Title <span class="text-danger">*</span></label>
+                      <input class="form-control" type="text" id="ap-title" placeholder="Title for your property" value="Pine Apartments" required="">
+                      <span class="form-text">48 characters left</span>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                      <label class="form-label" for="ap-title">Price <span class="text-danger">*</span></label>
+                      <input class="form-control" type="text" id="ap-title" placeholder="Title for your property" value="Pine Apartments" required="">
+                      <span class="form-text">48 characters left</span>
+                    </div>
+                </div>
+
+                    <div class="row">
+                      <div class="col-sm-6 mb-3">
+                        <label class="form-label" for="ap-category">Category <span class="text-danger">*</span></label>
+                        <select class="form-select" id="ap-category" required="">
+                          <option value="" disabled="" hidden="">Choose category</option>
+                          <option value="Rent">For rent</option>
+                          <option value="Sell">For sale</option>
+                        </select>
+                      </div>
+                      <div class="col-sm-6 mb-3">
+                        <label class="form-label" for="ap-type">Property type <span class="text-danger">*</span></label>
+                        <select class="form-select" id="ap-type" required="">
+                          <option value="" disabled="" hidden="">Choose property type</option>
+                          <option value="Apartment">Apartment</option>
+                          <option value="House">House</option>
+                          <option value="Commercial">Commercial</option>
+                          <option value="Commercial">Daily rental</option>
+                          <option value="New building">New building</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-label fw-bold pt-3 pb-2">Are you listing on Finder as part of a company?</div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" id="ap-company" name="ap-business-type">
+                      <label class="form-check-label" for="ap-company">I am a registered business</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" id="ap-individual" name="ap-business-type" checked="">
+                      <label class="form-check-label" for="ap-individual">I am a private seller</label>
+                    </div>
+
+                  </section>
+
+                  <section class="card card-body border-0 shadow-sm p-4 mb-4" id="contacts">
+                    <h2 class="h4 mb-4"><i class="fi-phone text-primary fs-5 mt-n1 me-2"></i>Contacts</h2>
+                    <div class="row">
+                      <div class="col-sm-6 mb-3">
+                        <label class="form-label" for="ap-fn">First name <span class="text-danger">*</span></label>
+                        <input class="form-control" type="text" id="ap-fn" value="Annette" placeholder="Enter your first name" required="">
+                      </div>
+                      <div class="col-sm-6 mb-3">
+                        <label class="form-label" for="ap-sn">Second name <span class="text-danger">*</span></label>
+                        <input class="form-control" type="text" id="ap-sn" value="Black" placeholder="Enter your second name" required="">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6 mb-3">
+                        <label class="form-label" for="ap-email">Email<span class="text-danger">*</span></label>
+                        <input class="form-control" type="text" id="ap-email" value="annette_black@email.com" placeholder="Enter your email">
+                      </div>
+                      <div class="col-sm-6 mb-3">
+                        <label class="form-label" for="ap-phone">Phone number <span class="text-danger">*</span></label>
+                        <input class="form-control" type="tel" id="ap-phone" data-format="custom" data-delimiter="-" data-blocks="3 3 4" value="302-555-0107" placeholder="000-000-0000">
+                      </div>
+                    </div>
+                    <label class="form-label" for="ap-company-name">Company</label>
+                    <input class="form-control" type="text" id="ap-company-name" placeholder="Enter company name">
+                  </section>
+
+                  <section class="card card-body border-0 shadow-sm p-4 mb-4" id="details">
+                    <h2 class="h4 mb-4"><i class="fi-edit text-primary fs-5 mt-n1 me-2"></i>Property details</h2>
+                    <div class="mb-4" style="max-width: 25rem;">
+                      <label class="form-label" for="ap-area">Total area, sq.m</label>
+                      <input class="form-control" type="number" id="ap-area" min="20" placeholder="Enter your area" value="56" required="">
+                    </div>
+
+                    <!--property-details-->
+                    <div class="row">
+                    <div class="col-md-4 mb-4">
+                      <label class="form-label d-block fw-bold mb-2 pb-1">Bedrooms</label>
+                      <div class="btn-group btn-group-sm" role="group" aria-label="Choose number of bedrooms">
+                        <input class="btn-check" type="radio" id="studio" name="bedrooms">
+                        <label class="btn btn-outline-secondary fw-normal" for="studio">Studio</label>
+                        <input class="btn-check" type="radio" id="bedrooms-1" name="bedrooms">
+                        <label class="btn btn-outline-secondary fw-normal" for="bedrooms-1">1</label>
+                        <input class="btn-check" type="radio" id="bedrooms-2" name="bedrooms">
+                        <label class="btn btn-outline-secondary fw-normal" for="bedrooms-2">2</label>
+                        <input class="btn-check" type="radio" id="bedrooms-3" name="bedrooms">
+                        <label class="btn btn-outline-secondary fw-normal" for="bedrooms-3">3</label>
+                        <input class="btn-check" type="radio" id="bedrooms-4" name="bedrooms" checked="">
+                        <label class="btn btn-outline-secondary fw-normal" for="bedrooms-4">4</label>
+                        <input class="btn-check" type="radio" id="bedrooms-5" name="bedrooms">
+                        <label class="btn btn-outline-secondary fw-normal" for="bedrooms-5">5+</label>
+                      </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                      <label class="form-label d-block fw-bold mb-2 pb-1">Bathrooms</label>
+                      <div class="btn-group btn-group-sm" role="group" aria-label="Choose number of bathrooms">
+                        <input class="btn-check" type="radio" id="bathrooms-1" name="bathrooms">
+                        <label class="btn btn-outline-secondary fw-normal" for="bathrooms-1">1</label>
+                        <input class="btn-check" type="radio" id="bathrooms-2" name="bathrooms" checked="">
+                        <label class="btn btn-outline-secondary fw-normal" for="bathrooms-2">2</label>
+                        <input class="btn-check" type="radio" id="bathrooms-3" name="bathrooms">
+                        <label class="btn btn-outline-secondary fw-normal" for="bathrooms-3">3</label>
+                        <input class="btn-check" type="radio" id="bathrooms-4" name="bathrooms">
+                        <label class="btn btn-outline-secondary fw-normal" for="bathrooms-4">4</label>
+                      </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                      <label class="form-label d-block fw-bold mb-2 pb-1">Parking spots</label>
+                      <div class="btn-group btn-group-sm" role="group" aria-label="Choose number of parking spots">
+                        <input class="btn-check" type="radio" id="parking-1" name="parking">
+                        <label class="btn btn-outline-secondary fw-normal" for="parking-1">off-street parking</label>
+                        <input class="btn-check" type="radio" id="parking-2" name="parking" checked="">
+                        <label class="btn btn-outline-secondary fw-normal" for="parking-2">Garage parking</label>
+                        <input class="btn-check" type="radio" id="parking-3" name="parking">
+                        <label class="btn btn-outline-secondary fw-normal" for="parking-3">Parking available</label>
+                        <input class="btn-check" type="radio" id="parking-4" name="parking">
+                        <label class="btn btn-outline-secondary fw-normal" for="parking-4">None</label>
+                      </div>
+                    </div>
+                    </div>
+
+                    <div class="mb-4">
+                      <label class="form-label d-block fw-bold mb-2 pb-1">Amenities</label>
+                      <div class="row">
+                        <div class="col-12 d-inline">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="wifi" checked="">
+                            <label class="form-check-label" for="wifi">WiFi</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="air-condition" checked="">
+                            <label class="form-check-label" for="air-condition">Air conditioning</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="balcony">
+                            <label class="form-check-label" for="balcony">Balcony</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="garage">
+                            <label class="form-check-label" for="garage">Garage</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gym">
+                            <label class="form-check-label" for="gym">Gym</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="free-parking" checked="">
+                            <label class="form-check-label" for="free-parking">Free parking</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="pets-friendly">
+                            <label class="form-check-label" for="pets-friendly">Pets-friendly</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="pool">
+                            <label class="form-check-label" for="pool">Pool</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="bar">
+                            <label class="form-check-label" for="bar">Bar</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="tv" checked="">
+                            <label class="form-check-label" for="tv">TV</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="linens" checked="">
+                            <label class="form-check-label" for="linens">Linens</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="heating" checked="">
+                            <label class="form-check-label" for="heating">Heating</label>
+                          </div>
+                          
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="dishwasher">
+                            <label class="form-check-label" for="dishwasher">Dishwasher</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="iron" checked="">
+                            <label class="form-check-label" for="iron">Iron</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="hair-dryer" checked="">
+                            <label class="form-check-label" for="hair-dryer">Hair dryer</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="kitchen" checked="">
+                            <label class="form-check-label" for="kitchen">Kitchen</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="breakfast">
+                            <label class="form-check-label" for="breakfast">Breakfast</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="security-cameras">
+                            <label class="form-check-label" for="security-cameras">Security cameras</label>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mb-4">
+                      <label class="form-label d-block fw-bold mb-2 pb-1">Pets</label>
+                      <div class="row">
+                        <div class="col-12 d-inline">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="allow-cats">
+                            <label class="form-check-label" for="allow-cats">Cats allowed</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="allow-dogs">
+                            <label class="form-check-label" for="allow-dogs">Dogs allowed</label>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <label class="form-label" for="ap-description">Description </label>
+                    <textarea class="form-control" id="ap-description" rows="5" placeholder="Describe your property"></textarea>
+                    <span class="form-text">up to 500characters</span>
+                  
+                </section>
+
+                   <!--price--->
+                   <section class="card card-body border-0 shadow-sm p-4 mb-4" id="price">
+                    <h2 class="h4 mb-4"><i class="fi-cash text-primary fs-5 mt-n1 me-2"></i>Price<span class="text-danger">*</span></h2>
+                    <div class="d-sm-flex">
+                      <select class="form-select w-40 col-lg-3 col-md-3 col-sm-1 me-2 mb-2">
+                        <option value="usd">$</option>
+                        <option value="eur">€</option>
+                        <option value="gbp">£</option>
+                        <option value="jpy">¥</option>
+                      </select>
+                      <input class="form-control w-60 col-lg-6 col-md-6 col-sm-3 me-2 mb-2" placeholder="Enter An Amount" type="number" id="ap-price" min="200" step="50" required="">
+                      <select class="form-select w-40 col-lg-3 col-md-3 col-sm-2 mb-2">
+                        <option value="day">per day</option>
+                        <option value="week">per week</option>
+                        <option value="month" selected="">per month</option>
+                        <option value="year">per year</option>
+                      </select>
+                    </div>
+                  </section>
+
+                   <!--photos & videos --->
+                   <section class="card card-body border-0 shadow-sm p-4 mb-4" id="photos">
+                    <h2 class="h4 mb-4"><i class="fi-image text-primary fs-5 mt-n1 me-2"></i>Photos / video</h2>
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="form-group">
+                            <label for="file-upload" class="custom-file-upload">
+                              
+                            </label>
+                            <span>
+                              <input type="file" class="filepond" name="filepond" multiple></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row preview-container align-content-center d-flex flex-row d-flex align-content-center flex-wrap"></div>
+                    </div>
+                  </section>
+
+<style>
+/* Container for uploaded files */
+span .filepond--credits, .filepond--file {
+display: none;
+}
+.filepond--root, .filepond--drop-label{
+cursor: pointer;
+}
+/* Style the .file-action-button */
+.file-action-button {
+/*position: absolute; /* Set the position to absolute for precise placement */
+position: absolute;
+top: 0; /* Position at the top of the .file-preview container */
+left: 0; /* Position at the left of the .file-preview container */
+cursor: pointer;
+z-index: 1;
+}
+
+/* Style for each file preview div */
+.file-preview {
+position: relative;
+/* flex: 0 0 calc(33.33% - 20px);  *//* Adjust the width as needed */
+flex: 0 0 140px; /* Adjust the width as needed */
+margin: 2px; /* Adjust the margin between previews */
+display: flex; /* Display children horizontally */
+align-items: center; /* Vertically center content */
+justify-content: center; /* Horizontally center content */
+border: 1px solid #ddd; /* Add borders or other styling as needed */
+/*padding: 10px; /* Add padding as needed */
+/* box-sizing: border-box; */
+box-sizing: content-box;
+border-radius: 10px;
+}
+
+/* Style for videos inside file preview */
+.file-preview video, .file-preview img {
+z-index: 0;
+width: 140px !important;
+height: 140px !important;
+border-radius: 10px;
+box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
+/* margin: auto; */
+cursor: zoom-in;
+-webkit-transform: scale(1);
+transform: scale(1); 
+-webkit-transition: all .5s;
+transition: all .5s; 
+ cursor: zoom-in; 
+object-position: 50% 50%;
+object-fit: cover;
+}
+
+.form-check{
+display: inline-block;
+margin-right: 10px;
+padding-left: 20px;
+/* margin-bottom: 2px; */
+}
+</style>
+                  <section class="d-sm-flex justify-content-between pt-2">
+                    <a class="btn btn-outline-primary rounded btn-lg d-block mb-3 mb-sm-2" href="#preview-modal" data-bs-toggle="modal">
+                        <i class="fi-eye-on ms-n1 me-2"></i>Preview</a>
+
+                        <div class="bg-body-tertiary p-2 rounded">
+                            <button class="btn btn-lg rounded btn-primary d-block mb-2"  role="button">Post My Listing Now</button>
+                          </div> 
+
+                    </section>
+          
+
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+ <!-- Modal Post-->
+
+ <div class="modal fade" id="post_modal1">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Post Ur Listing</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              
+              <form id="multiStepForm1" enctype="multipart/form-data">
+
+                    <section class="card card-body border-0 shadow-sm col-12 " id="basic-info">
+                        <h2 class="h4 mb-4"><i class="fi-info-circle text-primary fs-5 mt-n1 me-2"></i>Basic info</h2>
+                        <div class="row">
+                            <div class="col-sm-6 mb-3">
+                          <label class="form-label" for="ap-title">Title <span class="text-danger">*</span></label>
+                          <input class="form-control" type="text" id="ap-title" placeholder="Title for your property" value="Pine Apartments" required="">
+                          <span class="form-text">48 characters left</span>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                          <label class="form-label" for="ap-title">Price <span class="text-danger">*</span></label>
+                          <input class="form-control" type="text" id="ap-title" placeholder="Title for your property" value="Pine Apartments" required="">
+                          <span class="form-text">48 characters left</span>
+                        </div>
+                    </div>
+
+                        <div class="row">
+                          <div class="col-sm-6 mb-3">
+                            <label class="form-label" for="ap-category">Category <span class="text-danger">*</span></label>
+                            <select class="form-select" id="ap-category" required="">
+                              <option value="" disabled="" hidden="">Choose category</option>
+                              <option value="Rent">For rent</option>
+                              <option value="Sell">For sale</option>
+                            </select>
+                          </div>
+                          <div class="col-sm-6 mb-3">
+                            <label class="form-label" for="ap-type">Property type <span class="text-danger">*</span></label>
+                            <select class="form-select" id="ap-type" required="">
+                              <option value="" disabled="" hidden="">Choose property type</option>
+                              <option value="Apartment">Apartment</option>
+                              <option value="House">House</option>
+                              <option value="Commercial">Commercial</option>
+                              <option value="Commercial">Daily rental</option>
+                              <option value="New building">New building</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-label fw-bold pt-3 pb-2">Are you listing on Finder as part of a company?</div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" id="ap-company" name="ap-business-type">
+                          <label class="form-check-label" for="ap-company">I am a registered business</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" id="ap-individual" name="ap-business-type" checked="">
+                          <label class="form-check-label" for="ap-individual">I am a private seller</label>
+                        </div>
+                      </section>
+
+                      <!-- Location -->
+                      <section class="card card-body border-0 shadow-sm p-4 mb-4" id="location">
+                        <h2 class="h4 mb-4"><i class="fi-map-pin text-primary fs-5 mt-n1 me-2"></i>Location</h2>
+                        <div class="row">
+                          <div class="col-sm-6 mb-3">
+                            <label class="form-label" for="ap-country">Country / region <span class="text-danger">*</span></label>
+                            <select class="form-select" id="ap-country" required="">
+                              <option value="" disabled="">Choose country</option>
+                              <option value="Australia">Australia</option>
+                              <option value="Belgium">Belgium</option>
+                              <option value="Canada">Canada</option>
+                              <option value="Germany">Germany</option>
+                              <option value="United States" selected="">United States</option>
+                            </select>
+                          </div>
+                          <div class="col-sm-6 mb-3">
+                            <label class="form-label" for="ap-city">City <span class="text-danger">*</span></label>
+                            <select class="form-select" id="ap-city" required="">
+                              <option value="" disabled="">Choose city</option>
+                              <option value="Chicago">Chicago</option>
+                              <option value="Dallas">Dallas</option>
+                              <option value="Los Angeles">Los Angeles</option>
+                              <option value="New York" selected="">New York</option>
+                              <option value="San Diego">San Diego</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-8 mb-3">
+                            <label class="form-label" for="ap-district">District <span class="text-danger">*</span></label>
+                            <select class="form-select" id="ap-district" required="">
+                              <option value="" disabled="">Choose district</option>
+                              <option value="Brooklyn">Brooklyn</option>
+                              <option value="Manhattan">Manhattan</option>
+                              <option value="Staten Island">Staten Island</option>
+                              <option value="The Bronx">The Bronx</option>
+                              <option value="Queens" selected="">Queens</option>
+                            </select>
+                          </div>
+                          <div class="col-sm-4 mb-3">
+                            <label class="form-label" for="ap-zip">Zip code  <span class="text-danger">*</span></label>
+                            <input class="form-control" type="text" id="ap-zip" placeholder="Enter Zip code" value="67234" required="">
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label" for="ap-address">Street address <span class="text-danger">*</span></label>
+                          <input class="form-control" type="text" id="ap-address" value="28 Jackson Avenue" required="">
+                        </div>
+                        <div class="form-label fw-bold pt-3 pb-2">Display on the map</div>
+                        <div class="interactive-map rounded-3 leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" data-map-options="{&quot;mapLayer&quot;: &quot;https://api.maptiler.com/maps/pastel/{z}/{x}/{y}.png?key=5vRQzd34MMsINEyeKPIs&quot;, &quot;coordinates&quot;: [40.7447, -73.9485], &quot;zoom&quot;: 13, &quot;scrollWheelZoom&quot;: false, &quot;markers&quot;: [{&quot;coordinates&quot;: [40.7447, -73.9485], &quot;className&quot;: &quot;custom-marker-dot&quot;, &quot;popup&quot;: &quot;<div class='p-3'><h6 class='fs-base'>Pine Apartments</h6><p class='fs-xs text-muted pt-1 mt-n3 mb-0'>28 Jackson Ave Long Island City, NY</p></div>&quot;}]}" style="height: 250px; position: relative;" tabindex="0"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(-56px, 0px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(0px, 0px, 0px) scale(1);"><img crossorigin="" alt="" src="https://api.maptiler.com/maps/pastel/12/1206/1539.png?key=5vRQzd34MMsINEyeKPIs" class="leaflet-tile leaflet-tile-loaded" style="width: 512px; height: 512px; transform: translate3d(81px, -151px, 0px); opacity: 1;"><img crossorigin="" alt="" src="https://api.maptiler.com/maps/pastel/12/1205/1539.png?key=5vRQzd34MMsINEyeKPIs" class="leaflet-tile leaflet-tile-loaded" style="width: 512px; height: 512px; transform: translate3d(-431px, -151px, 0px); opacity: 1;"><img crossorigin="" alt="" src="https://api.maptiler.com/maps/pastel/12/1207/1539.png?key=5vRQzd34MMsINEyeKPIs" class="leaflet-tile leaflet-tile-loaded" style="width: 512px; height: 512px; transform: translate3d(593px, -151px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-shadow-pane"><img src="../img/map/marker-shadow.png" class="leaflet-marker-shadow custom-marker-dot leaflet-zoom-animated" alt="" style="margin-left: -13px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(404px, 125px, 0px);"></div><div class="leaflet-pane leaflet-marker-pane"><img src="../img/map/marker-icon.png" class="leaflet-marker-icon custom-marker-dot leaflet-zoom-animated leaflet-interactive" alt="Marker" tabindex="0" role="button" style="margin-left: -12px; margin-top: -39px; width: 25px; height: 39px; transform: translate3d(404px, 125px, 0px); z-index: 125;"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(617794px, 788244px, 0px) scale(4096);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in" aria-disabled="false"><span aria-hidden="true">+</span></a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out" aria-disabled="false"><span aria-hidden="true">−</span></a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com" title="A JavaScript library for interactive maps"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" class="leaflet-attribution-flag"><path fill="#4C7BE1" d="M0 0h12v4H0z"></path><path fill="#FFD500" d="M0 4h12v3H0z"></path><path fill="#E0BC00" d="M0 7h12v1H0z"></path></svg> Leaflet</a> <span aria-hidden="true">|</span> <a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a></div></div></div></div>
+                      </section>
+
+                      <!-- property details -->
+                      <section class="card card-body border-0 shadow-sm p-4 mb-4" id="details">
+                        <h2 class="h4 mb-4"><i class="fi-edit text-primary fs-5 mt-n1 me-2"></i>Property details</h2>
+                        <div class="mb-4" style="max-width: 25rem;">
+                          <label class="form-label" for="ap-area">Total area, sq.m</label>
+                          <input class="form-control" type="number" id="ap-area" min="20" placeholder="Enter your area" value="56" required="">
+                        </div>
+
+                        <!--property-details-->
+                        <div class="row">
+                        <div class="col-md-4 mb-4">
+                          <label class="form-label d-block fw-bold mb-2 pb-1">Bedrooms</label>
+                          <div class="btn-group btn-group-sm" role="group" aria-label="Choose number of bedrooms">
+                            <input class="btn-check" type="radio" id="studio" name="bedrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="studio">Studio</label>
+                            <input class="btn-check" type="radio" id="bedrooms-1" name="bedrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="bedrooms-1">1</label>
+                            <input class="btn-check" type="radio" id="bedrooms-2" name="bedrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="bedrooms-2">2</label>
+                            <input class="btn-check" type="radio" id="bedrooms-3" name="bedrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="bedrooms-3">3</label>
+                            <input class="btn-check" type="radio" id="bedrooms-4" name="bedrooms" checked="">
+                            <label class="btn btn-outline-secondary fw-normal" for="bedrooms-4">4</label>
+                            <input class="btn-check" type="radio" id="bedrooms-5" name="bedrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="bedrooms-5">5+</label>
+                          </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                          <label class="form-label d-block fw-bold mb-2 pb-1">Bathrooms</label>
+                          <div class="btn-group btn-group-sm" role="group" aria-label="Choose number of bathrooms">
+                            <input class="btn-check" type="radio" id="bathrooms-1" name="bathrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="bathrooms-1">1</label>
+                            <input class="btn-check" type="radio" id="bathrooms-2" name="bathrooms" checked="">
+                            <label class="btn btn-outline-secondary fw-normal" for="bathrooms-2">2</label>
+                            <input class="btn-check" type="radio" id="bathrooms-3" name="bathrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="bathrooms-3">3</label>
+                            <input class="btn-check" type="radio" id="bathrooms-4" name="bathrooms">
+                            <label class="btn btn-outline-secondary fw-normal" for="bathrooms-4">4</label>
+                          </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                          <label class="form-label d-block fw-bold mb-2 pb-1">Parking spots</label>
+                          <div class="btn-group btn-group-sm" role="group" aria-label="Choose number of parking spots">
+                            <input class="btn-check" type="radio" id="parking-1" name="parking">
+                            <label class="btn btn-outline-secondary fw-normal" for="parking-1">off-street parking</label>
+                            <input class="btn-check" type="radio" id="parking-2" name="parking" checked="">
+                            <label class="btn btn-outline-secondary fw-normal" for="parking-2">Garage parking</label>
+                            <input class="btn-check" type="radio" id="parking-3" name="parking">
+                            <label class="btn btn-outline-secondary fw-normal" for="parking-3">Parking available</label>
+                            <input class="btn-check" type="radio" id="parking-4" name="parking">
+                            <label class="btn btn-outline-secondary fw-normal" for="parking-4">None</label>
+                          </div>
+                        </div>
+                        </div>
+
+                        <div class="mb-4">
+                          <label class="form-label d-block fw-bold mb-2 pb-1">Amenities</label>
+                          <div class="row">
+                            <div class="col-12 d-inline">
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="wifi" checked="">
+                                <label class="form-check-label" for="wifi">WiFi</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="air-condition" checked="">
+                                <label class="form-check-label" for="air-condition">Air conditioning</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="balcony">
+                                <label class="form-check-label" for="balcony">Balcony</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="garage">
+                                <label class="form-check-label" for="garage">Garage</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="gym">
+                                <label class="form-check-label" for="gym">Gym</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="free-parking" checked="">
+                                <label class="form-check-label" for="free-parking">Free parking</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="pets-friendly">
+                                <label class="form-check-label" for="pets-friendly">Pets-friendly</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="pool">
+                                <label class="form-check-label" for="pool">Pool</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="bar">
+                                <label class="form-check-label" for="bar">Bar</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="tv" checked="">
+                                <label class="form-check-label" for="tv">TV</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="linens" checked="">
+                                <label class="form-check-label" for="linens">Linens</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="heating" checked="">
+                                <label class="form-check-label" for="heating">Heating</label>
+                              </div>
+                              
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="dishwasher">
+                                <label class="form-check-label" for="dishwasher">Dishwasher</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="iron" checked="">
+                                <label class="form-check-label" for="iron">Iron</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="hair-dryer" checked="">
+                                <label class="form-check-label" for="hair-dryer">Hair dryer</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="kitchen" checked="">
+                                <label class="form-check-label" for="kitchen">Kitchen</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="breakfast">
+                                <label class="form-check-label" for="breakfast">Breakfast</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="security-cameras">
+                                <label class="form-check-label" for="security-cameras">Security cameras</label>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="mb-4">
+                          <label class="form-label d-block fw-bold mb-2 pb-1">Pets</label>
+                          <div class="row">
+                            <div class="col-12 d-inline">
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="allow-cats">
+                                <label class="form-check-label" for="allow-cats">Cats allowed</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="allow-dogs">
+                                <label class="form-check-label" for="allow-dogs">Dogs allowed</label>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+
+                        <label class="form-label" for="ap-description">Description </label>
+                        <textarea class="form-control" id="ap-description" rows="5" placeholder="Describe your property"></textarea>
+                        <span class="form-text">up to 500characters</span>
+                      
+                    </section>
+
+                       <!--price--->
+                       <section class="card card-body border-0 shadow-sm p-4 mb-4" id="price">
+                        <h2 class="h4 mb-4"><i class="fi-cash text-primary fs-5 mt-n1 me-2"></i>Price<span class="text-danger">*</span></h2>
+                        <div class="d-sm-flex">
+                          <select class="form-select w-40 col-lg-3 col-md-3 col-sm-1 me-2 mb-2">
+                            <option value="usd">$</option>
+                            <option value="eur">€</option>
+                            <option value="gbp">£</option>
+                            <option value="jpy">¥</option>
+                          </select>
+                          <input class="form-control w-60 col-lg-6 col-md-6 col-sm-3 me-2 mb-2" placeholder="Enter An Amount" type="number" id="ap-price" min="200" step="50" required="">
+                          <select class="form-select w-40 col-lg-3 col-md-3 col-sm-2 mb-2">
+                            <option value="day">per day</option>
+                            <option value="week">per week</option>
+                            <option value="month" selected="">per month</option>
+                            <option value="year">per year</option>
+                          </select>
+                        </div>
+                      </section>
+
+                       <!--photos & videos --->
+                       <section class="card card-body border-0 shadow-sm p-4 mb-4" id="photos">
+                        <h2 class="h4 mb-4"><i class="fi-image text-primary fs-5 mt-n1 me-2"></i>Photos / video</h2>
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-12">
+                              <div class="form-group">
+                                <label for="file-upload" class="custom-file-upload">
+                                  
+                                </label>
+                                <span>
+                                  <input type="file" class="filepond" name="filepond" multiple></span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row preview-container align-content-center d-flex flex-row d-flex align-content-center flex-wrap"></div>
+                        </div>
+                      </section>
+
+<style>
+/* Container for uploaded files */
+span .filepond--credits, .filepond--file {
+  display: none;
+}
+.filepond--root, .filepond--drop-label{
+  cursor: pointer;
+}
+/* Style the .file-action-button */
+.file-action-button {
+  /*position: absolute; /* Set the position to absolute for precise placement */
+  position: absolute;
+  top: 0; /* Position at the top of the .file-preview container */
+  left: 0; /* Position at the left of the .file-preview container */
+  cursor: pointer;
+  z-index: 1;
+}
+
+/* Style for each file preview div */
+.file-preview {
+  position: relative;
+  /* flex: 0 0 calc(33.33% - 20px);  *//* Adjust the width as needed */
+  flex: 0 0 140px; /* Adjust the width as needed */
+  margin: 2px; /* Adjust the margin between previews */
+  display: flex; /* Display children horizontally */
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+  border: 1px solid #ddd; /* Add borders or other styling as needed */
+  /*padding: 10px; /* Add padding as needed */
+  /* box-sizing: border-box; */
+  box-sizing: content-box;
+  border-radius: 10px;
+}
+
+/* Style for videos inside file preview */
+.file-preview video, .file-preview img {
+  z-index: 0;
+    width: 140px !important;
+    height: 140px !important;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
+    /* margin: auto; */
+    cursor: zoom-in;
+    -webkit-transform: scale(1);
+    transform: scale(1); 
+    -webkit-transition: all .5s;
+    transition: all .5s; 
+     cursor: zoom-in; 
+    object-position: 50% 50%;
+    object-fit: cover;
+}
+
+.form-check{
+  display: inline-block;
+    margin-right: 10px;
+    padding-left: 20px;
+    /* margin-bottom: 2px; */
+}
+</style>
+
+
+                          <!-- contacts -->
+                        <section class="card card-body border-0 shadow-sm p-4 mb-4" id="contacts">
+                          <h2 class="h4 mb-4"><i class="fi-phone text-primary fs-5 mt-n1 me-2"></i>Contacts</h2>
+                          <div class="row">
+                            <div class="col-sm-6 mb-3">
+                              <label class="form-label" for="ap-fn">First name <span class="text-danger">*</span></label>
+                              <input class="form-control" type="text" id="ap-fn" value="Annette" placeholder="Enter your first name" required="">
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                              <label class="form-label" for="ap-sn">Second name <span class="text-danger">*</span></label>
+                              <input class="form-control" type="text" id="ap-sn" value="Black" placeholder="Enter your second name" required="">
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-6 mb-3">
+                              <label class="form-label" for="ap-email">Email<span class="text-danger">*</span></label>
+                              <input class="form-control" type="text" id="ap-email" value="annette_black@email.com" placeholder="Enter your email">
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                              <label class="form-label" for="ap-phone">Phone number <span class="text-danger">*</span></label>
+                              <input class="form-control" type="tel" id="ap-phone" data-format="custom" data-delimiter="-" data-blocks="3 3 4" value="302-555-0107" placeholder="000-000-0000">
+                            </div>
+                          </div>
+                          <label class="form-label" for="ap-company-name">Company</label>
+                          <input class="form-control" type="text" id="ap-company-name" placeholder="Enter company name">
+                        </section>
+
+                      <section class="d-sm-flex justify-content-between pt-2">
+                        <a class="btn btn-outline-primary rounded btn-lg d-block mb-3 mb-sm-2" href="#preview-modal" data-bs-toggle="modal">
+                            <i class="fi-eye-on ms-n1 me-2"></i>Preview</a>
+
+                            <div class="bg-body-tertiary p-2 rounded">
+                                <button class="btn btn-lg rounded btn-primary d-block mb-2"  role="button">Post My Listing Now</button>
+                              </div> 
+
+                        </section>
+              
+                      </form>
+
+                      
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal end -->

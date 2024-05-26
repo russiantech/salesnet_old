@@ -1,0 +1,1051 @@
+
+{% include 'incs/quickv.html' %}
+<!-- Modal end -->
+<!-- FB Chat Messenger -->
+<div class="ec-fb-style fb-right-bottom">
+  <!-- Start Floating Panel Container -->
+  <div class="fb-panel">
+    <!-- Panel Content -->
+    <div class="fb-header">
+      <img alt="pic" src="{{url_for('static', filename='images/user/1.jpg')}}" />
+      <h2>Chris James</h2>
+      <p>Technical Manager</p>
+    </div>
+    <div class="fb-body">
+      <p>
+        <b>Hey there &#128515;</b>
+      </p>
+      <p>Need help ? just send me a message.</p>
+    </div>
+    <div class="fb-footer">
+      <a class="fb-msg-button" href="/" target="_blank">
+        <span>Send Message</span>
+        <svg height="10px" viewBox="0 0 13 10" width="13px">
+          <path d="M1,5 L11,5" />
+          <polyline points="8 1 12 5 8 9" />
+        </svg>
+      </a>
+    </div>
+  </div>
+  <!--/ End Floating Panel Container -->
+  <!-- Start Right Floating Button -->
+  <div class="fb-button fb-right-bottom">
+    <img alt="icon"
+         class="fa-messenger"
+         src="{{url_for('static', filename='images/favicon/favicon.svg')}}" />
+  </div>
+  <!--/ End Right Floating Button -->
+</div>
+<!-- FB Chat Messenger end -->
+
+<!-- Newsletter Modal Start -->
+<div id="ec-popnews-box" style="display: block;">
+  <div id="ec-popnews-close"><i class="ecicon eci-close"></i></div>
+  <div class="row">
+      <div class="col-md-6 disp-no-767">
+          <img src="{{url_for('static', filename='images/banner/newsletter-6.png')}}" alt="newsletter">
+      </div>
+      <div class="col-md-6">
+          <div id="ec-popnews-box-content">
+              <h2>Stay connected &amp; get your daily needs from {{app_name}}.</h2>
+              <p>Subscribe to stay on top of trends n best deals in the market. </p>
+              <form id="ec-popnews-form" action="#" method="post">
+                  <input type="email" name="newsemail" placeholder="Email Address" required="">
+                  <button type="button" class="btn btn-primary" name="subscribe">Subscribe</button>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Newsletter Modal end -->
+
+<!-- successfully toast Start -->
+<div class="addtocart_toast" id="addtocart_toast">
+  <div class="desc">Success!!! Shopping Basket Updated</div>
+</div>
+<div class="wishlist_toast" id="wishlist_toast">
+  <div class="desc">Congrats!!! Favorite Item Saved For You</div>
+</div>
+<!--successfully toast end -->
+
+<div class="modal fade" id="post_modal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content h-200">
+      <div class="modal-body">
+        <!--// ********************************************** -->
+        <div class="container">
+          <div class="row">
+            <div , class="col-lg-12" id="can_preview_contact_section">
+              <!-- Title-->
+              <h4 class="h2 mb-2">Post Ur Listing</h4>
+              <div class="alert" id="response">...</div>
+              {% include 'incs/alerts.html' %}
+              <form action="{{url_for('acct.post')}}" class="needs-validation" enctype="multipart/form-data"
+                    id="postform" method="post">
+                {{postform.csrf_token()}}
+                <div class="multi-steps-form faded" id="form-container">
+                  <!-- Basic info-->
+                  <section class="step fade h-100 active show card card-body border-0 shadow-sm p-4 mb-4"
+                           id="basic-section">
+                    <h2 class="fw-bold h4 mb-4">
+                      <i class="fi-info-circle text-primary fs-5 mt-n1 me-2">
+                      </i>Basic(Be as descriptive as possible.)
+                    </h2>
+
+                    <div class="row">
+                      <div class="col-md-6 col-sm-6 mb-3">
+                        <label class="form-label"
+                               for="{{ postform.title.name }}">
+                          {{postform.title.name}}
+                          <span class="text-danger">*</span>
+                        </label>
+                        {{ postform.title(class="form-control fw-bold", placeholder="Title Of Ur Listing") }}
+                        {% if postform.title.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.title.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+
+                      <div class="col-sm-6 col-md-6 mb-3">
+                        <label class="form-label" for="{{postform.cate.name}}">
+                          Category
+                          <span class="text-danger">*</span>
+                        </label>
+
+                        <select class="form-select fw-bold rounded"
+                                id="{{postform.cate.name}}"
+                                name="{{postform.cate.name}}">
+                          <option value>Select a category</option>
+                          {% for category in categories %}
+                          <optgroup label="{{ category.name }}">
+                            <option value="{{ category.id }}">
+                              {{ category.name }}
+                            </option>
+                            {# Include the parent category itself as an option #}
+                            {% for subcategory in category.children %}
+                            <option value="{{ subcategory.id }}">
+                              {{ subcategory.name }}
+                            </option>
+                            {% endfor %}
+                          </optgroup>
+                          {% endfor %}
+                        </select>
+                        {% if postform.cate.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.cate.errors %}
+                          {{ error }} !
+                          {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                    </div>
+
+                    <!-- price & condition of item -->
+                    <div class="row">
+                      <div class="col-lg-3 col-md-3 col-sm-6 mb-3">
+                        {{ postform.currency.label(class="form-label") }}
+                        {{ postform.currency(class_="form-select fw-bold rounded") }}
+                        {% if postform.currency.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.currency.errors %}{{ error }} ! {% endfor %}
+                        </div>
+
+                        {% endif %}
+                      </div>
+                      <div class="col-lg-5 col-md-5 col-sm-6 mb-3">
+                        <label class="form-label"
+                               for="{{ postform.price.name }}">
+                          {{postform.price.name}}
+                          <span class="text-danger">*</span>
+                        </label>
+                        {{ postform.price(class_="form-control fw-bold rounded", placeholder="Enter An Amount") }}
+                        {% if postform.price.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.price.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+
+                      <div class="col-lg-4 col-md-4 col-sm-6 mb-3">
+                        {{ postform.condition.label(class="form-label") }}
+                        {{ postform.condition(class_="form-select fw-bold rounded") }}
+                        {% if postform.condition.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.condition.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                    </div>
+
+                    <!-- negotiable -->
+                    <div class="col-12">
+                      <div class="form-check mb-3 ml-2">
+                        {{ postform.negotiable(class_="form-check-input fw-bold") }}
+                        {{ postform.negotiable.label(class="form-check-label text-warning") }}
+                        {% if postform.negotiable.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.negotiable.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                    </div>
+
+                    <div class="col-12 mb-3">
+                      <label class="form-label" for="{{ postform.desc.name }}">
+                        Description
+                        <span class="text-danger">*</span>
+                      </label>
+                      {{ postform.desc(class_="form-control fw-bold", rows="5", placeholder="Describe your Listing(Product) In A Few Words") }}
+                      {% if postform.desc.errors %}
+                      <div class="invalid-feedback">
+                        {% for error in postform.desc.errors %}{{ error }} ! {% endfor %}
+                      </div>
+                      {% endif %}
+                    </div>
+
+                    <div class="mb-3 d-sm-flex justify-content-between pt-2">
+                      <button class="step-link btn btn-primary rounded-3 btn-lg d-block mb-2"
+                              data-bs-target="#photo-section"
+                              type="button">
+                        Save & Continue
+                      </button>
+                    </div>
+                  </section>
+
+                  <!--photos & videos --->
+                  <section class="step fade h-100 card card-body border-0 shadow-sm p-4 mb-4"
+                           id="photo-section">
+                    <h2 class="fw-bold h4 mb-4">
+                      <i class="fi-image text-primary fs-5 mt-n1 me-2"></i>(Photos . video)
+                    </h2>
+                    <div class="alert alert-info mb-4" role="alert">
+                      <div class="d-flex">
+                        <i class="fi-alert-circle me-2 me-sm-3"></i>
+                        <p class="fs-sm mb-1">
+                          Max photo/video size is 10 MB. Formats: (jpeg, jpg, png,mp4, mov). Put the main picture first.
+                        </p>
+                      </div>
+                    </div>
+                    {{postform.images()}}
+                    <input class="filepond"
+                           multiple
+                           name="filepond"
+                           required
+                           type="file" />
+                    <div class="preview-container mb-3" id="previewContainer">
+                    </div>
+
+                    <div class="mb-3 d-sm-flex justify-content-between pt-2">
+                      <button class="step-link btn btn-warning rounded-3 btn-lg d-block mb-2"
+                              data-bs-target="#basic-section"
+                              type="button">
+                        Back(Basics)
+                      </button>
+                      <button class="step-link btn btn-primary rounded-3 btn-lg d-block mb-2"
+                              data-bs-target="#listing-section"
+                              type="button">
+                        Continue(Selections)
+                      </button>
+                    </div>
+                  </section>
+
+                  <!--Selections --->
+                  <section class="step fade h-100 justify-content-center align-items-center card card-body border-0 shadow-sm p-4 mb-4"
+                           id="listing-section">
+                    <h2 class="fw-bold h4 mb-4">
+                      <i class="fi-image text-primary fs-5 mt-n1 me-2"></i>What best describes your listing, products or services?
+                    </h2>
+
+                    <div class="alert alert-primary col-8" role="alert">
+                      <button class="btn btn_tooltip step-link rounded-3 btn-lg text-bold"
+                              data-bs-target="#optional-section"
+                              data-placement="top"
+                              data-toggle="tooltip"
+                              title="Create a single listing for one or more items to sell."
+                              type="button">
+                        An Item
+                      </button>
+                    </div>
+
+                    <div class="alert alert-primary col-8" role="alert">
+                      <button class="btn btn_tooltip step-link rounded-3 btn-lg d-block"
+                              data-bs-target="#vehicle-section"
+                              data-placement="right"
+                              data-toggle="tooltip"
+                              title="Sell a car, truck or other type of vehicle."
+                              type="button">
+                        Vehicle(s)
+                      </button>
+                    </div>
+                    <div class="alert alert-primary col-8" role="alert">
+                      <button class="btn btn_tooltip step-link rounded-3 btn-lg d-block"
+                              data-bs-target="#property-section"
+                              data-placement="bottom"
+                              data-toggle="tooltip"
+                              title="List a house or apartment for sale or rent."
+                              type="button">
+                        Property
+                      </button>
+                    </div>
+                    <div class="alert alert-primary col-8" role="alert">
+                      <button class="disabled btn_tooltip step-link rounded-3 btn-lg d-block"
+                              data-bs-target="#service-section"
+                              data-placement="left"
+                              data-toggle="tooltip"
+                              title="List any service(s) you can render and get paid for it"
+                              type="button">
+                        Service(s)
+                      </button>
+                    </div>
+                    <div class="alert alert-primary col-8" role="alert">
+                      <button class="btn btn_tooltip step-link rounded-3 btn-lg d-block"
+                              data-bs-target="#job-section"
+                              data-placement="left"
+                              data-toggle="tooltip"
+                              disabled
+                              title="Job offers & employment opportunities"
+                              type="button">
+                        Jobs
+                      </button>
+                    </div>
+                    <div class="mb-3 d-sm-flex justify-content-between pt-2">
+                      <button class="step-link btn btn-warning rounded-3 btn-lg d-block mb-2"
+                              data-bs-target="#photo-section"
+                              type="button">
+                        Back(Photos)
+                      </button>
+                      <button class="step-link btn btn-primary rounded-3 btn-lg d-block mb-2"
+                              data-bs-target="#location-section"
+                              disabled
+                              type="button">
+                        Select to Continue
+                      </button>
+                    </div>
+                  </section>
+
+                  <!-- Optionals -->
+                  <section class="step fade h-100 card card-body border-0 shadow-sm p-4 mb-4"
+                           id="optional-section">
+                    <h2 class="fw-bold h4 mb-4">
+                      <i class="fi-info-circle text-primary fs-5 mt-n1 me-2">
+                      </i>Advanced Details(Optionals)
+                    </h2>
+
+                    <div class="col-12 mb-4">
+                      {{ postform.tag.label(class="form-label") }}
+                      {{ postform.tag(class_="form-control fw-bold", rows="5", placeholder="Tag(s)") }}
+                      {% if postform.tag.errors %}
+                      <div class="invalid-feedback">
+                        {% for error in postform.tag.errors %}{{ error }} ! {% endfor %}
+                      </div>
+                      {% endif %}
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6 col-sm-6 mb-3">
+                        {{ postform.discount.label(class="form-label") }}
+                        {{ postform.discount(class="form-control fw-bold", placeholder="Discount Of Ur Listing") }}
+                        {% if postform.discount.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.discount.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                      <div class="col-md-6 col-sm-6 mb-3">
+                        {{ postform.stock_qty.label(class="form-label") }}
+                        {{ postform.stock_qty(class="form-control fw-bold", placeholder="Quantity Available") }}
+                        {% if postform.stock_qty.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.stock_qty.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6 col-sm-6 mb-3">
+                        {{ postform.brand.label(class="form-label") }}
+                        {{ postform.brand(class="form-control fw-bold", placeholder="Product Brand") }}
+                        {% if postform.brand.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.brand.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                      <div class="col-md-6 col-sm-6 mb-3">
+                        {{ postform.sku.label(class="form-label") }}
+                        {{ postform.sku(class="form-control fw-bold", placeholder="Stock Keeping Unit") }}
+                        {% if postform.sku.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.sku.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <div class="col-md-6">
+                        {{ postform.color.label(class="form-label d-block pb-1") }}
+                        {{ postform.color()}}
+                        <!-- the-hidden-filled-to-be-updated -->
+                        <div class="row">
+                          <div class="d-inline">
+                            {% for color2 in postform.color2 %}
+                            <div class="form-check">
+                              {{ color2(class="rounded form-check-input form-control-color", onchange="updateSelectedColors(this)" ) }}
+                              {# {{ color(type="color", class="form-check-input ") }} #}
+                              <label class="form-check-label"
+                                     for="{{ color2.id }}">
+                                {{ color2.label }}
+                              </label>
+                            </div>
+                            {% endfor %}
+                            {% if postform.color.errors %}
+                            <div class="invalid-feedback">
+                              {% for error in postform.color.errors %}{{ error }} ! {% endfor %}
+                            </div>
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        {{ postform.size.label(class="form-label d-block") }}
+                        <div class="row">
+                          <div class="d-inline">
+                            {% for s in postform.size %}
+                            <div class="form-check">
+                              {{ s(class="form-check-input") }}
+                              <label class="form-check-label" for="{{ s.id }}">
+                                {{ s.label }}
+                              </label>
+                            </div>
+                            {% endfor %}
+                            {% if postform.size.errors %}
+                            <div class="invalid-feedback">
+                              {% for error in postform.size.errors %}{{ error }} ! {% endfor %}
+                            </div>
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!--delivery-options-->
+                    <div class="col-12 mb-3 pb-1">
+                      {{ postform.meet_up.label(class="form-label d-block") }}
+                      <div class="row">
+                        <div class="d-inline">
+                          {% for meet in postform.meet_up %}
+                          <div class="form-check">
+                            {{ meet(class="form-check-input") }}
+                            <label class="form-check-label" for="{{ meet.id }}">
+                              {{ meet.label }}
+                            </label>
+                          </div>
+                          {% endfor %}
+                          {% if postform.meet_up.errors %}
+                          <div class="invalid-feedback">
+                            {% for error in postform.meet_up.errors %}{{ error }} ! {% endfor %}
+                          </div>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mb-4 col-md-12 mb-3">
+                      {{ postform.availability.label(class="form-label d-block mb-2 pb-1") }}
+                      <div aria-label="Availability"
+                           class="btn-group btn-group-sm"
+                           role="group">
+                        {% for available in postform.availability %}
+                        {{ available(class="btn-check") }}
+                        {{ available.label(class_="btn btn-outline-secondary rounded-3 fw-bold") }}
+                        {% endfor %}
+                        {% if postform.availability.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.availability.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                    </div>
+
+                    <div class="mb-3 d-sm-flex justify-content-between pt-2">
+                      <button class="step-link btn btn-warning rounded-3 btn-lg d-block mb-2"
+                              data-bs-target="#photo-section"
+                              type="button">
+                        Back(Photos)
+                      </button>
+                      <button class="step-link btn btn-primary rounded-3 btn-lg d-block mb-2"
+                              data-bs-target="#location-section"
+                              type="button">
+                        Continue(Location)
+                      </button>
+                    </div>
+                  </section>
+
+                  <!-- Location-->
+                  <section class="step fade h-100 card card-body border-0 shadow-sm p-4 mb-4"
+                           id="location-section">
+                    <h2 class="fw-bold h4 mb-4">
+                      <i class="fi-map-pin text-primary fs-5 mt-n1 me-2"></i>Location
+                    </h2>
+                    <div class="row">
+                      <div class="col-sm-6 mb-3">
+                        {{ postform.region.label(class="form-label") }}
+                        {{ postform.region(class_="form-select fw-bold rounded", placeholder="Item Region") }}
+                        {% if postform.region.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.region.errors %}{{ error }} ! {% endfor %}
+                        </div>
+
+                        {% endif %}
+                      </div>
+                      <div class="col-sm-6 mb-3">
+                        {{ postform.city.label(class="form-label") }}
+                        {{ postform.city(class_="form-select fw-bold rounded", placeholder="Item City") }}
+                        {% if postform.city.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.city.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-8 mb-3">
+                        {{ postform.street.label(class="form-label") }}
+                        {{ postform.street(class_="form-control fw-bold rounded", placeholder="28 Jackson Avenue") }}
+                        {% if postform.street.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.street.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                      <div class="col-sm-4 mb-3">
+                        {{ postform.zipcode.label(class="form-label") }}
+                        {{ postform.zipcode(class_="form-control fw-bold rounded", placeholder="Enter Zip code (67234)") }}
+                        {% if postform.zipcode.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.zipcode.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                    <div class="form-label fw-bold pt-3 pb-2">
+                      Display on the map
+                    </div>
+                    <div class="mb-3"
+                         id="map"
+                         style="width: 100%; height: 200px;">
+                      <iframe class="rounded-3"
+                              src="https://api.maptiler.com/maps/bright-v2/?key=Ja8aExwRmQQZHifQLv3Q#1.0/0.00000/0.00000"
+                              style="width: inherit;">
+                      </iframe>
+                    </div>
+
+                    <div class="mb-3 d-sm-flex justify-content-between pt-2">
+                      <button class="step-link btn btn-warning rounded-3 btn-lg d-block mb-2"
+                              data-bs-target="#optional-section"
+                              type="button">
+                        Back(Optionals)
+                      </button>
+                      <button class="step-link btn btn-primary rounded-3 btn-lg d-block mb-2"
+                              data-bs-target="#contact-section"
+                              type="button">
+                        Continue(Contact)
+                      </button>
+                    </div>
+                  </section>
+
+                  <!-- Contacts-->
+                  <section class="step fade h-100 card card-body border-0 shadow-sm p-4 mb-4"
+                           id="contact-section">
+                    <h2 class="fw-bold h4 mb-4">
+                      <i class="fi-phone text-primary fs-5 mt-n1 me-2"></i>Contacts
+                    </h2>
+                    {{ postform.cont_name.label(class="form-label") }}
+                    {{ postform.cont_name(class_="form-control fw-bold rounded", placeholder="Enter Contact Name") }}
+                    {% if postform.cont_name.errors %}
+                    <div class="invalid-feedback">
+                      {% for error in postform.cont_name.errors %}{{ error }} ! {% endfor %}
+                    </div>
+
+                    {% endif %}
+                    <div class="row mt-3">
+                      <div class="col-sm-6 mb-3">
+                        {{ postform.cont_email.label(class="form-label") }}
+                        {{ postform.cont_email(class_="form-control fw-bold rounded", placeholder="Enter Valid Contact Email Address") }}
+                        {% if postform.cont_email.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.cont_email.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                      <div class="col-sm-6 mb-3">
+                        {{ postform.cont_phone.label(class="form-label") }}
+                        {{ postform.cont_phone(class_="form-control fw-bold rounded", placeholder="Enter Valid Contact Email Address") }}
+                        {% if postform.cont_phone.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.cont_phone.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      {{ postform.company.label(class="form-label") }}
+                      {{ postform.company(class_="form-control fw-bold rounded", placeholder="Enter Company Name") }}
+                      {% if postform.company.errors %}
+                      <div class="invalid-feedback">
+                        {% for error in postform.company.errors %}{{ error }} ! {% endfor %}
+                      </div>
+                      {% endif %}
+                    </div>
+
+                    <div class="mb-3 d-sm-flex justify-content-between pt-2">
+                      <button class="step-link btn btn-primary rounded-3 btn-lg d-block mb-2"
+                              data-bs-target="#listing-section"
+                              type="button">
+                        Back(Select Listing)
+                      </button>
+                      <button class="btn btn-primary rounded-3 btn-lg d-block mb-2"
+                              type="submit">
+                        Post & Sell
+                      </button>
+                    </div>
+                  </section>
+
+                  <!-- Vehicle details-->
+                  <section class="step fade h-100 card card-body border-0 shadow-sm p-4 mb-4"
+                           id="vehicle-section">
+                    <h2 class="fw-bold h4 mb-4">
+                      <i class="fi-edit text-primary fs-5 mt-n1 me-2"></i>Vehicle Details
+                    </h2>
+
+                    <div class="row d-sm-flex">
+                      <div class="mb-4 col-md-6">
+                        {{ postform.vehicle_type.label(class="form-label d-block mb-2 pb-1") }}
+                        {{ postform.vehicle_type(class_="form-select fw-bold rounded") }}
+                        {% if postform.vehicle_type.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.vehicle_type.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+
+                      <div class="mb-4 col-md-6">
+                        {{ postform.fuel_type.label(class="form-label d-block mb-2 pb-1") }}
+                        {{ postform.fuel_type(class_="form-select fw-bold rounded") }}
+                        {% if postform.fuel_type.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.fuel_type.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+
+                      <div class="mb-4 col-md-4">
+                        {{ postform.make.label(class="form-label pb-1") }}
+                        {{ postform.make(class_="form-control fw-bold rounded", placeholder="Making Of This Vehicle") }}
+                        {% if postform.make.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.make.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+
+                      <div class="mb-4 col-md-4">
+                        {{ postform.year.label(class="form-label d-block mb-2 pb-1") }}
+                        {{ postform.year(class_="form-select fw-bold rounded") }}
+                        {% if postform.year.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.year.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+
+                      <div class="mb-4 col-md-4">
+                        {{ postform.model.label(class="form-label pb-1") }}
+                        {{ postform.model(class_="form-control fw-bold rounded", placeholder="Vehicle model") }}
+                        {% if postform.model.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.model.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                    </div>
+
+                    <div class="mb-3 d-sm-flex justify-content-between pt-2">
+                      <button class="step-link btn btn-primary rounded-3 btn-lg d-block mb-2"
+                              data-bs-target="#listing-section"
+                              type="button">
+                        Back(Select Listing)
+                      </button>
+                      <button class="step-link btn btn-primary rounded-3 btn-lg d-block mb-2"
+                              data-bs-target="#location-section"
+                              type="button">
+                        Continue(Location)
+                      </button>
+                    </div>
+                  </section>
+
+                  <!-- Property Details-->
+                  <section class="step fade h-100 card card-body border-0 shadow-sm p-4 mb-4"
+                           id="property-section">
+                    <h2 class="fw-bold h4 mb-4">
+                      <i class="fi-edit text-primary fs-5 mt-n1 me-2"></i>Property Details
+                    </h2>
+
+                    <!-- sq.m, bedrooms & bathrooms -->
+                    <div class="row d-sm-flex">
+                      <div class="mb-4 col-md-4">
+                        {{ postform.property_size.label(class="form-label pb-1") }}
+                        {{ postform.property_size(class_="form-control fw-bold rounded", placeholder="Property Area in Square Meter") }}
+                        {% if postform.property_size.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.property_size.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                      <div class="mb-4 col-md-4">
+                        {{ postform.bedrooms.label(class="form-label d-block mb-2 pb-1") }}
+                        {{ postform.bedrooms(class_="form-control fw-bold rounded",min="1", placeholder="Number Of Bed Rooms") }}
+                        {% if postform.bedrooms.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.bedrooms.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                      <div class="mb-4 col-md-4">
+                        {{ postform.bathrooms.label(class="form-label d-block mb-2 pb-1") }}
+                        {{ postform.bathrooms(class_="form-control fw-bold rounded", min="1", max="35", step="1", placeholder="Number Of Bath Rooms") }}
+                        {% if postform.bathrooms.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.bathrooms.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                    </div>
+
+                    <!-- property_for & property type -->
+                    <div class="row">
+                      <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
+                        {{ postform.pay_interval.label(class="form-label") }}
+                        {{ postform.pay_interval(class_="form-select fw-bold rounded") }}
+                        {% if postform.pay_interval.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.pay_interval.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                      <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
+                        {{ postform.property_for.label(class="form-label") }}
+                        {{ postform.property_for(class_="form-select fw-bold rounded") }}
+                        {% if postform.property_for.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.property_for.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                      <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
+                        {{ postform.property_type.label(class="form-label") }}
+                        {{ postform.property_type(class_="form-select fw-bold rounded") }}
+                        {% if postform.property_type.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.property_type.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                    </div>
+
+                    <!-- Amenities -->
+                    <div class="mb-4">
+                      <label class="form-label d-block mb-2 pb-1">
+                        Amenities
+                      </label>
+                      <div class="row">
+                        <div class="col-12 amenities d-inline">
+                          {% for amenity in postform.amenities %}
+                          <div class="form-check">
+                            {{ amenity(class="form-check-input") }}
+                            <label class="form-check-label"
+                                   for="{{ amenity.id }}">
+                              {{ amenity.label }}
+                            </label>
+                          </div>
+                          {% endfor %}
+                          {% if postform.amenities.errors %}
+                          <div class="invalid-feedback">
+                            {% for error in postform.amenities.errors %}{{ error }} ! {% endfor %}
+                          </div>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mb-3 d-sm-flex justify-content-between pt-2">
+                      <button class="step-link btn btn-primary rounded-3 btn-lg d-block mb-2"
+                              data-bs-target="#listing-section"
+                              type="button">
+                        Back(Select Listing)
+                      </button>
+                      <button class="step-link btn btn-primary rounded-3 btn-lg d-block mb-2"
+                              data-bs-target="#location-section"
+                              type="button">
+                        Continue(Location)
+                      </button>
+                    </div>
+                  </section>
+
+                  <!-- Service(s)/Jobs details-->
+                  <section class="step fade h-100 card card-body border-0 shadow-sm p-4 mb-4"
+                           id="job-section">
+                    <h2 class="fw-bold h4 mb-4">
+                      <i class="fi-edit text-primary fs-5 mt-n1 me-2"></i>Jobs/Service Details
+                    </h2>
+
+                    <div class="row d-sm-flex">
+                      <div class="mb-4 col-md-4">
+                        {{ postform.pay_range.label(class="form-label") }}
+                        {{ postform.pay_range(class_="form-select fw-bold") }}
+                        {% if postform.pay_range.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.pay_range.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                      <div class="mb-4 col-md-4">
+                        {{ postform.min_qualify.label(class="form-label") }}
+                        {{ postform.min_qualify(class_="form-select fw-bold") }}
+                        {% if postform.min_qualify.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.min_qualify.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                      <div class="mb-4 col-md-4">
+                        {{ postform.min_exp.label(class="form-label") }}
+                        {{ postform.min_exp(class_="form-select fw-bold ") }}
+                        {% if postform.min_exp.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.min_exp.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
+                        {{ postform.pay_interval.label(class="form-label") }}
+                        {{ postform.pay_interval(class_="form-select fw-bold ") }}
+                        {% if postform.pay_interval.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.pay_interval.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                      <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
+                        {{ postform.job_type.label(class="form-label") }}
+                        {{ postform.job_type(class_="form-select fw-bold rounded") }}
+                        {% if postform.job_type.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.job_type.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                      <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
+                        {{ postform.job_setup.label(class="form-label") }}
+                        {{ postform.job_setup(class_="form-select fw-bold rounded") }}
+                        {% if postform.job_setup.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.job_setup.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                    <div class="row mt-3">
+                      <div class="col-sm-6 mb-3">
+                        {{ postform.responsibilities.label(class="form-label") }}
+                        {{ postform.responsibilities(class_="form-control fw-bold rounded", placeholder="Responsibilities") }}
+                        {% if postform.responsibilities.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.responsibilities.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                      <div class="col-sm-6 mb-3">
+                        {{ postform.required_skills.label(class="form-label") }}
+                        {{ postform.required_skills(class_="form-control fw-bold rounded", placeholder="Skills Required") }}
+                        {% if postform.required_skills.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in postform.required_skills.errors %}{{ error }} ! {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                    <div class="mb-3 d-sm-flex justify-content-between pt-2">
+                      <button class="step-link btn btn-primary rounded-3 btn-lg d-block mb-2"
+                              data-bs-target="#listing-section"
+                              type="button">
+                        Back(Select Listing)
+                      </button>
+                      <button class="step-link btn btn-primary rounded-3 btn-lg d-block mb-2"
+                              data-bs-target="#location-section"
+                              type="button">
+                        Continue(Location)
+                      </button>
+                    </div>
+                  </section>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- ********************************************** -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* photos & videos upload section in the modal  */
+  /* Container for uploaded files */
+  .preview-container {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px; /* Adjust the gap between items as needed */
+      }
+  
+    .preview-item {
+        flex: 0 0 calc(33.33% - 10px); /* Adjust the width of each item */
+        margin: 4px; /* Adjust the margin as needed */
+        position: relative; /* Position for the remove button */
+    }
+    
+  .filepond--credits, .filepond--file {
+    display: none;
+  }
+  .filepond--root, .filepond--drop-label{
+    cursor: pointer;
+  }
+  /* Style the .file-action-button */
+  .file-action-button {
+    /*position: absolute; /* Set the position to absolute for precise placement */
+    position: absolute;
+    top: 0; /* Position at the top of the .file-preview container */
+    left: 0; /* Position at the left of the .file-preview container */
+    cursor: pointer;
+    z-index: 1;
+  }
+  
+  /* Style for each file preview div */
+  .file-preview {
+    position: relative;
+    /* flex: 0 0 calc(33.33% - 20px);  *//* Adjust the width as needed */
+    flex: 0 0 140px; /* Adjust the width as needed */
+    margin: 2px; /* Adjust the margin between previews */
+    display: flex; /* Display children horizontally */
+    align-items: center; /* Vertically center content */
+    justify-content: center; /* Horizontally center content */
+    border: 1px solid #ddd; /* Add borders or other styling as needed */
+    /*padding: 10px; /* Add padding as needed */
+    /* box-sizing: border-box; */
+    box-sizing: content-box;
+    border-radius: 10px;
+  }
+  
+  /* Style for videos inside file preview */
+  .file-preview video, .file-preview img {
+    z-index: 0;
+      width: 140px !important;
+      height: 140px !important;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
+      /* margin: auto; */
+      cursor: zoom-in;
+      -webkit-transform: scale(1);
+      transform: scale(1); 
+      -webkit-transition: all .5s;
+      transition: all .5s; 
+       cursor: zoom-in; 
+      object-position: 50% 50%;
+      object-fit: cover;
+  }
+
+  .file-uploader {
+    margin-bottom: 0;
+    border: 2px dashed grey;
+    border-radius: 10px;
+    font-family: san serif;
+    cursor: pointer;
+  }
+  
+  .form-check{
+    display: inline-block;
+      margin-right: 10px;
+      padding-left: 20px;
+      /* margin-bottom: 2px; */
+  }
+
+  /* ************************************** */
+  /* color input in post-modal style(s) */
+.form-control-color{
+  width: 2rem;
+  height: 1.5em; 
+  /* padding: 0.375rem; */
+}
+.form-control-color:not(:disabled):not([readonly]) {
+  cursor: pointer;
+}
+.form-control-color::-moz-color-swatch {
+  height: 1.5em;
+  border-radius: 0.25rem;
+}
+.form-control-color::-webkit-color-swatch {
+  height: 1.9em;
+  width: auto !important;
+  border-radius: 0.25rem;
+
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* border: 2px solid #ccc; */ /* Match border with the label */
+}
+
+.alert-primary .btn_tooltip {
+    width: 100%; 
+    justify-content: center;
+    align-items: center;
+    font-size: 28px; 
+    border-radius: 10px; 
+    color: #fff; 
+    border: none; 
+    text-align: center; 
+
+    color: #853a02;
+    background-color: #ffe2cd;
+    border-color: #ffd7b9;
+}
+
+/* Style for the tooltip */
+.tooltip-inner {
+    font-size: 20px; 
+    padding: 10px; 
+    color: #fff; 
+    border-radius: 10px; 
+}
+</style>
+
+
+{% include 'incs/modals/search.html' %}
+
+{% include 'incs/modals/auth.html' %}
+
+{#
+{% include 'incs/modals/chatme/chatbox.html' %} 
+{% include 'incs/modals/chatme/chatlist.html' %} 
+#}
+
+{% include 'incs/modals/chatme.html' %} 

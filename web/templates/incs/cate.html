@@ -1,0 +1,99 @@
+<div id="ec-mobile-menu" class="ec-side-cart ec-mobile-menu">
+    <div class="ec-menu-title">
+        <span class="menu_title">Classifications</span>
+        <button class="ec-close">×</button>
+    </div>
+    <div class="ec-menu-inner">
+        <div class="ec-menu-content">
+            <!-- macros.html -->
+
+            <ul>
+                {% macro render_categories(categories) %}
+                    {% for category in categories %}
+                        <li>
+                            <a href="/cate/{{ category.id }}">{{ category.name }}</a>
+                            {% if category.children %}
+                                <ul class="sub-menu">
+                                    {{ render_categories(category.children) }}
+                                </ul>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                {% endmacro %}
+                {{ render_categories(categories) }}
+            </ul>
+            
+            {#
+            <!-- <ul>
+                {% for top_category in g.categories %}
+                    <li>
+                        <a href="/cate/{{ top_category.id }}">{{ top_category.name }}</a>
+                        {% if top_category.children %}
+                            <ul class="sub-menu">
+                                {% for sub_category_1 in top_category.children %}
+                                    <li>
+                                        <a href="/cate/{{ sub_category_1.id }}">{{ sub_category_1.name }}</a>
+                                        {% if sub_category_1.children %}
+                                            <ul class="sub-menu">
+                                                {% for sub_category_2 in sub_category_1.children %}
+                                                    <li>
+                                                        <a href="/cate/{{ sub_category_2.id }}">{{ sub_category_2.name }}</a>
+                                                        <!-- Add more nested levels if needed --
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul> -->
+            #}
+        <ul>
+            <li><a href="javascript:void(0)">Explore Local Market</a></li>
+                <li><a href="/cate" class="ec-header-btn ec-side-toggle">Go to Categories </a></li>
+            </ul>
+
+        </div>
+
+        <div class="header-res-lan-curr" style="bottom: 0;">
+            <div class="header-top-lan-curr">
+                <!-- Language Start -->
+                <div class="header-top-lan dropdown">
+                    <button class="dropdown-toggle text-upper" data-bs-toggle="dropdown">Language <i
+                            class="ecicon eci-caret-down" aria-hidden="true"></i></button>
+                    <ul class="dropdown-menu">
+                        <li class="active"><a class="dropdown-item" href="#">English</a></li>
+                        <li><a class="dropdown-item" href="#">Italiano</a></li>
+                    </ul>
+                </div>
+                <!-- Language End -->
+                <!-- Currency Start -->
+                <div class="header-top-curr dropdown">
+                    <button class="dropdown-toggle text-upper" data-bs-toggle="dropdown">Currency <i
+                            class="ecicon eci-caret-down" aria-hidden="true"></i></button>
+                    <ul class="dropdown-menu">
+                        <li class="active"><a class="dropdown-item" href="#">USD $</a></li>
+                        <li><a class="dropdown-item" href="#">EUR €</a></li>
+                    </ul>
+                </div>
+                <!-- Currency End -->
+            </div>
+            <!-- Social Start -->
+            <div class="header-res-social">
+                <div class="header-top-social">
+                    <ul class="mb-0">
+                        <li class="list-inline-item"><a href="#"><i class="ecicon eci-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="ecicon eci-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="ecicon eci-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="ecicon eci-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Social End -->
+        </div>
+
+    </div>
+</div>

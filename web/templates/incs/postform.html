@@ -1,0 +1,219 @@
+
+
+                                <div class="ec-vendor-upload-detail" id="target-post-div">   
+
+                                    {% include('incs/alerts.html') %}
+                                   
+                                    <form class="row g-3" method="post"  enctype="multipart/form-data">
+                                        {{ form.hidden_tag() }}  
+                                        <!------------->
+                                        <div class="col-md-4">
+                                            <div class="ec-vendor-img-upload">
+                                                <div class="ec-vendor-main-img">
+                                                    <div class="avatar-upload">
+                                                        <div class="avatar-edit"> 
+                                                            {{ form.images(class="ec-image-upload rounded", required=True, onchange="upload_file(this, '#ec-image-preview')")}} 
+                                                            <label for="images"><i class="fi-rr-edit"></i></label>
+                                                            {% if form.images.errors %}
+                                                            <div class="invalid-feedback"> {% for error in form.images.errors %}{{ error }} ! {% endfor %}</div>
+                                                            {% endif %} 
+                                                        </div>
+                                                        <div class="avatar-preview ec-preview">
+                                                            <div class="imagePreview ec-div-preview">
+                                                                <img class="ec-image-preview" id="ec-image-preview" 
+                                                                src="{{url_for('static', filename='images/product-image/vender-upload-preview.jpg')}}" alt="edit">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+            
+                                                    <div class="thumb-upload-set colo-md-12">
+                                                    {% for _ in range(9) %}
+                                                    {% set unique_ids = "photos_" ~ loop.index %}
+                                                    <div class="thumb-upload">
+                                                        <div class="thumb-edit">
+                                                            {{ form.images(class="ec-image-upload", onchange="upload_file(this, '#" ~ unique_ids ~ "')") }}
+                                                            <label for="{{ unique_ids }}"><i class="fi-rr-edit"></i></label>
+                                                            {% if form.images.errors %}
+                                                                <div class="invalid-feedback"> {% for error in form.images.errors %}{{ error }} ! {% endfor %}</div>
+                                                            {% endif %}
+                                                        </div>
+                                                        <div class="thumb-preview ec-preview">
+                                                            <div class="image-thumb-preview">
+                                                                <img class="image-thumb-preview ec-image-preview" id="{{ unique_ids }}"
+                                                                    src="{{ url_for('static', filename='images/product-image/vender-upload-thumb-preview.jpg') }}" alt="edit">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %} 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!------------->
+
+                                        <div class="col-md-8">
+
+                                            <div class="row">
+                                            <div class="col-md-6">
+                                                {{ form.title.label(class="form-label") }}
+                                                {{ form.title(class="form-control rounded", placeholder="Title") }}
+                                                {% if form.title.errors %}
+                                                <div class="invalid-feedback"> {% for error in form.title.errors %}{{ error }} ! {% endfor %}</div>
+                                                {% endif %}
+                                            </div>
+                                            <div class="col-md-6">
+                                                {{ form.cate.label(class="form-label") }} 
+                                                {{ form.cate(class_="form-select rounded") }}
+                                                {% if form.cate.errors %}
+                                                <div class="invalid-feedback"> {% for error in form.cate.errors %}{{ error }} ! {% endfor %}</div>
+                                                {% endif %}  
+                                            </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    {{ form.price.label(class="form-label") }} 
+                                                    {% if form.price.errors %}
+                                                    <div class="invalid-feedback"> {% for error in form.price.errors %}{{ error }} ! {% endfor %}</div>
+                                                    {% else %}
+                                                    {{ form.price(class="form-control rounded", placeholder="what's the cost of this item", id="price") }}
+                                                    {% endif %}
+                                                </div>
+                                                <!-- Buyers Can Bargain Field -->
+                                                <div class="col-md-6">
+                                                    {{ form.condition.label(class="form-label") }}
+                                                    {{ form.condition(class="form-select  rounded", placeholder="how many") }}
+                                                    {% if form.condition.errors %}
+                                                    <div class="invalid-feedback"> {% for error in form.condition.errors %}{{ error }} ! {% endfor %}</div>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 mb-25">
+                                                <div class="form-checkbox-box">
+                                                    <div class="form-check form-check-inline">
+                                                    {{ form.negotiable(class="form-check form-check-inline rounded") }} 
+                                                    {% if form.negotiable.errors %}
+                                                    <div class="invalid-feedback"> {% for error in form.negotiable.errors %}{{ error }} ! {% endfor %}</div>
+                                                    {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <style>
+    
+                                                /*Custom CSS styles for the meet_up checkboxes */
+                                                #meet_up {
+                                                   /*list-style: none;
+                                                    padding-left: 0; */
+                                                    box-sizing:border-box; */
+                                                }
+                                                
+                                                #meet_up li {
+                                                    
+                                                    display: inline-block;
+                                                    margin-right: 80px; /* Adjust the right margin for spacing */
+                                                    
+                                                    /* margin-bottom: 100px;
+                                                    border-width: 0 3px 3px 0; */
+                                                    /* -webkit-transform: rotate(45deg);
+                                                    -ms-transform: rotate(45deg);
+                                                    transform: rotate(-45deg); 
+                                                    transform: rotate(0deg);*/
+                                                    transform: rotate(-20deg); 
+                                                }
+                                                
+                                                /* Custom CSS styles for the checkbox labels */
+                                                #meet_up label {
+                                                    font-weight: normal; /* Prevent text from being bold */
+                                                    white-space: nowrap; /* Prevent text from wrapping */
+                                                }
+                                                
+                                                </style> 
+
+                                            <div class="col-md-12 mb-25">
+                                                {{ form.desc.label(class="form-label") }}
+                                                {{ form.desc(class="form-control rounded mb-25", rows="2", id="desc") }}
+                                                {% if form.desc.errors %}
+                                                <div class="invalid-feedback"> {% for error in form.desc.errors %}{{ error }} ! {% endfor %}</div>
+                                                {% endif %}
+                                            </div>
+                                            
+                                            <div class="col-md-12 mb-25">
+                                                <div class="form-check">
+                                                {{ form.meet_up(class="form-check") }} 
+                                                {% if form.meet_up.errors %}
+                                                <div class="invalid-feedback"> {% for error in form.meet_up.errors %}{{ error }} ! {% endfor %}</div>
+                                                {% endif %}
+                                            </div>
+
+                                                
+                                            <div class="row">                                           
+                                                <div class="col-md-6 mb-25">
+                                                {{ form.color.label(class="form-label", for="color") }}
+                                                <div class="form-checkbox-box">
+                                                    <div class="form-check form-check-inline">
+                                                    {% if form.color.errors %}
+                                                    <div class="invalid-feedback"> {% for error in form.color.errors %}{{ error }} ! {% endfor %}</div>
+                                                    {% else %}
+                                                    {{ form.color(type="color", class="form-check rounded form-check-inline") }} 
+                                                    {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>    
+
+                                            <div class="col-md-6 mb-25">
+                                                {{ form.size.label(class="form-label", for="size") }}
+                                                <div class="form-checkbox-box">
+                                                    <div class="form-check form-check-inline">
+                                                    {% if form.size.errors %}
+                                                    <div class="invalid-feedback"> {% for error in form.size.errors %}{{ error }} ! {% endfor %}</div>
+                                                    {% else %}
+                                                    {{ form.size(class="form-check form-check-inline rounded") }} 
+                                                    {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12 disabled">
+                                            {{ form.tag.label(class="form-label", for="tag") }}
+
+                                            <div class="bootstrap-tagsinput">
+                                                {{ form.tag(class="bootstrap-tagsinput rounded", placeholder="Help people discover your listings fast", id="tag") }}
+                                                </div>
+                                                <input type="text" class="form-control" id="group_tag" name="group_tag" value="" 
+                                                placeholder="" data-role="tagsinput" style="display: none;">
+
+                                            {% if form.tag.errors %}
+                                            <div class="invalid-feedback"> {% for error in form.tag.errors %}{{ error }} ! {% endfor %}</div>
+                                            {% endif %}
+                                        </div>
+
+                                        <!--------------------------------->
+                                        <!--property--->
+                                        <div id="property-fields" style="display: block;"> 
+                                            <div class="form-check form-check-inline">
+                                              {#  {{ form.amenities(class="form-check-input") }}
+                                                {{ form.amenities.label(class="form-label") }}
+                                                {% if form.amenities.errors %}
+                                                <div class="invalid-feedback"> {% for error in form.amenities.errors %}{{ error }} ! {% endfor %}</div>
+                                                {% endfor %} #}
+                                              </div>
+                                        </div>
+                                        <!--------------------------------->
+
+                                        <div id="response" class="col-md-12 alert">..</div> 
+
+                                        <div class="col-md-12">
+                                            {% if form.save_listing.errors %}
+                                            <div class="invalid-feedback"> {% for error in form.save_listing.errors %}{{ error }} ! {% endfor %}</div>
+                                            {% else %}
+                                            {{ form.save_listing(class="ec-slide-disc btn btn-lg font-weight-bold text-white rounded btn-primary", id="submit") }}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+
+                                        </form>
+                                </div>
+
+                                

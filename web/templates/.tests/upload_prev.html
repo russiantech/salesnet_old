@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload with Previews</title>
+    <!-- Include Dropzone.js and Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h3 class="mb-3">Bootstrap Dropzone with Previews</h3>
+    <!-- Your main form containing other fields -->
+    <form action="/your_main_form_action" method="POST" id="mainForm">
+        <!-- Other form fields here -->
+        <div class="form-group">
+            <label for="field1">Field 1:</label>
+            <input type="text" class="form-control" id="field1" name="field1" value="">
+        </div>
+        <div class="form-group">
+            <label for="field2">Field 2:</label>
+            <input type="text" class="form-control" id="field2" name="field2" value="">
+        </div>
+
+        <!-- File input field (you can add more if needed) -->
+        <div class="form-group">
+            <label for="file1">File 1:</label>
+            <input type="file" class="form-control-file" id="file1" name="file1">
+        </div>
+        <div class="form-group">
+            <label for="file2">File 2:</label>
+            <input type="file" class="form-control-file" id="file2" name="file2">
+        </div>
+
+        <!-- Container for displaying file previews -->
+        <div class="container mt-3" id="preview-container"></div>
+
+        <!-- Hidden fields for storing uploaded file information -->
+        <input type="hidden" name="uploadedFiles" id="uploadedFiles" value="">
+        
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<!-- Include Dropzone.js and Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // Initialize Dropzone
+    Dropzone.options.mainForm = {
+        paramName: "file",
+        maxFilesize: 10,
+        acceptedFiles: "image/*,video/*",
+        maxFiles: 5,
+        addRemoveLinks: true,
+        previewsContainer: "#preview-container",
+        init: function () {
+            this.on("addedfile", function (file) {
+                // Handle the file added event
+                // You can customize the preview and file information display here
+                console.log(file);
+            });
+            this.on("removedfile", function (file) {
+                // Handle the file removed event
+                // Remove the file's information from your tracking data
+                console.log("Removed: " + file.name);
+            });
+        },
+    };
+
+    // Handle form submission to gather file information
+    document.getElementById("mainForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        const uploadedFiles = [];
+
+        // Iterate through Dropzone's files array to gather file information
+        this.querySelector(".dz-preview").forEach(function (previewElement) {
+            uploadedFiles.push({
+                name: previewElement.querySelector(".dz-filename span").textContent,
+                size: previewElement.querySelector(".dz-size span strong").textContent,
+            });
+        });
+
+        // Store the file information in the hidden input field
+        document.getElementById("uploadedFiles").value = JSON.stringify(uploadedFiles);
+
+        // Submit the form
+        this.submit();
+    });
+</script>
+</body>
+</html>

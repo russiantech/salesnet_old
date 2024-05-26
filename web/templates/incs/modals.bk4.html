@@ -1,0 +1,420 @@
+{% include 'incs/quickv.html' %}
+
+<!-- Modal end -->
+<!-- FB Chat Messenger -->
+<div class="ec-fb-style fb-right-bottom">
+    <!-- Start Floating Panel Container -->
+    <div class="fb-panel">
+        <!-- Panel Content -->
+        <div class="fb-header">
+            <img src="{{url_for('static', filename='images/user/1.jpg')}}" alt="pic" />
+            <h2>Chris James</h2>
+            <p>Technical Manager</p>
+        </div>
+        <div class="fb-body">
+            <p><b>Hey there &#128515;</b></p>
+            <p>Need help ? just send me a message.</p>
+        </div>
+        <div class="fb-footer">
+            <a href="/" target="_blank" class="fb-msg-button">
+                <span>Send Message</span>
+                <svg width="13px" height="10px" viewBox="0 0 13 10">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+            </a>
+        </div>
+    </div>
+    <!--/ End Floating Panel Container -->
+    <!-- Start Right Floating Button -->
+    <div class="fb-button fb-right-bottom">
+        <img class="fa-messenger" src="{{url_for('static', filename='images/favicon/favicon.svg')}}" alt="icon" />
+    </div>
+    <!--/ End Right Floating Button -->
+</div>
+<!-- FB Chat Messenger end -->
+
+<!-- Newsletter Modal Start -->
+<div id="ec-popnews-box" style="display: block;">
+    <div id="ec-popnews-close"><i class="ecicon eci-close"></i></div>
+    <div class="row">
+        <div class="col-md-6 disp-no-767">
+            <img src="{{url_for('static', filename='images/banner/newsletter.png')}}" alt="newsletter">
+            <!-- <img src="{{url_for('static', filename='images/banner/nl.jpg')}}" alt="newsletter"> -->
+        </div>
+        <div class="col-md-6">
+            <div id="ec-popnews-box-content">
+                <h2>Stay home, stay safe &amp; get your daily needs from Salesnet.</h2>
+                <p>Subscribe to the internet of sales to get in touch and get the future update. </p>
+                <form id="ec-popnews-form" action="#" method="post">
+                    <input type="email" name="newsemail" placeholder="Email Address" required="">
+                    <button type="button" class="btn btn-primary" name="subscribe">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ec-popnews-bg"></div>
+<div id="ec-popnews-box">
+    <div id="ec-popnews-close"><i class="ecicon eci-close"></i></div>
+    <div id="ec-popnews-box-content">
+        <h6>Newsletter : ..internet of sales..</h6>
+        <p>Subscribe to stay updated about new products/servces, discounts and promos from salesnet.</p>
+        <form id="ec-popnews-form" action="#" method="post">
+            <input type="email" required name="newsemail" placeholder="Valid Email Address" required />
+            <button type="submit" class="btn btn-secondary" name="subscribe">Keep Me Updated</button>
+        </form>
+    </div>
+</div>
+<!-- Newsletter Modal end -->
+
+<!-- successfully toast Start -->
+<div id="addtocart_toast" class="addtocart_toast">
+    <div class="desc">Success!!! Shopping Basket Updated</div>
+</div>
+<div id="wishlist_toast" class="wishlist_toast">
+    <div class="desc">Congrats!!! Favorite Item Saved For You</div>
+</div>
+<!--successfully toast end -->
+
+<div class="modal fade" id="post_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal body -->
+            <div class="modal-body">
+               <!-- ********************************************** -->
+              <div class="container">
+                <div class="row">
+                  <!-- Page content-->
+                  <div class="col-lg-12">
+                    <!-- Title-->
+                    <div class="mb-4">
+                      <h4 class="h2 mb-0">Post Ur Listing</h4>
+                      <div class="d-lg-none pt-3 mb-2">65% content filled</div>
+                      <div class="progress d-lg-none mb-4" style="height: .25rem;">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+
+                    <!-- Basic info-->
+                    <section class="card card-body border-0 shadow-sm p-4 mb-4" id="basic-info">
+                      <h2 class="h4 mb-4"><i class="fi-info-circle text-primary fs-5 mt-n1 me-2"></i>Basic info</h2>
+                      
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                          {{ postform.title.label(class="form-label", for="title") }}
+                          {{ postform.title(class="form-control rounded", placeholder="Pine Apartments") }}
+                          {% if postform.title.errors %}
+                          <div class="invalid-feedback"> {% for error in postform.title.errors %}{{ error }} ! {% endfor %}</div>
+                          {% endif %}
+                        </div>
+                {# 
+            set categories = { x['name'] : [ (c['id'], c['name']) for c in x['children'] ] if x['children'] else [(x['id'], x['name'])] for x in g.categories  }
+            postform.cate.choices = categories
+                  #}
+                        <div class="col-sm-6 mb-3">
+                          {{ postform.cate.label(class="form-label") }}
+                          <select class="form-select rounded" name="{{postform.cate.name}}" id="category-select">
+                              <option value="">Select a category</option>
+                              {% macro render_select_options(categories, indent='') %}
+                                  {% for category in categories %}
+                                      <option value="{{ category.id }}">{{ indent }}{{ category.name }}</option>
+                                      {% if category.children %}
+                                          {{ render_select_options(category.children, indent ~ '-- ') }}
+                                      {% endif %}
+                                  {% endfor %}
+                              {% endmacro %}
+                              {{ render_select_options(g.categories) }}
+                          </select>
+                          {% if postform.cate.errors %}
+                          <div class="invalid-feedback">
+                              {% for error in postform.cate.errors %}
+                              {{ error }} !
+                              {% endfor %}
+                          </div>
+                          {% endif %}
+                      </div>
+
+                      </div>
+                      
+                      <div class="row">
+                        <div class="col-sm-6 mb-3">
+                          {{ postform.property_for.label(class="form-label") }} 
+                          {{ postform.property_for(class_="form-select rounded") }}
+                          {% if postform.property_for.errors %}
+                          <div class="invalid-feedback"> {% for error in postform.property_for.errors %}{{ error }} ! {% endfor %}</div>
+                          {% endif %}  
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                          {{ postform.property_type.label(class="form-label") }} 
+                          {{ postform.property_type(class_="form-select rounded") }}
+                          {% if postform.property_type.errors %}
+                          <div class="invalid-feedback"> {% for error in postform.property_type.errors %}{{ error }} ! {% endfor %}</div>
+                          {% endif %}  
+                        </div>
+                      </div>
+                    </section>
+
+                    <!-- Location-->
+                    <section class="card card-body border-0 shadow-sm p-4 mb-4" id="location">
+                      <h2 class="h4 mb-4"><i class="fi-map-pin text-primary fs-5 mt-n1 me-2"></i>Location</h2>
+                      <div class="row">
+                        <div class="col-sm-6 mb-3">
+                          <label class="form-label" for="ap-country">Country / region <span class="text-danger">*</span></label>
+                          <select class="form-select" id="ap-country" required="">
+                            <option value="" disabled="">Choose country</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Belgium">Belgium</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Germany">Germany</option>
+                            <option value="United States" selected="">United States</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                          <label class="form-label" for="ap-city">City <span class="text-danger">*</span></label>
+                          <select class="form-select" id="ap-city" required="">
+                            <option value="" disabled="">Choose city</option>
+                            <option value="Chicago">Chicago</option>
+                            <option value="Dallas">Dallas</option>
+                            <option value="Los Angeles">Los Angeles</option>
+                            <option value="New York" selected="">New York</option>
+                            <option value="San Diego">San Diego</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-8 mb-3">
+                          <label class="form-label" for="ap-address">Street address <span class="text-danger">*</span></label>
+                        <input class="form-control" type="text" id="ap-address" value="28 Jackson Avenue" required="">
+                        </div>
+                        <div class="col-sm-4 mb-3">
+                          <label class="form-label" for="ap-zip">Zip code  <span class="text-danger">*</span></label>
+                          <input class="form-control" type="text" id="ap-zip" placeholder="Enter Zip code" value="67234" required="">
+                        </div>
+                      </div>
+                      <div class="form-label fw-bold pt-3 pb-2">Display on the map</div>
+                      <div id="map" style="width: 100%; height: 200px;">
+                        <iframe style="width: inherit;" class="rounded-3" src="https://api.maptiler.com/maps/bright-v2/?key=Ja8aExwRmQQZHifQLv3Q#1.0/0.00000/0.00000"></iframe>
+                      </div>
+
+                      </div>
+                    </section>
+                    <!-- Property details-->
+                    <section class="card card-body border-0 shadow-sm p-4 mb-4" id="details">
+                      <h2 class="h4 mb-4"><i class="fi-edit text-primary fs-5 mt-n1 me-2"></i>Property details</h2>
+                      <div class="row d-sm-flex">
+                      <div class="mb-4 col-md-4" style="max-width: 25rem;">
+                        <label class="form-label fw-bold pb-1" for="ap-area">Total area, sq.m</label>
+                        <input class="form-control" type="number" id="ap-area" min="20" placeholder="Enter your area" value="56" required="">
+                      </div>
+                      <div class="mb-4 col-md-4">
+                        <label class="form-label d-block fw-bold mb-2 pb-1">Bedrooms</label>
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Choose number of bedrooms">
+                          <input class="btn-check" type="radio" id="studio" name="bedrooms">
+                          <label class="btn btn-outline-secondary fw-normal" for="studio">Studio</label>
+                          <input class="btn-check" type="radio" id="bedrooms-1" name="bedrooms">
+                          <label class="btn btn-outline-secondary fw-normal" for="bedrooms-1">1</label>
+                          <input class="btn-check" type="radio" id="bedrooms-2" name="bedrooms">
+                          <label class="btn btn-outline-secondary fw-normal" for="bedrooms-2">2</label>
+                          <input class="btn-check" type="radio" id="bedrooms-3" name="bedrooms">
+                          <label class="btn btn-outline-secondary fw-normal" for="bedrooms-3">3</label>
+                          <input class="btn-check" type="radio" id="bedrooms-4" name="bedrooms" checked="">
+                          <label class="btn btn-outline-secondary fw-normal" for="bedrooms-4">4</label>
+                          <input class="btn-check" type="radio" id="bedrooms-5" name="bedrooms">
+                          <label class="btn btn-outline-secondary fw-normal" for="bedrooms-5">5+</label>
+                        </div>
+                      </div>
+                      <div class="mb-4 col-md-4">
+                        <label class="form-label d-block fw-bold mb-2 pb-1">Bathrooms</label>
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Choose number of bathrooms">
+                          <input class="btn-check" type="radio" id="bathrooms-1" name="bathrooms">
+                          <label class="btn btn-outline-secondary fw-normal" for="bathrooms-1">1</label>
+                          <input class="btn-check" type="radio" id="bathrooms-2" name="bathrooms" checked="">
+                          <label class="btn btn-outline-secondary fw-normal" for="bathrooms-2">2</label>
+                          <input class="btn-check" type="radio" id="bathrooms-3" name="bathrooms">
+                          <label class="btn btn-outline-secondary fw-normal" for="bathrooms-3">3</label>
+                          <input class="btn-check" type="radio" id="bathrooms-4" name="bathrooms">
+                          <label class="btn btn-outline-secondary fw-normal" for="bathrooms-4">4</label>
+                        </div>
+                      </div>
+                    </div>
+      
+                      <!-- Amenities -->
+                      <div class="mb-4">
+                          <label class="form-label d-block fw-bold mb-2 pb-1">Amenities</label>
+                          <div class="row">
+                            <div class="col-12 amenities d-inline">
+                              {% for amenity in postform.amenities %}
+                                  <div class="form-check">
+                                      {{ amenity(class="form-check-input") }}
+                                      <label class="form-check-label" for="{{ amenity.id }}">{{ amenity.label }}</label>
+                                  </div>
+                              {% endfor %}
+                              {% if postform.amenities.errors %}
+                              <div class="invalid-feedback"> {% for error in postform.amenities.errors %}{{ error }} ! {% endfor %}</div>
+                              {% endif %} 
+                          </div>
+                          </div>
+                        </div>
+
+                      {{ postform.desc.label(class="form-label") }} 
+                      {{ postform.desc(class_="form-control", rows="5", placeholder="Describe your property") }}
+                      {% if postform.desc.errors %}
+                      <div class="invalid-feedback"> {% for error in postform.desc.errors %}{{ error }} ! {% endfor %}</div>
+                      {% endif %} 
+
+                    </section>
+                    <!--price--->
+                    <section class="card card-body border-0 shadow-sm p-4 mb-4" id="price">
+                      <h2 class="h4 mb-4"><i class="fi-cash text-primary fs-5 mt-n1 me-2"></i>Price<span class="text-danger">*</span></h2>
+                      <div class="d-sm-flex">
+                        <select class="form-select w-40 col-lg-3 col-md-3 col-sm-1 me-2 mb-2">
+                          <option value="usd">$</option>
+                          <option value="eur">€</option>
+                          <option value="gbp">£</option>
+                          <option value="jpy">¥</option>
+                        </select>
+                        <input class="form-control w-60 col-lg-6 col-md-6 col-sm-3 me-2 mb-2" placeholder="Enter An Amount" type="number" id="price" min="200" step="50" required="">
+                        <select class="form-select w-40 col-lg-3 col-md-3 col-sm-2 mb-2">
+                          <option value="day">per day</option>
+                          <option value="week">per week</option>
+                          <option value="month" selected="">per month</option>
+                          <option value="year">per year</option>
+                        </select>
+                      </div>
+                    </section>
+
+                    <!-- Photos / video-->
+
+                      <!--photos & videos --->
+                      <section class="card card-body border-0 shadow-sm p-4 mb-4" id="photos">
+                        <h2 class="h4 mb-4"><i class="fi-image text-primary fs-5 mt-n1 me-2"></i>(Photos . video)</h2>
+                        <div class="alert alert-info mb-4" role="alert">
+                          <div class="d-flex"><i class="fi-alert-circle me-2 me-sm-3"></i>
+                            <p class="fs-sm mb-1">max photo/video size is 8 MB. Formats: (jpeg, jpg, png,mp4, mov). Put the main picture first.</p>
+                          </div>
+                        </div>
+                        <!-- FilePond input element -->
+                        <input type="file" class="filepond" multiple>
+                        <div class="preview-container"></div>
+
+                    </section>
+
+                    <style>
+                      /* Container for uploaded files */
+                      .preview-container {
+                              display: flex;
+                              flex-wrap: wrap;
+                              gap: 10px; /* Adjust the gap between items as needed */
+                          }
+                      
+                        .preview-item {
+                            flex: 0 0 calc(33.33% - 10px); /* Adjust the width of each item */
+                            margin: 4px; /* Adjust the margin as needed */
+                            position: relative; /* Position for the remove button */
+                        }
+                        
+                      .filepond--credits, .filepond--file {
+                        display: none;
+                      }
+                      .filepond--root, .filepond--drop-label{
+                        cursor: pointer;
+                      }
+                      /* Style the .file-action-button */
+                      .file-action-button {
+                        /*position: absolute; /* Set the position to absolute for precise placement */
+                        position: absolute;
+                        top: 0; /* Position at the top of the .file-preview container */
+                        left: 0; /* Position at the left of the .file-preview container */
+                        cursor: pointer;
+                        z-index: 1;
+                      }
+                      
+                      /* Style for each file preview div */
+                      .file-preview {
+                        position: relative;
+                        /* flex: 0 0 calc(33.33% - 20px);  *//* Adjust the width as needed */
+                        flex: 0 0 140px; /* Adjust the width as needed */
+                        margin: 2px; /* Adjust the margin between previews */
+                        display: flex; /* Display children horizontally */
+                        align-items: center; /* Vertically center content */
+                        justify-content: center; /* Horizontally center content */
+                        border: 1px solid #ddd; /* Add borders or other styling as needed */
+                        /*padding: 10px; /* Add padding as needed */
+                        /* box-sizing: border-box; */
+                        box-sizing: content-box;
+                        border-radius: 10px;
+                      }
+                      
+                      /* Style for videos inside file preview */
+                      .file-preview video, .file-preview img {
+                        z-index: 0;
+                          width: 140px !important;
+                          height: 140px !important;
+                          border-radius: 10px;
+                          box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
+                          /* margin: auto; */
+                          cursor: zoom-in;
+                          -webkit-transform: scale(1);
+                          transform: scale(1); 
+                          -webkit-transition: all .5s;
+                          transition: all .5s; 
+                           cursor: zoom-in; 
+                          object-position: 50% 50%;
+                          object-fit: cover;
+                      }
+
+                      .file-uploader {
+                        margin-bottom: 0;
+                        border: 2px dashed grey;
+                        border-radius: 10px;
+                        font-family: san serif;
+                        cursor: pointer;
+                      }
+                      
+                      .form-check{
+                        display: inline-block;
+                          margin-right: 10px;
+                          padding-left: 20px;
+                          /* margin-bottom: 2px; */
+                      }
+                      </style>
+
+                    <!-- Contacts-->
+                    <section class="card card-body border-0 shadow-sm p-4 mb-4" id="contacts">
+                      <h2 class="h4 mb-4"><i class="fi-phone text-primary fs-5 mt-n1 me-2"></i>Contacts</h2>
+                      <label class="form-label" for="name">Name</label>
+                      <input class="form-control" type="text" id="ap-company-name" placeholder="Enter company name">
+                      <div class="row">
+                        <div class="col-sm-6 mb-3">
+                          <label class="form-label" for="ap-email">Email<span class="text-danger">*</span></label>
+                          <input class="form-control" type="text" id="ap-email" value="annette_black@email.com" placeholder="Enter your email">
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                          <label class="form-label" for="ap-phone">Phone number <span class="text-danger">*</span></label>
+                          <input class="form-control" type="tel" id="ap-phone" data-format="custom" data-delimiter="-" data-blocks="3 3 4" value="302-555-0107" placeholder="000-000-0000">
+                        </div>
+                      </div>
+                      <label class="form-label" for="ap-company-name">Company</label>
+                      <input class="form-control" type="text" id="ap-company-name" placeholder="Enter company name">
+                    </section>
+
+                    <!-- Action buttons -->
+                    <section class="d-sm-flex justify-content-between pt-2">
+                      <a class="btn btn-outline-primary btn-lg d-block mb-3 mb-sm-2" href="#preview-modal" data-bs-toggle="modal">
+                        <i class="ecicon eci-eye ms-n1 me-2"></i>Preview</a>
+                      <a class="btn btn-primary rounded-3 btn-lg d-block mb-2" href="">Save and continue</a>
+                    </section>
+
+                  </div>
+
+                </div>
+              </div>
+              <!-- ********************************************** -->
+            </div>
+
+        </div>
+    </div>
+</div>

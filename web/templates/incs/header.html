@@ -1,0 +1,219 @@
+<!-- Header start  -->
+<header class="ec-header">
+    <!--Ec Header Top Start -->
+    <div class="header-top" id="ec-main-menu-desk1">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Header Top phone Start -->
+                <div class="col header-top-left">
+                    <div class="align-self-center ec-header-logo ">
+
+                        <div class="header-logo d-lg-none">
+                            <a href="/"> 
+                                <img src="{{url_for('static', filename='images/logo/logo.svg')}}" alt="Site Logo" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="header-top-call align-items-left d-none d-lg-block">
+                        <i class="fi-rr-phone-call"></i> Phone:
+                        <a href="tel:+48735527287"> +2348138958645</a>
+                    </div>
+                </div>
+                <!-- Header Top phone End -->
+                <!-- Header Top call Start -->
+                <div class="col header-top-center d-none d-lg-block">
+                    <div class="header-top-call">
+                        Order online or call us (+234) 7026561327
+                    </div>
+                </div>
+                <!-- Header Top call End -->
+                <!-- Header Top Language Currency -->
+                <div class="col header-top-right d-none d-lg-block">
+                    <div class="header-top-right-inner d-flex justify-content-end">
+                        <!-- Currency Start -->
+                        <div class="header-top-lan-curr header-top-curr dropdown">
+                            <button class="dropdown-toggle" data-bs-toggle="dropdown">USD <i
+                                    class="ecicon eci-angle-down" aria-hidden="true"></i></button>
+                            <ul class="dropdown-menu">
+                                <li class="active"><a class="dropdown-item" href="#">USD $</a></li>
+                                <li><a class="dropdown-item" href="#">EUR €</a></li>
+                            </ul>
+                        </div>
+                        <!-- Currency End -->
+                        <!-- Language Start -->
+                        <div class="header-top-lan-curr header-top-lan dropdown">
+                            <button class="dropdown-toggle" data-bs-toggle="dropdown">ENG <i
+                                    class="ecicon eci-angle-down" aria-hidden="true"></i></button>
+                            <ul class="dropdown-menu">
+                                <li class="active"><a class="dropdown-item" href="#">English</a></li>
+                                <li><a class="dropdown-item" href="#">Italiano</a></li>
+                            </ul>
+                        </div>
+                        <!-- Language End -->
+                        
+                        <!-- Social Start -->
+                        <div class="header-top-social">
+                            <ul class="mb-0">
+                                <li class="list-inline-item"><a href="#"><i class="ecicon eci-facebook"></i></a>
+                                </li>
+                                <li class="list-inline-item"><a href="#"><i class="ecicon eci-twitter"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="ecicon eci-instagram"></i></a>
+                                </li>
+                                <li class="list-inline-item"><a href="#"><i class="ecicon eci-linkedin"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Social End -->
+                    </div>
+                </div>
+                <!-- Header Top Language Currency -->
+
+                <!-- Header Top responsive Action -->
+                <div class="col header-top-res d-lg-none">
+                    <div class="ec-header-bottons">
+                        
+                        <a href="#" data-link-action="postmodal"
+                            title="post ur listing" data-bs-toggle="modal"
+                            data-bs-target="#post_modal" class="btn ec-header-btn">
+                                <div class="header-icon">
+                                    <i class="ecicon eci-telegram"></i>
+                                </div><span class="ec-header-count">0</span>
+                                <span class="ec-btn-title">Post</span>
+                            </a>
+
+                        <!-- Header Cart End -->
+                        <a href="#" class="ec-header-btn">
+                            <div class="header-icon">
+                                <i class="ecicon eci-search"></i>
+                            </div><span class="ec-header-count">0</span>
+                            <span class="ec-btn-title">Find</span>
+                        </a>
+
+                        <a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">
+                            <div class="header-icon"><i class="fi-rr-user"></i></div>
+                            <span class="ec-header-count ec-cart-count">3</span>
+                        </a>
+
+                    </div>
+                </div>
+                <!-- Header Top responsive Action -->
+            </div>
+        </div>
+    </div>
+    <!-- Ec Header Top  End -->
+
+
+    <!-- Ec Header Bottom  Start -->
+    <div class="ec-header-bottom d-none d-lg-block">
+        <div class="container position-relative">
+            <div class="row">
+                <div class="header-bottom-flex">
+                    
+                    <div class="align-self-center ec-header-cart">
+                        <div class="ec-header-bottons">
+                            <a href="#ec-mobile-menu" 
+                            class="btn ec-header-btn ec-header-btn ec-side-toggle ec-d-l">
+                                <div class="header-icon">
+                                    <i class="fi-rr-globe"></i>
+                                </div><span class="ec-header-count ec-cart-wishlist">50</span>
+                                <span class="ec-btn-title">Categories</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Ec Header Logo Start -->
+                    <div class="align-self-center ec-header-logo">
+                        <div class="header-logo">
+                            <a href="/">
+                                <img class="dark-logo" src="{{url_for('static', filename='images/favicon/logo.svg')}}" alt="Salesnet" />
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Ec Header Logo End -->
+                    <div class="align-self-center ec-header-cart">
+                        <div class="ec-header-bottons">
+                            
+                            <a href=".." data-bs-toggle="modal" data-bs-target="#chat-list-modal" class="btn ec-header-btn">
+                                <div class="header-icon">
+                                    <i class="fi-rr-comments"></i>
+                                </div><span class="ec-header-count">60</span>
+                                <span class="ec-btn-title">Chatme</span>
+                            </a>
+
+                            <a href=".." title="post ur listing" data-bs-toggle="modal" 
+                            data-bs-target="#post_modal" class="btn ec-header-btn">
+                                <div class="header-icon">
+                                    <i class="ecicon eci-telegram"></i>
+                                </div><span class="ec-header-count">0</span>
+                                <span class="ec-btn-title">Post</span>
+                            </a>
+
+                            <a href=".." data-bs-target="#search-modal" data-bs-toggle="modal" class="btn ec-header-btn">
+                                <i class="fi-rr-search"></i><span class="ec-header-count">9</span>
+                                <span class="ec-btn-title">Find</span> 
+                            </a>
+
+                           <!--  <a href="javascript:void(0);" 
+                            onclick="openPageInModal('https://example.com/page-to-load.html')">
+                                Open Page in Modal</a> -->
+
+                        </div>
+                    </div>
+
+                    <!-- Ec Header Search Start -->
+                   <!--  <div class="align-self-center ec-header-search">
+                        <div class="header-search">
+                            <form class="ec-search-group-form" action="#">
+                                <input class="form-control" placeholder="I’m searching for..." type="search">
+                                <button class="search_submit btn" type="submit">Find <i class="fi-rr-search"></i></button>
+                            </form>
+                        </div>
+                    </div> -->
+                    <!-- Ec Header Search End -->
+
+                    <!-- Ec Header Button Start -->
+                    <div class="align-self-center">
+                        <div class="ec-header-bottons">
+                            <!-- Header User Start -->
+                            <div class="ec-header-user dropdown">
+                                {% if current_user.authenticated %}
+                                <a href="{{url_for('acct.me')}}" class="btn ec-header-btn">
+                                    <i class="fi-rr-user"></i> <span class="ec-header-count">9</span>
+                                    <span class="ec-btn-title">Account</span> 
+                                </a>
+                                {% else %} 
+                                <a href=".." data-bs-target="#signin-modal" data-bs-toggle="modal" class="btn ec-header-btn">
+                                    <i class="fi-rr-user"></i> <span class="ec-header-count">9</span>
+                                    <span class="ec-btn-title">Account</span> 
+                                </a>
+                                {% endif %}
+                            </div>
+                            <!-- Header User End -->
+                            <!-- Header wishlist Start -->
+                            <a href="{{url_for('acct.saved')}}" class="btn ec-header-btn ec-header-wishlist">
+                                <div class="header-icon">
+                                    <i class="fi-rr-heart"></i>
+                                </div><span class="ec-header-count ec-cart-wishlist">0</span>
+                                <span class="ec-btn-title">wishlist</span>
+                            </a>
+                            <!-- Header wishlist End -->
+                            <!-- Header Cart Start -->
+                            <a href="#ec-side-cart" class="btn ec-header-btn ec-side-toggle">
+                                <div class="header-icon"><i class="fi-rr-shopping-basket"></i></div>
+                                <span class="ec-header-count ec-cart-count">3</span>
+                                <span class="ec-btn-title">Basket</span>
+                            </a>
+                            <!-- Header Cart End -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Ec Header Button End -->
+
+    <!-- Salesnet Menu Start -->
+    {% include('incs/cate.html') %}
+    <!-- Salesnet Menu End -->
+</header>

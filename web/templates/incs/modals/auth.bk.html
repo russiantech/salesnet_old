@@ -1,0 +1,210 @@
+<!-- Sign In Modal-->
+<div aria-hidden="true" class="modal fade" id="signin-modal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered p-2 my-0 mx-auto"
+       style="max-width: 950px;">
+    <div class="modal-content">
+      <div class="modal-body px-0 py-2 py-sm-0">
+        <button class="btn-close position-absolute top-0 end-0 mt-3 me-3"
+                data-bs-dismiss="modal"
+                type="button">
+        </button>
+
+        <div class="row mx-0 align-items-center">
+          <div class="col-md-6 border-end-md p-4 p-sm-5">
+            <h2 class="h3 mb-4 mb-sm-5">
+              Hey there!
+              <br/>Welcome back.
+            </h2>
+            <img alt="Illustartion"
+                 class="d-block mx-auto rounded img-responsive"
+                 src="{{url_for('static', filename='images/auth/3.png')}}"
+                 width="344" />
+            <div class="mt-4 mt-sm-5 text-bold text-primary">
+              Don't have an account?
+              <a data-bs-dismiss="modal"
+                 data-bs-toggle="modal"
+                 href="#signup-modal">
+                Sign Up
+              </a>
+            </div>
+          </div>
+          <div class="col-md-6 px-4 pt-2 pb-4 px-sm-5 pb-sm-5 pt-md-5">
+            <!--  -->
+            <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+              <!-- <p class="lead fw-normal mb-0 me-3">Sign in with</p> -->
+              <p class="lead fw-normal mb-0 me-3">Automatically: </p> 
+              <a href="{{ url_for('auth.oauth2_authorize', provider='google') }}" class="btn btn-primary btn-floating mx-1 btn-lg rounded">
+
+                <i class="ecicon eci-google fs-lg me-1"></i>
+              </a>
+
+              <a href="{{ url_for('auth.oauth2_authorize', provider='linkedin') }}" aria-disabled="true" class="btn btn-primary btn-floating mx-1 btn-lg rounded disabled">
+                <i class="ecicon eci-linkedin fs-lg me-1"></i>
+              </a>
+  
+              <a href="{{ url_for('auth.oauth2_authorize', provider='facebook') }}" aria-disabled="true" class="btn btn-primary btn-floating mx-1 btn-lg rounded disabled">
+                <i class="ecicon eci-facebook fs-lg me-1"></i> 
+              </a>
+
+            </div>
+            <div class="d-flex align-items-center py-3 mb-3">
+              <hr class="w-100" />
+              <div class="px-3">Or</div>
+              <hr class="w-100" />
+            </div>
+            <form class="needs-validation" method="post" id="signinform" novalidate>
+
+              <div class="mb-4">
+                <label for="signin" class="form-label mb-2">Email/Phone/Username</label>
+                <input class="form-control" type="text" id="signin" name="signin" placeholder="Enter your logins" required />
+              </div>
+              <div class="mb-4">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                  <label class="form-label mb-0" for="password">Password</label>
+                  <a class="fs-sm" data-bs-dismiss="modal" data-bs-toggle="modal" href="#forgot-modal">Forgot password?</a>
+                </div>
+                <div class="password-toggle">
+                  <input class="form-control" type="password" id="password" placeholder="Enter password" required="">
+                </div>
+              </div>
+
+              <div class="form-check mb-4">
+                <input checked class="form-check-input" type="checkbox" id="rememberme" name="rememberme"/>
+                <label for="rememberme" class="form-check-label">Remember me.</label>
+              </div>
+              <button class="btn btn-primary btn-lg w-100 rounded-3 d-block mb-2" name="submit" type="submit">Let's login now </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- forgot/reset logins -->
+<!-- Sign In Modal-->
+<div aria-hidden="true" class="modal fade" id="forgot-modal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered p-2 my-0 mx-auto"
+       style="max-width: 950px;">
+    <div class="modal-content">
+      <div class="modal-body px-0 py-2 py-sm-0">
+        <button class="btn-close position-absolute top-0 end-0 mt-3 me-3"
+                data-bs-dismiss="modal"
+                type="button">
+        </button>
+        <div class="row mx-0 align-items-center">
+          <div class="col-md-6 border-end-md p-4 p-sm-5">
+            <h2 class="h3 mb-4 mb-sm-5"> We're sorry! <br/>You forgot ur password.</h2>
+            <img alt="Illustartion"
+                 class="d-block mx-auto rounded img-responsive" src="{{url_for('static', filename='images/auth/7.png')}}" width="344" />
+            <div class="mt-4 mt-sm-5">
+              I can remember? <a data-bs-dismiss="modal" data-bs-toggle="modal" href="#signin-modal"> Sign in</a>
+            </div>
+          </div>
+          <div class="col-md-6 px-4 pt-2 pb-4 px-sm-5 pb-sm-5 pt-md-5">
+
+            <form class="needs-validation" method="post" id="forgotform" novalidate>
+              <div class="mb-4">
+                <label for="login" class="form-label mb-2">How do we identify you?</label>
+                <input class="form-control" name="login" placeholder="Email/Phone/Username" required type="text" />
+              </div>
+              <button class="btn btn-primary btn-lg w-100 rounded-3 d-block mb-2" type="submit">
+                Send me reset link
+              </button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sign Up Modal-->
+<div aria-hidden="true" class="modal fade" id="signup-modal" tabindex="-1">
+  <div class="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable p-2 my-0 mx-auto" style="max-width: 950px;">
+    <div class="modal-content">
+      <div class="modal-body px-0 py-2 py-sm-0">
+        <button class="btn-close position-absolute top-0 end-0 mt-3 me-3" data-bs-dismiss="modal" type="button"> </button>
+        <div class="row mx-0 align-items-center">
+          <div class="col-md-5 border-end-md p-4 p-sm-5">
+            <h6 class="h3 mb-4 mb-sm-5 fw-normal">Salesnet.</h6>
+            <p class="mb-4 mb-sm-5 fw-normal">
+              Welcome to internet of sales. Your social sales technologies...
+            </p>
+            <img alt="Illustartion" class="d-block rounded img-responsive" src="{{url_for('static', filename='images/auth/9.png')}}" width="344" />
+            
+            <div class="mt-sm-4 pt-md-3">Let me
+              <a data-bs-dismiss="modal" class="d-flex" data-bs-toggle="modal" href="#signin-modal">
+               login instead ->
+              <img alt="{{app_name}}" class="d-block rounded img-responsive m-0 p-0" 
+              style="background-color: transparent; padding: 0!important; margin: 0 !important;" src="{{url_for('static', filename=app_logo)}}" width="100" />
+            </a>
+            </div>
+          </div>
+          <div class="col-md-7 px-4 pt-2 pb-4 px-sm-5 pb-sm-5 pt-md-5">
+            <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+              <p class="lead fw-normal mb-0 me-3">Auto:</p> 
+
+              <a href="{{ url_for('auth.oauth2_authorize', provider='google') }}" class="btn btn-primary btn-floating mx-1 rounded">
+                <i class="ecicon eci-google fs-lg me-1"></i>
+              </a>
+
+              <a href="{{ url_for('auth.oauth2_authorize', provider='linkedin') }}" aria-disabled="true" class="btn btn-primary btn-floating mx-1 rounded disabled">
+                <i class="ecicon eci-linkedin fs-lg me-1"></i>
+              </a>
+  
+              <a href="{{ url_for('auth.oauth2_authorize', provider='facebook') }}" aria-disabled="true" class="btn btn-primary btn-floating mx-1 rounded disabled">
+                <i class="ecicon eci-facebook fs-lg me-1"></i> 
+              </a>
+              <a href="#signin-modal" class="bg-transparent p-0 m-0 rounded" data-bs-dismiss="modal" data-bs-toggle="modal">
+                <img alt="{{app_name}}" class="d-block rounded img-responsive m-0 p-0" src="{{url_for('static', filename=app_logo)}}" width="344" />
+            </a>
+            </div>
+
+            <div class="d-flex align-items-center py-2 mb-2">
+              <hr class="w-100"/>
+              <div class="px-3 text-bold">Or</div>
+              <hr class="w-100" />
+            </div>
+
+            <form class="needs-validation" id="signupform" action="" method="post">
+              <div class="mb-4">
+                <label class="form-label" for="names">
+                  First & Last Names
+                </label>
+                <input class="form-control" type="text" id="names" name="names" placeholder="Enter your first & last names" required />
+              </div>
+              <div class="mb-4">
+                <label for="username" class="form-label">Unique username</label>
+                <input class="form-control" type="text" id="username" name="username" placeholder="Enter your unique username" required />
+              </div>
+              <div class="mb-4">
+                <label for="email" for="email" class="form-label" >Valid email</label>
+                <input class="form-control" type="email" id="email" name="email" placeholder="Enter your email" required  />
+              </div>
+              <div class="mb-4">
+                <label for="phone" class="form-label">Active Phone</label>
+                <input class="form-control" type="phone" id="phone" name="phone" placeholder="Enter your phone" required />
+              </div>
+              <div class="mb-4">
+                <label class="form-label" for="password"> Password <span class="fs-sm text-muted">min. 4 char</span></label>
+                <div class="password-toggle">
+                  <input class="form-control" type="password" id="password" name="password" minlength="4" required />
+                </div>
+              </div>
+              <div class="form-check mb-4">
+                <input checked class="form-check-input" type="checkbox" id="tnc" name="tnc" required />
+                <label class="form-check-label" for="tnc"> <a href="#">Terms</a> & <a href="#">Privacy</a> </label>
+              </div>
+              <div id="response_div" class="alert w-100 rounded-3 d-block mb-2">...</div>
+              <button class="btn btn-warning btn-lg w-100 rounded-3 d-block mb-2" id="submit" type="submit">Register my account now</button>
+              
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

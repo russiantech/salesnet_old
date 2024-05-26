@@ -1,0 +1,312 @@
+
+{% block page_css %} {% endblock page_css %}
+{% include 'incs/metas.html' %} 
+
+<section class="ec-page-content ec-vendor-uploads ec-user-account section-space-p">
+    <div class="container">
+        <div class="row">
+                <div class="ec-vendor-dashboard-card">
+                    <div class="ec-vendor-card-body">
+                        <div class="row">
+                            <div class="col-12">    
+
+                                <div class="ec-vendor-upload-detail">    
+                                    {% include('incs/alerts.html') %}
+                                   
+                                    <form class="row g-3" method="post"  enctype="multipart/form-data">
+                                        {{ form.hidden_tag() }}  
+                                        <!------------->
+                                        <div class="col-md-4">
+                                            <div class="ec-vendor-img-upload">
+                                                <div class="ec-vendor-main-img">
+
+                                                    <div class="avatar-upload">
+                                                        <div class="avatar-edit"> 
+                                                            {{ form.images(class="ec-image-upload rounded", required=True, onchange="upload_file(this, '#ec-image-preview')")}} 
+                                                            <label for="photo"><i class="fi-rr-edit"></i></label>
+                                                            {% if form.images.errors %}
+                                                            <div class="invalid-feedback"> {% for error in form.images.errors %}{{ error }} ! {% endfor %}</div>
+                                                            {% endif %} 
+                                                        </div>
+                                                        <div class="avatar-preview ec-preview">
+                                                            <div class="imagePreview ec-div-preview">
+                                                                <img class="ec-image-preview" id="ec-image-preview" 
+                                                                src="{{url_for('static', filename='images/product-image/vender-upload-preview.jpg')}}" alt="edit">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+            
+                                                    <div class="thumb-upload-set colo-md-12">
+                                                
+                                                    {% for _ in range(9) %}
+                                                    {% set unique_ids = "photos_" ~ loop.index %}
+                                                    <div class="thumb-upload">
+                                                        <div class="thumb-edit">
+                                                            {{ form.images(class="ec-image-upload", onchange="upload_file(this, '#" ~ unique_ids ~ "')") }}
+                                                            <label for="{{ unique_ids }}"><i class="fi-rr-edit"></i></label>
+                                                            {% if form.images.errors %}
+                                                                <div class="invalid-feedback"> {% for error in form.images.errors %}{{ error }} ! {% endfor %}</div>
+                                                            {% endif %}
+                                                        </div>
+                                                        <div class="thumb-preview ec-preview">
+                                                            <div class="image-thumb-preview">
+                                                                <img class="image-thumb-preview ec-image-preview" id="{{ unique_ids }}"
+                                                                    src="{{ url_for('static', filename='images/product-image/vender-upload-thumb-preview.jpg') }}" alt="edit">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %} 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!------------->
+
+                                        <div class="col-md-8">
+                                            <div class="row">
+
+                                            <div class="col-md-6">
+                                                {{ form.name.label(class="form-label", for="name") }}
+                                                {% if form.name.errors %}
+                                                <div class="invalid-feedback"> {% for error in form.name.errors %}{{ error }} ! {% endfor %}</div>
+                                                {% else %}
+                                                {{ form.name(class="form-control rounded", placeholder="Title", id="name") }}
+                                                {% endif %}
+                                            </div>
+                                            
+                                            <div class="col-md-6">
+                                                {{ form.cate.label(class="form-label") }} 
+                                                {{ form.cate(class_="form-select rounded") }}
+                                                {% if form.cate.errors %}
+                                                <div class="invalid-feedback"> {% for error in form.cate.errors %}{{ error }} ! {% endfor %}</div>
+                                                {% endif %}  
+                                            </div>
+
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                {{ form.desc.label(class="form-label", for="desc") }}
+                                                {% if form.desc.errors %}
+                                                <div class="invalid-feedback"> {% for error in form.desc.errors %}{{ error }} ! {% endfor %}</div>
+                                                {% else %}
+                                                {{ form.desc(class="form-control rounded", rows="2", id="desc") }}
+                                                {% endif %}
+                                            </div>
+
+                                            <div class="row">                                           
+                                                <div class="col-md-6 mb-25">
+                                                {{ form.color.label(class="form-label", for="color") }}
+                                                <div class="form-checkbox-box">
+                                                    <div class="form-check form-check-inline">
+                                                    {% if form.color.errors %}
+                                                    <div class="invalid-feedback"> {% for error in form.color.errors %}{{ error }} ! {% endfor %}</div>
+                                                    {% else %}
+                                                    {{ form.color(type="color", class="form-check rounded form-check-inline") }} 
+                                                    {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>    
+
+                                            <div class="col-md-6 mb-25">
+                                                {{ form.size.label(class="form-label", for="size") }}
+                                                <div class="form-checkbox-box">
+                                                    <div class="form-check form-check-inline">
+                                                    {% if form.size.errors %}
+                                                    <div class="invalid-feedback"> {% for error in form.size.errors %}{{ error }} ! {% endfor %}</div>
+                                                    {% else %}
+                                                    {{ form.size(class="form-check form-check-inline rounded") }} 
+                                                    {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                            <div class="row">
+                                            <div class="col-md-6">
+                                                {{ form.price.label(class="form-label", for="price") }} 
+                                                {% if form.price.errors %}
+                                                <div class="invalid-feedback"> {% for error in form.price.errors %}{{ error }} ! {% endfor %}</div>
+                                                {% else %}
+                                                {{ form.price(class="form-control rounded", placeholder="what's the cost of this item", id="price") }}
+                                                {% endif %}
+                                            </div>
+                                            <div class="col-md-6">
+                                                {{ form.qty.label(class="form-label") }}
+                                                {% if form.qty.errors %}
+                                                <div class="invalid-feedback"> {% for error in form.qty.errors %}{{ error }} ! {% endfor %}</div>
+                                                {% else %}
+                                                {{ form.qty(class="form-control rounded", placeholder="how many") }}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                            
+                                            <div class="col-md-12 disabled">
+                                                {{ form.tag.label(class="form-label", for="tag") }}
+                                                {% if form.tag.errors %}
+                                                <div class="invalid-feedback"> {% for error in form.tag.errors %}{{ error }} ! {% endfor %}</div>
+                                                {% else %}
+                                                <div class="bootstrap-tagsinput">
+                                                {{ form.tag(class="bootstrap-tagsinput rounded", placeholder="Help people discover your listings fast", id="tag") }}
+                                                </div>
+                                                <input type="text" class="form-control" id="group_tag" name="group_tag" value="" 
+                                                placeholder="" data-role="tagsinput" style="display: none;">
+                                                {% endif %}
+                                            </div>
+
+                                            <div id="response" class="col-md-12 alert">..</div> 
+
+                                            <div class="col-md-12">
+                                                {% if form.submit.errors %}
+                                                <div class="invalid-feedback"> {% for error in form.submit.errors %}{{ error }} ! {% endfor %}</div>
+                                                {% else %}
+                                                {{ form.submit(class="ec-slide-disc btn btn-lg font-weight-bold text-white rounded btn-primary", id="submit") }}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</section>
+
+{% include 'incs/bottom_js.html' %}
+
+{% block page_js %}     
+<script src="{{url_for('static', filename='js/vendor/jquery.magnific-popup.min.js')}}"></script>
+<script src="{{url_for('static', filename='js/plugins/jquery.sticky-sidebar.js')}}"></script>
+<script src="{{url_for('static', filename='js/plugins/nouislider.js')}}"></script>
+<!-- Google translate Js -->
+<script src="{{url_for('static', filename='js/vendor/google-translate.js')}}"></script>
+
+<script src="{{url_for('static', filename='js/vendor/index.js')}}"></script>
+<!-- <script src="{{url_for('static', filename='js/main.js')}}"></script> -->
+
+
+<script>
+$(document).ready( () => {
+//I'm extending jquery so I can make $.delete()/$.put()  request with this short-cut syntax ($.delete() )
+jQuery.each(["put", "delete"], function (i, method) {
+	jQuery[method] = function (url, data, callback, type) {
+		if (jQuery.isFunction(data)) {
+			type = type || callback;
+			callback = data;
+			data = undefined;
+		}
+
+		return jQuery.ajax({
+			url: url,
+			type: method,
+			dataType: type,
+			data: data,
+			success: callback
+		});
+	};
+});
+
+const url = "{{url_for('acct.post')}}"; 
+remove = (del_btn, item_id) => {
+if (!confirm('Sure To Delete This?')) { return } //true/false
+del_btnhtml = $(del_btn).html()
+$(del_btn, '#response').html('<i class="fa fa-circle-notch fa-spin fa-1x fa-fw"></i> deleting');
+let data = { item_id: item_id };
+var request = $.delete(url, data);
+
+request.done((r) => {
+
+	$(del_btn).html(del_btnhtml); //reset spinning submit-btn
+
+	if ('undefined' != typeof (r.response)) {
+		$('#response').html((r.response)).addClass(r.flash);
+	} else ($('#response').text(r).addClass('alert-success'))
+
+	if ("undefined" != typeof r.link) {
+		$('#response').append(' -> <br> <a href=' + r.link + '> Continue Here </a>');
+	}
+
+	console.log('response->(' + r.response + 'flash-message (' + r.flash); 
+
+    return;
+
+});
+
+request.fail((er) => {
+	$('#response').text('oops!!!, Request Failed'+ JSON.stringify(err)).addClass('alert-danger')
+	$(del_btn).html(del_btnhtml);
+});
+
+request.always(() => {
+	//alert("ajax complete");
+	$(del_btn).html('<i class="fa fa-circle-notch fa-spin fa-1x fa-fw"></i>');
+});
+}
+
+$('form').submit((e) => {
+    alert('sumitting')
+    e.preventDefault()
+    post_btn = $('#submit').html()
+    $(post_btn, '#response').html('<i class="fa fa-circle-notch fa-spin fa-1x fa-fw"></i>').addClass('disabled');
+    var request = $.post(url, $('form').serialize() );
+    request.done((r) => {
+        $('#submit').html(post_btn); //reset spinning submit-btn
+        if ('undefined' != typeof (r.response)) {
+            $('#response').html((r.response)).addClass(r.flash);
+        } 
+        if ("undefined" != typeof r.link) {
+            $('#response').append(' -> <br> <a href=' + r.link + '>continue</a>');
+        }
+        console.log('response->(' + response.response + 'flash-message (' + response.flash);
+        return;
+    });
+
+    request.fail((er) => { 
+        $('#response').text('oops!!!, Request Failed'+ JSON.stringify(err) ).addClass('alert-danger')
+        $('#submit').html(save_btn).removeClass('disabled');; //reset spinning submit-btn
+        console.log(err);
+        return;
+    });
+
+    request.always(() => {
+        $('#submit').html('<i class="fa fa-circle-notch fa-spin fa-1x fa-fw"></i>'); //always-on-each-request
+    });
+
+
+	});
+
+    //file-uploads
+    upload_file = (input, output) => {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = (e) => {
+            var src = e.target.result;
+            if (input.files[0].type.startsWith('image')) {
+                // Display image preview
+                $(output).attr('src', src);
+                //alert(input.files) //[object FileList]
+            } else if (input.files[0].type.startsWith('video')) {
+                // Display video preview
+                $(output).html('<video controls class="image-thumb-preview ec-image-preview" id="{{ unique_ids }}"><source src="' + src + '" type="' + input.files[0].type + '"></video>');
+            }
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+    }
+    
+    });
+    
+    
+    $.ajaxSetup({
+        // Inject my CSRF token into our AJAX request.
+        beforeSend: function (xhr, settings) {
+            if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", "{{ form.csrf_token._value() }}")
+            }
+        }
+    })
+
+    </script>
+{% endblock page_js %}

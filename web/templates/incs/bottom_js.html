@@ -1,0 +1,504 @@
+<script src="{{url_for('static', filename='js/vendor/jquery-3.5.1.min.js')}}">
+</script>
+<script src="{{url_for('static', filename='js/vendor/popper.min.js')}}">
+</script>
+<script src="{{url_for('static', filename='js/vendor/bootstrap.min.js')}}">
+</script>
+<script src="{{url_for('static', filename='js/vendor/jquery-migrate-3.3.0.min.js')}}">
+</script>
+<script src="{{url_for('static', filename='js/vendor/modernizr-3.11.2.min.js')}}">
+</script>
+<!--Plugins JS-->
+<script src="{{url_for('static', filename='js/plugins/swiper-bundle.min.js')}}">
+</script>
+<script src="{{url_for('static', filename='js/plugins/countdownTimer.min.js')}}">
+</script>
+<script src="{{url_for('static', filename='js/plugins/scrollup.js')}}"></script>
+<script src="{{url_for('static', filename='js/plugins/jquery.zoom.min.js')}}">
+</script>
+<script src="{{url_for('static', filename='js/plugins/slick.min.js')}}">
+</script>
+<script src="{{url_for('static', filename='js/plugins/infiniteslidev2.js')}}">
+</script>
+<script src="{{url_for('static', filename='js/plugins/fb-chat.js')}}"></script>
+<!-- Main Js -->
+<script src="{{url_for('static', filename='js/vendor/index.js')}}"></script>
+<script src="{{url_for('static', filename='js/demo-3.js')}}"></script>
+
+<script src="{{url_for('static', filename='js/vendor/jquery.magnific-popup.min.js')}}">
+</script>
+<script src="{{url_for('static', filename='js/plugins/jquery.sticky-sidebar.js')}}">
+</script>
+<script src="{{url_for('static', filename='js/plugins/nouislider.js')}}">
+</script>
+
+<!-- multi-step -->
+<script src="{{url_for('static', filename='js/plugins/bootstrap-multi-steps-component.min.js')}}">
+</script>
+
+<!-- filepond js -->
+<script src="{{url_for('static', filename='js/filepond/filepond.min.js')}}">
+</script>
+<script src="{{url_for('static', filename='js/filepond/filepond.jquery.js')}}">
+</script>
+
+<!-- chatme -->
+<!-- <script src="{{url_for('static', filename='js/chatme/template.js')}}"></script>
+<script src="{{url_for('static', filename='js/chatme/vendor.js')}}"></script>-->
+
+<!-- maptiler-api -->
+<!-- <script src="https://api.maptiler.com/maps/v1/watercolor/style.js?key=Ja8aExwRmQQZHifQLv3Q">
+</script>-->
+
+<style>
+/* Custom CSS for styling color inputs as checkboxes */
+.color-checkbox {
+    display: none;
+}
+
+.color-checkbox + label {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    background-color: #fff; /* Default background color */
+}
+
+.color-checkbox:checked + label {
+    background-color: var(--selected-color);
+}
+
+/* Custom CSS to style the color input visually */
+.color-checkbox + label::before {
+    content: "\00a0"; /* Non-breaking space to create width */
+    display: inline-block;
+    width: 26px; /* Adjust the width as needed */
+    height: 26px; /* Adjust the height as needed */
+    background-color: inherit;
+}
+
+/* Custom CSS to style the color input visually when checked */
+.color-checkbox:checked + label::before {
+    background-color: var(--selected-color);
+}
+</style>
+
+<!-- <script src="https://cdn.socket.io/4.1.2/socket.io.min.js"></script> -->
+<script src="{{url_for('static', filename='js/chatme/socket.io.min.js')}}">
+</script>
+<script src="{{url_for('static', filename='js/chatme/moment.min.js')}}">
+</script>
+<script type="text/javascript">
+
+ $(document).ready(() => {
+
+    function removeChars(s) {
+    const charsToRemove = ['[', ']', '{', '}', '\''];
+    let result = s;
+    for (let i = 0; i < charsToRemove.length; i++) {
+        const char = charsToRemove[i];
+        while (result.includes(char)) {
+            result = result.replace(char, '');
+        }
+        }
+        return result;
+    }
+
+
+
+    $(function () { 
+    $('#signupform').submit(function (e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const url = 'http://' + document.domain + ':' + location.port + '/signup';
+    var submit_btn = $(this).find('#submit');
+    var submit_btn_html = $(submit_btn).html();
+    var response_div = $(this).find('#response_div');
+    $(response_div, submit_btn).html('<i class="fa fa-circle-notch fa-spin fa-1x fa-fw"></i> ...processing').addClass('disabled').addClass('primary');
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (response){
+            $(submit_btn).removeClass('disabled').html(submit_btn_html); //reset submit-btn
+
+            if (response && (response.message || response.error_message || response.data)){
+
+                var response_message = response.success ? (response.message || response.error_message) : response.data || response.error_message;
+                var response_link = response.success ? response.link : null;
+                var response_alert = response.alert;
+            
+                //response_message = response_message.replace(/\{[^[]*\[/g, '').replace(/] [^\]]*\}/g, '');
+                response_message = removeChars(response_message);
+                
+                //alert(response_message);
+
+                if (response.success){
+                    $(response_div).addClass('alert-success');
+                }else{
+                    $(response_div).addClass('alert-danger');
+                }
+
+                $(response_div).text(response_message);
+                
+                if(response_link !== null){
+
+                    $(response_div).append(' <br> <a href=' +response_link + ' \
+                    class="bg-transparent p-0 m-0 rounded" data-bs-dismiss="modal" data-bs-toggle="modal"> -> continue here </a>');
+                }
+                //$('form').hide();
+            }
+
+            if ('undefined' === typeof (response)){
+
+                $(response_div).text(response).addClass('alert-danger');
+
+            } 
+
+            console.log('response->(' + JSON.stringify(response) + ')');
+        },
+        
+        error: function (xhr, status, er) {
+            $(response_div).text('request-failed'+JSON.stringify(er)).addClass('alert-danger')
+            $(submit_btn).removeClass('disabled').html(submit_btn_html); //reset spinning submit-btn
+            },
+
+        always: function (dt) {
+            console.log("ajax complete with"+ JSON.stringify(dt));
+            $(submit_btn).addClass('disabled').html('<i class="fa fa-circle-notch fa-spin fa-1x fa-fw"></i> ...processing');
+            },
+
+        complete: function (){
+            // Reset the submit button after the request is complete
+            $(submit_btn).removeClass('disabled').html(submit_btn_html);
+            setTimeout(function () {
+                $(response_div).hide(); // Alternatively, you can use response_div.remove() to completely remove it from the DOM
+            }, 5000);
+
+        }, 
+    });
+
+    });
+    });
+
+});
+
+
+$(document).ready( () => {
+    try{
+        
+    const socket = io();
+    const validate = (data) => {
+        if (typeof data === 'object' && !Array.isArray(data)) {
+            return JSON.stringify(data); // Return the validated data
+        } else {
+            console.error('Data must be a dictionary.');
+            return null; // Return null to indicate validation failure
+        }
+        };
+
+    socket.on("connect", () => {
+        console.log('connected');
+        socket.emit('connected', validate({'data':'connected'}) );
+    });
+
+    socket.on("disconnected", () => {
+        alert('dis-conected');
+        socket.emit('disconnect', validate({'data':'disconnected'}));
+        console.log('disconnected');
+
+    })
+
+    // on-messaging, emit `save-chat-request` event to inform the server
+    $('#chat-form').on('submit', (e) => {
+        e.preventDefault();
+        const content = $('#chat-content');
+        let dt = {
+            /* schema expects str & int */
+            'to': $(content).attr("data-to").toString(), 
+            'fro': $(content).attr("data-fro").toString(),
+            'text': $(content).val().toString(),
+            'sticker': ''.toString(),
+            'media': ''.toString(),
+            /* 'sticker': $(content).files.length > 0 ? $(content).files[0] : null,
+            'media': $(content).files.length > 0 ? $(content).files[0] : null, */
+            };
+            
+        let dt1 = {
+            "to": 'jameschristo962', //these usernames will pass username validation checks bcos they exists.
+            "fro": '@hacker',
+            "text": "Hello",
+            //"sticker": "smile",
+            //"media": "image.jpg"
+        }
+
+        //emit `save-chat-request` event to the server
+        socket.emit('save-chat-request',  validate(dt), (response) => {
+            console.log("Received acknowledgment from server:", (response));
+            //socket.emit("save-chat-response", {'check': dt});
+            //$('#save-chat-request-btn').addClass('disabled');
+            //$(content).val('').focus(); //reset input box
+
+            $(content).val('').focus(); //reset input box
+            $('#save-chat-request-btn').removeClass('disabled');
+        });
+        
+        // Handling the response for the 'save-chat-request' event
+        socket.on('save-chat-response', function(response) {
+    // Handle the response here
+});
+
+        socket.on('save-chat-response', (response) => {
+            //alert('response to save-chat-response');
+            if (response && (response.message || response.error_message)){
+            //if (response){
+                // Request was processed successfully
+                //var response_message = response.success ? (response.data || response.message) : response.error_message;
+                var response_data = response.success ? response.data : null;
+                var response_fro_username = response_data ? response_data.fro_username  : '...';
+                var response_message = response_data ? (response_data.text || response.message) : response.error_message;
+                var response_time = response_data ? (moment(response_data.updated).fromNow() || moment(response_data.created).fromNow() ) :moment(new Date()).fromNow();
+                
+                // Your datetime string in YYYY-MM-DDTHH:MM:SSZ format
+                var datetimeString = '2023-10-27T12:21:39Z';
+                // Parse the datetime string into a Moment.js object
+                var datetime = moment(datetimeString);
+                // Format the datetime as "time ago"
+                var timeAgo = datetime.fromNow();
+                
+                var server_sid = response.server_sid;
+                // Clone the message element
+                var messages_div = $('#messages');
+                var clonedMessage = $('#message').removeClass('d-none').clone();
+
+                //format the message for sender by simply adding `.message-out` class
+                //if (socket.id != server_sid){
+                if (socket.id === server_sid){
+                    $(clonedMessage).addClass('message-out');
+                }
+                // Update the user name, message text, and time
+                clonedMessage.find('h6.text-reset').text(response_fro_username);
+                clonedMessage.find('span.extra-small.text-muted').text(response_time);
+                clonedMessage.find('div.message-text p').text(response_message);
+
+                if(response.success === false && response_message ){
+                    clonedMessage.find('div.message-text p').addClass('text-danger'); //format text-red if error occured during request.
+                }
+
+                // Append the cloned and updated message to the '.message-body'
+                $(messages_div).append(clonedMessage);
+
+                // Animate scrolling to the bottom, scrollheight of the `messages_div`
+                $('.chat-body').animate({ scrollTop: messages_div.prop("scrollHeight") }, 500);
+                //$('.chat-body').animate({ scrollTop:  $('.chat-body').prop("scrollHeight") }, 500);
+
+                //$('#save-chat-request-btn').removeClass('disabled'); //reset/ enable send btn when the response comes
+                $(content).val('').focus(); //reset input box
+                $('#save-chat-request-btn').removeClass('disabled');
+
+                console.log(
+                'stringified-response:', JSON.stringify(response), '\n',
+                'success-type:', typeof response.success, '\n',
+                'error msg:', response.error_message, '\n',
+                'success msg:', response.success, '\n',
+                'message:', response.message, '\n',
+                'Data:', response.data, '\n',
+                'stringified-response', JSON.stringify(response)
+                ); 
+                
+            }
+        });
+
+    });
+
+}catch(e){
+console.log(e)
+}
+
+});
+
+$(document).ready( () => {
+// Detect when a modal is shown
+$('.modal').on('show.bs.modal', function (e) {
+  //if ($('.modal.in').length > 0) {
+    if ($('.modal:visible').length > 0) {
+    // Hide the backdrop if another modal is already open
+    $('.modal-backdrop').not('.modal-stack').remove();
+  }
+  $(this).after('<div class="modal-backdrop modal-stack"></div>');
+});
+// Detect when a modal is hidden
+$('.modal').on('hidden.bs.modal', function (e) {
+  if ($('.modal.in').length === 0) {
+    // Remove the modal backdrop when no modals are open
+   $('.modal-backdrop.modal-stack').remove();
+  }
+});
+
+function updateSelectedColors(input) {
+    // Get the selected color value from color2
+    var selectedColorValue = input.value;
+    
+    // Get the current value of the hidden input field
+    var currentValue = $('#color').val();
+    var colorField = $('#color');
+
+    // Concatenate the selected color value to the current value with a separator
+    var updatedValue = currentValue + (currentValue ? ', ' : '') + selectedColorValue;
+
+    // Set the value of the hidden input field
+    $(colorField).val(updatedValue);
+
+    // Set the value of the color input to the accumulated selected colors
+    if (updatedValue) {
+        $(colorField).val(updatedValue);
+    } else {
+        $(colorField).val(null); // Set to None
+    }
+}
+
+const inputElement = document.querySelector('.filepond');
+const pond = FilePond.create(inputElement, {
+name: 'images', // Match the name of your Flask-WTF field
+allowFileTypeValidation: true,
+allowFileSizeValidation: true,
+maxFileSize: '10MB',
+minFileSize: '1KB',
+maxTotalFileSize: '50MB',
+maxFiles: 15, // Set the maximum number of files users can upload
+imageResizeTargetWidth: 20,
+imageResizeTargetHeight: 10,
+storeAsFile: true,
+allowRemove: true,
+allowRevert: true,
+dropValidation: true,
+checkValidity: true,
+dropOnPage: true,
+allowMultiple: true, // Allow multiple files to be selected
+
+onaddfile: function (error, fileItem) {
+// This event is triggered when a file is added
+const previewContainer = $('.preview-container');
+const fileId = fileItem.id;
+
+const previewElement = $(`
+    <div class="file-preview p-2" data-file-id="${fileId}">
+        <i class="ecicon eci-close file-action-button p-1 rounded bg-secondary text-danger"></i>
+    </div>
+`);
+
+previewContainer.append(previewElement);
+
+// Add real-time preview for images and videos
+if (fileItem.file.type.startsWith('image/') || fileItem.file.type.startsWith('video/')) {
+    const fileReader = new FileReader();
+    fileReader.onload = function (e) {
+        const preview = document.createElement(fileItem.file.type.startsWith('image/') ? 'img' : 'video');
+        preview.src = e.target.result;
+        if (fileItem.file.type.startsWith('video/')) {
+            preview.controls = true;
+        }
+        previewElement.append(preview);
+        
+    };
+
+    fileReader.readAsDataURL(fileItem.file);
+
+    // Add a click event handler to the delete button for this file
+    previewElement.find('.file-action-button').on('click', function () {
+        // Remove the file from FilePond using the fileId
+        pond.removeFile(fileId);
+
+    });
+}
+},
+
+onremovefile: function (error, fileItem) {
+// This event is triggered when a file is removed
+// Remove the corresponding preview element
+const previewContainer = $('.preview-container');
+const previews = previewContainer.find('.file-preview');
+previews.each(function () {
+    if ($(this).data('file-id') === fileItem.id) {
+        $(this).remove();
+        return false;
+    }
+});
+},
+});
+
+// Handle form submission
+$('#postform').submit(function (e) {
+e.preventDefault();
+
+const formData = new FormData(this); //Serialize the entire form, including FilePond files
+
+// Get the uploaded files from FilePond and append them to the FormData object
+const files = pond.getFiles();
+files.forEach(function (fileItem) {
+    formData.append('images', fileItem.file);
+});
+
+//const url = "{{ url_for('listing_api.create_listing') }}";
+const url = "{{ url_for('acct.post') }}";
+const post_btn = $('#save_listing').html();
+$(post_btn, '#response').html('<i class="fa fa-circle-notch fa-spin fa-1x fa-fw"></i>').addClass('disabled').addClass('primary');
+$.ajax({
+    url: url,
+    type: 'POST',
+    data: formData,
+    contentType: false,
+    processData: false,
+    success: function (r){
+
+        $('#save_listing').html(post_btn); //reset spinning submit-btn
+
+        // Check if there are issues with link, response, or flash
+        if (r.hasOwnProperty("link") || r.hasOwnProperty("response") || r.hasOwnProperty("flash")) {
+            // Handle properties as needed
+            // Note: You can also use typeof to further validate the type of these properties if needed
+            if (typeof r.response !== "undefined"){
+                // Handle response
+                $('#response').html(r.response).addClass(r.flash);
+            }
+            if (typeof r.flash !== "undefined") {
+                // Handle flash
+                $('#response').addClass(r.flash);
+            }
+            if (typeof r.link !== "undefined") {
+                // Handle link
+                $('#response').append(' -> <a href="' + r.link + '">Continue</a>');
+            }
+        }else {
+            // Handle other cases
+            $('#response').text('sent-request->'+ JSON.stringify(r)).addClass('alert-warning');
+        }
+
+        $('#save_listing').html(post_btn).removeClass('disabled'); 
+
+        return true;
+    },
+    error: function (xhr, status, err) {
+        $('#response').text('Request Failed'+ JSON.stringify(err) ).addClass('alert-primary')
+        $('#save_listing').html(post_btn).removeClass('disabled'); //reset spinning submit-btn
+        console.log(err);
+        return;
+        },
+    complete: function (){
+        // Reset the submit button after the request is complete
+        $('#save_listing').html(post_btn).removeClass('disabled');
+        // Set a timeout to remove the message after the specified time
+        setTimeout(function() {
+            $('#response').removeClass('alert').empty(); // Remove the content from the response div
+        }, 10000); //30000 = half a minute, 5000==5seconds
+
+    }, });
+});
+
+});
+
+</script>

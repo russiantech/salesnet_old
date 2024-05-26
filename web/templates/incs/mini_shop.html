@@ -1,0 +1,26 @@
+{% for p in items %}
+<div class="product-card style3">
+    <div class="product-img bg-athens">
+        <img src="{{url_for('static', filename='img/gen/'+ p.photos[0]|string )}}" alt="image">
+        <span class="promo-text"><i class="flaticon-star"></i>4.00</span>
+        <ul class="product-option list-style">
+            <li>
+
+            <li><a href="{{url_for('main.shop')}}/{{p.id}}"><i class="ri-eye-line"></i></i></a></li>
+            <!-- <li><a href="{{url_for('main.shop')}}/{{p.id}}"><i class="ri-shopping-cart-2-line"></i></a></li> -->
+            <li><button onclick="save_cart(this)" data-item="{{p.id}}"><i class="ri-shopping-cart-2-line"></i></button></li>
+            <li><a href="{{url_for('main.shop')}}/{{p.id}}"><i class="ri-heart-line"></i></a></li>
+        </ul>
+    </div>
+    <div class="product-info">
+        <h3><a href="{{url_for('main.shop')}}/{{p.id}}">{{p.attributes[0]}}</a></h3>
+        <p class="product-price">N{{p.price}}<span class="discount">$1450.00</span></p>
+    </div>
+</div>
+{%endfor%}
+</div>
+<div class="hero-btn aos-init aos-animate" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="400">
+<a href="{{url_for('main.shop')}}" class="btn style5">
+    <span class="play-btn"> <i class="flaticon-play-button-arrowhead"></i></span>
+    Discover Generators</a>
+</div>
