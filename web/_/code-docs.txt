@@ -1,0 +1,22 @@
+
+Code Docs/Explanations
+
+ >> Users.followed column in the User Model.
+
+This code creating a many-to-many relationship between the `User` model and itself for a "followed/following" relationship. This is a common way to implement a following system in a database schema using SQLAlchemy.
+
+Here's how this code works:
+
+1. `followed` is a relationship defined in the `User` model, and it's associated with the `User` model itself.
+
+2. The `secondary` parameter specifies the association table, which is represented by the `followers` table or entity.
+
+3. The `primaryjoin` and `secondaryjoin` parameters define the conditions for the join between the `User` model and the `followers` table. The `primaryjoin` condition links the `id` of the `User` to the `follower_id` in the `followers` table, while the `secondaryjoin` links the `id` of the `User` to the `followed_id` in the `followers` table.
+
+4. The `backref` parameter creates a reverse relationship from the `User` model to itself, defining `followers`. This reverse relationship allows you to access the users who are following a particular user.
+
+5. The `lazy` parameter defines the loading strategy for this relationship.
+
+With this code, you can efficiently manage and query the relationships between users in a following system. Users can follow and unfollow other users, and you can easily retrieve a user's followers and users they are following by using the defined relationships.
+
+To implement following and unfollowing functionality, you can create methods within the `User` model, such as `follow` and `unfollow`, These methods would interact with the `followed` relationship to manage the followers and followed users for each user.

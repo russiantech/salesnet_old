@@ -1,0 +1,65 @@
+checkout-process
+1. if not logged-in, save order-info and try signing the customer up.
+2. if logged-in, save order against the logged-in user.
+3. order_id becomees the invoice_id
+
+
+
+4 Sales-Net
+
+Categories | Post | Search | Wishlist | Basket
+Account( Notifications & Chats)
+
+
+
+SKRILL-QUICKDATE
+
+68.59EUR
+
+
+
+findmeu.com (color-red-code -> #FF0000)
+dating_script complains -> contact -> wowondersocial@gmail.com <wowondersocial@gmail.com
+info@findmeu.com(hacker@findmeu.coms)
+
+site_admin( findmeu_empire (hacker@findmeu.coms_XX_500_Xxx) )
+
+cPanel Login Details
+
+Control Panel URL: http://193.108.119.142:2082/
+Once your domain has propagated, you may also use http://findmeu.com/cpanel
+
+Username:findmeuc
+
+Password:4Po0lr*QM8b6
+
+
+/******************/
+#ed1e09
+/****************/
+ 
+
+FTP Access
+
+Host:sftp://193.108.119.142
+ 
+Username:findmeuc
+ 
+Password:4Po0lr*QM8b6
+ 
+Port:1624
+ 
+ 
+SMTP Access
+
+For SMTP connections for your website forms, please use the details below
+
+Server/Host: frt106.truehost.cloud
+
+Username: Full email address e.g info@findmeu.com
+
+Password: Your email password
+
+Port: 587
+
+Encryption: TLS

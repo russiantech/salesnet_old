@@ -1,0 +1,6 @@
+->wanting the form to be loaded everywhere.
+ > considerations:
+   a. pass the form to app_context/before each request
+   b. you may want to use html form but validate with wtf form validations.
+  -> in the 2nd approach b), I think some of the challenges will be, that fields like select/dropdowns defined in wtf for the 
+     postform may need to be repeated in html which is not professional. 

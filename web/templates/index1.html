@@ -1,0 +1,530 @@
+{% extends 'base.html' %}
+{% block title %} Affordable {% endblock title %}
+{% block content %}
+
+<section class="hero-wrap style3">
+	<div class="hero-slider-two owl-carousel">
+		<div class="hero-slide-item">
+			<div class="container">
+				<div class="row gx-5 align-items-center">
+					<div class="col-xl-6 col-lg-6">
+						<div class="hero-content">
+							<span data-aos="fade-left" data-aos-duration="1200" data-aos-delay="100">Sound Proof</span>
+							<h1 data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
+								Life Is Better With Smart power Genertors</h1>
+							<p data-aos="fade-left" data-aos-duration="1200" data-aos-delay="300">
+								Brought to you by Affordable. Portable and Powerful. Say Goodbye To Noise Polution, Buy
+								what is afforable and healthy.
+							</p>
+							<div class="hero-btn" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="400">
+								<a href="/shop" class="btn style5">Shop Now</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-6">
+						<div class="hero-img-wrap" data-speed="0.10" data-revert="true">
+							<div class="hero-promotext">
+								<span>Sound Proof</span>
+							</div>
+							<img src="{{url_for('static', filename='img/hero/1.png')}}" alt="Image">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="hero-slide-item">
+			<div class="container">
+				<div class="row gx-5 align-items-center">
+					<div class="col-xl-6 col-lg-6">
+						<div class="hero-content">
+							<span data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">No Fuel Or
+								Diesel</span>
+							<h1 data-aos="fade-left" data-aos-duration="1200" data-aos-delay="300">It Does'nt Use Fuel
+								Or Diesel.
+							</h1>
+							<p data-aos="fade-left" data-aos-duration="1200" data-aos-delay="400">
+								Everything Affordable Here, You Will Not Be Spending On Fuel/Diesel Anymore. These Are
+								Smart Gen
+								With Inbuild Charge Alternator, That Keep It Charging All Day Long.
+							</p>
+							<div class="hero-btn" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="500">
+								<a class="play-video" href="/shop">
+									<span class="play-btn"> <i class="flaticon-play-button-arrowhead"></i></span>
+									<span class="play-text xs-none">Find More</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-6">
+						<div class="hero-img-wrap" data-speed="0.10" data-revert="true">
+							<div class="hero-promotext">
+								<span>No Polution</span>
+							</div>
+							<img src="{{url_for('static', filename='img/hero/2.png')}}" alt="Image">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="hero-slide-item">
+			<div class="container">
+				<div class="row gx-5 align-items-center">
+					<div class="col-xl-6 col-lg-6">
+						<div class="hero-content">
+							<span data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">PROMOTIONAL
+								OFFER</span>
+							<h1 data-aos="fade-left" data-aos-duration="1200" data-aos-delay="300">New
+								offers With 20% Discount</h1>
+							<p data-aos="fade-left" data-aos-duration="1200" data-aos-delay="400">
+								2Yrs Waranty Assured & It Works For 20 Hours Per Full Charge. This Is What Smart Homes
+								Needs
+								In This Smart World.
+							</p>
+							<div class="hero-btn" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="500">
+								<a class="play-video" href="{{url_for('main.shop')}}">
+									<span class="play-btn"> <i class="flaticon-play-button-arrowhead"></i></span>
+									<span class="play-text xs-none">Shop For More</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-6">
+						<div class="hero-img-wrap" data-speed="0.10" data-revert="true">
+							<div class="hero-promotext">
+								<span>Modern Power Supply</span>
+							</div>
+							<img src="{{url_for('static', filename='img/hero/3.png')}}" alt="Image">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<div class="feature-wrap pt-100 pb-75">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100">
+				<div class="feature-card style2">
+					<span class="feature-icon">
+						<i class="flaticon-premium"></i>
+					</span>
+					<div class="feature-text">
+						<h3>Premium Quality</h3>
+						<p>It's all outstanding, no noise, no fossils, less maintenance costs.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
+				<div class="feature-card style2">
+					<span class="feature-icon">
+						<i class="flaticon-quality-1"></i>
+					</span>
+					<div class="feature-text">
+						<h3>Flexible To maintain</h3>
+						<p>Best generators for all kinds of power supply needs. Home, office and commercial use cases
+							.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="300">
+				<div class="feature-card style2">
+					<span class="feature-icon">
+						<i class="flaticon-sport-shoes"></i>
+					</span>
+					<div class="feature-text">
+						<h3>Long Lasting</h3>
+						<p>Quality power generators, durable and powerful. Allowing your business go uninterrupted.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<section class="about-wrap style3 pb-100 pt-75" id="us">
+	<div class="container">
+		<div class="row gx-5 align-items-center">
+			<div class="col-lg-6">
+				<div class="about-img-wrap" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="200">
+					<div class="about-bg-two bg-f"></div>
+					<span></span>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="about-content" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
+					<div class="content-title style1">
+						<span>ABOUT US</span>
+						<h2>Everythingaffordable.ng is A One-Stop Shop For All Your Power Generation Needs</h2>
+						<p>Trending Power Suppliers & Improved Smart Generators. Powering Homes, Offices And Commerce.
+							Shop Quality Power Suppliers On everythingaffordable.ng .
+						</p>
+					</div>
+					<div class="feature-item-wrap style1">
+						<div class="feature-item">
+							<div class="feature-icon">
+								<i class="flaticon-hand"></i>
+							</div>
+							<div class="feature-text">
+								<h3>Commercial And Industrial,</h3>
+								<p>Na We Dey Keep Your Home And Enterprises Smart, Powered And Save.
+									We're Best At What We Offer, From
+									Generator Rentals, Maintenance, Repairs & Sales in Lagos Nigeria.
+								</p>
+							</div>
+						</div>
+						<div class="feature-item">
+							<div class="feature-icon">
+								<i class="flaticon-shoe"></i>
+							</div>
+							<div class="feature-text">
+								<h3>Low Cost And Easy Maintainance</h3>
+								<p>Our Generators Are SMart, No Fuel/Diesel Needed, Self Chargers And Renewable Energy.
+								</p>
+							</div>
+						</div>
+					</div>
+					<a href="" class="btn style5">Read More</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<div class="partner-wrap pb-100">
+	<div class="container">
+		<div class="partner-slider-two owl-carousel">
+			<div class="partner-item">
+				<img src="{{url_for('static', filename='img/partner/partner-1.png')}}" alt="Image">
+			</div>
+			<div class="partner-item">
+				<img src="{{url_for('static', filename='img/partner/partner-2.png')}}" alt="Image">
+			</div>
+			<div class="partner-item">
+				<img src="{{url_for('static', filename='img/partner/partner-3.png')}}" alt="Image">
+			</div>
+			<div class="partner-item">
+				<img src="{{url_for('static', filename='img/partner/partner-4.png')}}" alt="Image">
+			</div>
+			<div class="partner-item">
+				<img src="{{url_for('static', filename='img/partner/partner-5.png')}}" alt="Image">
+			</div>
+			<div class="partner-item">
+				<img src="{{url_for('static', filename='img/partner/partner-6.png')}}" alt="Image">
+			</div>
+		</div>
+	</div>
+</div>
+<section class="offer-wrap style2 bg-albastor ptb-100">
+	<div class="container">
+		<div class="row gx-5 align-items-center">
+			<div class="col-lg-6 col-md-12 col-12 order-lg-1 order-md-2 order-2">
+				<div class="offer-content text-center" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
+					<div class="content-title style1 mb-25">
+						<span>SPECIAL OFFER</span>
+						<h2>Discount 50% Off</h2>
+						<p>High quality Power Generators going for some cheap prices. Grab it now, because the discount
+							only lasts for some
+							few hours.
+						</p>
+					</div>
+					<a href="{{url_for('main.shop')}}" class="btn style6">Shop Now</a>
+				</div>
+			</div>
+			<div class="col-lg-6 col-md-12 col-12 order-lg-2 order-md-1 order-1">
+				<div class="offer-img-wrap" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
+					<img src="{{url_for('static', filename='img/products/product6.png')}}" alt="Image">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="product-wrap ptb-100" id="shop">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+				<div class="section-title style1 text-center mb-40">
+					<span>NEW ARRIVALS</span>
+					<h2>Our Latest Products</h2>
+				</div>
+			</div>
+		</div>
+		<div class="product-slider-three owl-carousel">
+
+			{% include "incs/mini_shop.html" %}
+	</div>
+</section>
+
+<section class="why-choose-wrap style2 pb-100">
+	<div class="container">
+		<div class="row gx-5 align-items-center">
+			<div class="col-lg-6">
+				<div class="wh-img-wrap">
+					<div class="wh-bg-two bg-f"></div>
+					<span></span>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="wh-content">
+					<div class="about-content">
+						<div class="content-title style1 mb-30">
+							<span>WHY CHOOSE US</span>
+							<h2>Smart Power Generators And Most Preferable Power Systems</h2>
+							<p>Keep Your Home Smart, Save And Healthy. No Noise, No Gas Emission.</p>
+						</div>
+						<div class="feature-item-wrap style1">
+							<div class="feature-item">
+								<div class="feature-icon">
+									<i class="flaticon-return"></i>
+								</div>
+								<div class="feature-text">
+									<h3>Longer Battery Life</h3>
+									<p>Quality Power Generators, Durable and Most Preffered.</p>
+								</div>
+							</div>
+							<div class="feature-item">
+								<div class="feature-icon">
+									<i class="flaticon-color-wheel"></i>
+								</div>
+								<div class="feature-text">
+									<h3>Unlimited Power Supply</h3>
+									<p>It Last For More Than 20 Hours And Recharges It Self Through An Inbuild
+										Alternator</p>
+								</div>
+							</div>
+							<div class="feature-item">
+								<div class="feature-icon">
+									<i class="flaticon-return"></i>
+								</div>
+								<div class="feature-text">
+									<h3>Sound Proof</h3>
+									<p>No Noise Pollution. Life Is Much Better With everythingaffordable.ng.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="contact-us-wrap pt-100" id="intouch">
+	<div class="container">
+		<div class="section-title text-center style1 mb-40">
+			<span>SEND MESSAGE</span>
+			<h2>We Are Here To Help You</h2>
+		</div>
+		<div class="row justify-content-center contact-box-wrap mb-0">
+			<div class="col-xl-4 col-lg-6 col-md-6">
+				<div class="contact-item">
+					<span class="contact-icon">
+						<i class="flaticon-pin"></i>
+					</span>
+					<div class="contact-info">
+						<h3>Our Location</h3>
+						<p>HFP Complex, Adesanya, Lagos, Nig</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-6 col-md-6">
+				<div class="contact-item">
+					<span class="contact-icon">
+						<i class="flaticon-email"></i>
+					</span>
+					<div class="contact-info">
+						<h3>Email Us</h3>
+						<a href="mailto:buytheaffordable@gmail.com">buytheaffordable@gmail.com</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-6 col-md-6">
+				<div class="contact-item">
+					<span class="contact-icon">
+						<i class="flaticon-call"></i>
+					</span>
+					<div class="contact-info">
+						<h3>Call us</h3>
+						<a href="tel:8165669886">+2348165669886</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row  pb-100 align-items-end">
+			<div class="col-xl-4 col-lg-5">
+				<div class="comp-map">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.4059206596467!2d3.5817648967895384!3d6.470155100000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf9fc75fe0f05%3A0x502d1606ef3fdeed!2sHFP%20Eastline%20Shopping%20Complex!5e0!3m2!1sen!2sng!4v1684359140477!5m2!1sen!2sng" 
+				width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+				</div>
+			</div>
+			<div class="col-xl-8 col-lg-7">
+				<div class="contact-form">
+					<form class="form-wrap" id="contactForm" action="/intouch" method="post" novalidate="true">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<input type="text" name="name" placeholder="Your Full Name*" id="name" required=""
+										data-error="Please enter your name">
+									<div class="help-block with-errors"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<input type="email" name="email" id="email" required="" placeholder="Email Address*"
+										data-error="Please enter your email">
+									<div class="help-block with-errors"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<input type="text" name="phone_number" placeholder="Phone Number" id="phone_number"
+										required="" data-error="Please enter your phone number">
+									<div class="help-block with-errors"></div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<input type="text" name="msg_subject" placeholder="Subject" id="msg_subject"
+										required="" data-error="Please enter your subject">
+									<div class="help-block with-errors"></div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group v1">
+									<textarea name="message" id="message" placeholder="Your Messages.." cols="30"
+										rows="10" required="" data-error="Please enter your message"></textarea>
+									<div class="help-block with-errors"></div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<button type="submit" class="btn style1 disabled"
+									style="pointer-events: all; cursor: pointer;">Send Message</button>
+								<div id="msgSubmit" class="h3 text-center hidden"></div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="promo-wrap pb-75">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-12">
+				<div class="feature-item-wrap style5">
+					<div class="feature-item" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100">
+						<div class="feature-icon">
+							<i class="flaticon-delivery"></i>
+						</div>
+						<div class="feature-text">
+							<h3>Free Shipping</h3>
+							<p>This applies to orders above 180k and above. Within lagos and Ibadan</p>
+						</div>
+					</div>
+					<div class="feature-item" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
+						<div class="feature-icon">
+							<i class="flaticon-24-hour-clock"></i>
+						</div>
+						<div class="feature-text">
+							<h3>Support 24/7</h3>
+							<p>Our happy team is always ready to help you out, just reach out anytime.</p>
+						</div>
+					</div>
+					<div class="feature-item" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="300">
+						<div class="feature-icon">
+							<i class="flaticon-credit-card"></i>
+						</div>
+						<div class="feature-text">
+							<h3>Secured Payment</h3>
+							<p>The Biz Alert IT Dept.
+								Payment is authenticated with 3D-Security & PCIC compliance.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% include "incs/testify.html" %}
+
+<section class="blog-wrap pt-100 pb-75" id="blog">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
+				<div class="section-title style1 text-center mb-40">
+					<span>LATEST NEWS</span>
+					<h2>Reading Our Blog Content</h2>
+					<p>We'll be publishing relevant content here to help you better understand how you can maximize our
+						website
+						and not missout of updates.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100">
+				<div class="blog-card style3">
+					<div class="blog-img">
+						<img src="{{url_for('static', filename='img/products/product10.jpg')}}" alt="Image">
+					</div>
+					<div class="blog-info">
+						<ul class="blog-metainfo  list-style">
+							<li><i class="flaticon-user"></i><a href="">Admin</a></li>
+							<li><i class="flaticon-bubble-chat"></i>No Comment</li>
+							<li><i class="flaticon-calendar"></i><a href="">01
+									Nov, 2021</a></li>
+						</ul>
+						<h3><a href="#blog">How Can I Buy The Product</a>
+						</h3>
+						<p>Simply, click on "add to cart" and follow the prompts</p>
+						<a href="#blog" class="link style1">Read More <i class="flaticon-right-arrow"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
+				<div class="blog-card style3">
+					<div class="blog-img">
+						<img src="{{url_for('static', filename='img/products/product9.jpg')}}" alt="Image">
+					</div>
+					<div class="blog-info">
+						<ul class="blog-metainfo  list-style">
+							<li><i class="flaticon-user"></i><a href="">Admin</a></li>
+							<li><i class="flaticon-bubble-chat"></i>No Comment</li>
+							<li><i class="flaticon-calendar"></i><a href="">22 Feb, 2023</a></li>
+						</ul>
+						<h3><a href="">How To Return The Product</a>
+						</h3>
+						<p>Kindly contact our support, or bring it in good condition to our Hfp Shopping Complex</p>
+						<a href="#blog" class="link style1">Read More
+							<i class="flaticon-right-arrow"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="300">
+				<div class="blog-card style3">
+					<div class="blog-img">
+						<img src="{{url_for('static', filename='img/products/product8.jpg')}}" alt="Image">
+					</div>
+					<div class="blog-info">
+						<ul class="blog-metainfo  list-style">
+							<li><i class="flaticon-user"></i><a href="">Admin</a></li>
+							<li><i class="flaticon-bubble-chat"></i>No Comment</li>
+							<li><i class="flaticon-calendar"></i><a href="">13 Jul, 2021</a></li>
+						</ul>
+						<h3><a href="#blog">How To Pay Online</a></h3>
+						<p>You can pay securely with your credit/debit cards. Or Choose most prefered payment at
+							checkout.</p>
+						<a href="#blog" class="link style1">Read More <i class="flaticon-right-arrow"></i> </a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% include 'incs/newsleta.html' %}
+{% endblock content %}

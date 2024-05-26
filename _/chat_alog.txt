@@ -1,0 +1,178 @@
+- from
+- to
+- chat
+
+
+to delete a chat,
+
+send chat_id & user_id
+determine if user_id sent is fro/to
+set corresponding chat to False for that user.
+
+OR
+
+send chat_id
+ensure chat exists
+check who wants to del chat(fro/to)
+ensure they're part of that very conversation
+set the corresponding chat to False/Deleted for that particular user depending on weather were sender(fro) or receiver(to)
+
+updating
+-get payload with mandatory(id,sender)
+-ensure current_user is sender.
+
+to save a chat
+to
+fro
+text
+sticker
+media
+
+messages can be:
+-reply
+-text
+-media
+-emoji/gifs/
+
+
+////////////
+-. unauthenticated-users should'nt have access to websocket service.
+-. input validation
+-. message encryption
+-.  Typically, this involves using decorators or middleware to enforce rate limits.
+
+
+
+events & name-spaces:
+.namespace = '/chat'
+.connect - notify others you're available
+.disconnect - notify other(s) when you leave
+.typing - notify you about who's currently typing
+
+.save-chat - submits/send a new chat/message(to, fro, chat), chat can be(media, text, voice, ticker, etc)
+.fetcht-chat - returns a user's conversation-list (user-id)
+.remove-chat - removes/deletes a chat(specified by an chat-id, and sender-id)
+.update-chat - update an existing chat(chat-id, sender-id, chat/message(updated)).
+
+..............................................................
+ (Note: These should create events that front-end-socket can listen to).
+
+-> save-chat(sender-id, recipient-id, chat/msg)
+   >payload-validation:
+      0. check if sender is logged in first. Return auth-error if not.(our route decorator can help with this).
+      1. check for required data(to . fro . msg). Return error if any is missing
+      2. check if users(to . fro) exists. Return error if any missing
+      3. save chats and return sucess(inform of socket events the front-end can listen to).
+  (Note: These should create events that front-end-socket can listen to).
+
+-> fetch-chat(user-id)
+   > check if user is auth. if not, return auth-error(route decorator can help with this).
+   > > check if any mandatory details(user-id) missing, return error if it is.
+   > check if user has atleast 1 conversation(s), and return a list of it. 
+ (Note: These should create events that front-end-socket can listen to).
+
+->remove-chat(chat-id, user-id)
+  > check if user(sender) is logged in first. Return auth-error if not.(our route decorator can help with this).
+  > check if any mandatory details(user-id, chat-id) missing, return error if it is.
+  > check if they're the owner(sender), if not return permission-error.
+  > return a success msg if deleted.
+ (Note: These should create events that front-end-socket can listen/respond to).
+
+->update-chat(user-id, chat-id, chat-content(updated))
+  > check if user(sender) is logged in first. Return auth-error if not.(our route decorator can help with this).
+  > check if any mandatory details(user-id, chat-id, chat-content)missing, return error if it is.
+  > check if chat exist. return err if not
+  > check if they're the owner(sender) of that specific chat, if not return permission-error.
+  > update chat-record and return updated chat.
+ (Note: These should create events that front-end-socket can listen/respond to).
+
+ 
+->typing(to-id, fro-id)
+  > check if user(sender) is logged in first. Return auth-error if not.(our route decorator can help with this).
+  > check if any mandatory details(to-id, fro-id) missing, return error if it is.
+  > return success/inform to-id that fro-id is typing
+ (Note: These should create events that front-end-socket can listen/respond to).
+
+->disconnect (to-id, fro-id)
+  > check if user(sender) is logged in first. Return auth-error if not.(our route decorator can help with this).
+  > check if any mandatory details(to-id, fro-id) missing, return error if it is.
+  > return success/inform to-id that fro-id is disconnected/logged-out/away.
+ (Note: These should create events that front-end-socket can listen/respond to).
+
+->connect (to-id, fro-id)
+  > check if user(sender) is logged in first. Return auth-error if not.(our route decorator can help with this).
+  > check if any mandatory details(to-id, fro-id) missing, return error if it is.
+  > return success/inform to-id that fro-id is connected/logged-in,
+ (Note: These should create events that front-end-socket can listen/respond to).
+     
+-< front-end >-
+   
+<typing>
+ > when user start typing a msg, get the (to-id(recipient) & fro-id(sender)) and trigger a typing event that the server can get/listen to.
+  
+ <save-chat>
+ > when a user sends a message, get (to-id(recipient) & fro-id(sender) & the message) and trigger a `save-chat-request` event that the server can get/listen to.
+   if server respond with without error in payload withall data sent, append the chat to existing conversations list.
+  
+ <fetch-chat>
+ > when a chat-list modal/page is opened. Get user-id and trigger a `fetch-chat-request` event that server-listens to, if server response is success with list of user's
+   conversations, append this to front-end conversation-list ui.
+  
+<remove-chat>
+ >if a user clicks del-chat btn, get (user-id & chat-id), then create a `remove-chat` event that the server listens/can respond to. 
+  if response from server is success, remove that very chat box/container or update it's content to show it was deleted in front-end.
+
+<update-chat>
+ >if user clicks `eidt-chat-btn`, activate/replace that chat-box with input to accept the updated chat. Get this (user-id & this very chat-id & chat-content(updated).
+  Create `update-chat` event that the server will know what to do. If the server responds with success, replace that very chat-box/content with the new updated chat.
+
+<disconnect>
+ >if the chat modal/page is closed/navigated away-from or user(recipient not logged-in), create a `disconnect` event to inform the server. If it respond with success, set their status to
+  offline/away to inform others they're currently not avilable.
+
+<connect>
+ >if the chat modal/page is opened/navigated to or user(sender/user is logged-in), create a `connect` event to inform the server. If it respond with success, set their status to
+  online now to inform others they're currently avilable now.
+
+...............................................................................................
+consider-encryption for sensitive data like(user-ids(to-id,fro-id,chat-ids etc)
+................................................................................................
+.> can also listen to 2 socket events for front-end & backend(server)
+.> call these events (request & response)
+.> identify each event types by `type` attr in the payload.(mandatory).
+
+................................................................................................
+.> can also listen to 2 socket events for front-end & backend(server)
+.> call these events >request-<event_name> to trigger front-end events. if anything happens in front/UI create this events to inform the server.
+		     >response-<event_name> to trigger server/back-end events. if server receives any front-end, events, it creates the corresponding response-events
+                      for front-end.
+.> server respoonse-event should contain a `status` attr that the client will know weather or not to update the UI.
+> sample full-payload: 
+  data = {
+	'status': None(mandatory in server response-events),
+	'chat-id': 0, (for update n delete-operations/events)
+	'chat': '',
+	'to': '' ,
+	'fro': '',
+	'type': ''(optional).
+	 }
+
+Feed the server with the following events:
+.connect . disconnect . typing-request.
+.save-chat-request . fetch-chat-request .remove-chat-request .update-chat-request
+
+>>>>>>>>>SO I CAN GO WITH THIS APPROACH <<<<<<<<<<<<<<<<<<<
+
+
+
+Now >>>>>>>>>>>>>>>>>>>>>>>>>
+when `save-chat-response` event is received, what should I do.
+
+>determine to/fro to ensure both clients involved are  notified instantly in the front-end
+>if the `fro` in response  payload is the current-user/socket, use/clone the right `message message-out` else `message`.
+>if there's (attachment/files/img) or text in response pay load, update the cloned UI to reflect these changes.
+>ensure errored chat-messages don't get borad-casted to recipient during instant update
+
+
+>>>>>>>Don't forget, if a user logins in and or opens the chat modal, add them to redis server with their correspoding sid 
+& when they logout, remove them as well.

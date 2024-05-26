@@ -1,0 +1,63 @@
+*When you signin/up, automatically have a sales page on salesnet.
+
+Changing vendors to  pages(sales-page)
+view-item  > /page/item_slug
+
+/pages > sales/vendors  pages. This page also regarded as sales page
+/pages/page_username > single sales/vendor's page
+/lists > listing page(s). 
+/lists/list_slug > single listing
+
+
+
+var jqxhr = $.ajax({
+                url: url,
+                type: "GET", // Assuming this is a DELETE request, adjust as needed
+                headers: {
+                    "X-CSRFToken": window.csrfToken, // Include the CSRF token in the headers
+                },
+            });
+
+3#sn-Q6mxOPO75
+
+
+window.location.href
+
+// Set up a global AJAX configuration
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        // Check if the request is of type 'POST', 'PUT', 'PATCH', or 'DELETE'
+        if (
+            settings.type === 'POST' ||
+            settings.type === 'PUT' ||
+            settings.type === 'PATCH' ||
+            settings.type === 'DELETE'
+        ) {
+            // Add the CSRF token to the request headers
+            xhr.setRequestHeader("X-CSRFToken", csrf_token_value);
+        }
+    }
+});
+
+// Now, whenever you make an AJAX request of type 'POST', 'PUT', 'PATCH', or 'DELETE',
+// the CSRF token will be automatically included in the request headers.
+
+
+new-fixes
+/categories - x-delete(done)
+/bar - (done)
+/bar-sales
+/people
+/bar
+/sales_report/bar.html
+/kitchen
+/kitchen-sales
+/cocktail
+/cocktail-sales
+/expenses
+
+
+>>Update/format expenses report(generated) amount to include commas(,) and currency symbol
+
+
+NOTE 23.

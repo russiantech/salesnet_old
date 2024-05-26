@@ -1,0 +1,320 @@
+{% extends 'base.html' %}
+{% block title %}Affordable{% endblock title %}
+{% block content %}
+
+<div id="cart_page" class="content-wrapper">
+	<div class="cart-wrap ptb-10">
+		<div class="container">
+			<div class="row gx-5">
+				<div class="col-xl-12">
+
+					<div class="row">
+						<div class="col-md-12">
+
+							<!-------------------->
+							<div class="cart-table">
+								<table class="table">
+									<thead>
+										<tr>
+											<th scope="col">Trash</th>
+											<th scope="col">Image</th>
+											<th scope="col">Name</th>
+											<th scope="col">Price</th>
+											<th scope="col">Quantity</th>
+											<th scope="col">Total</th>
+										</tr>
+									</thead>
+									<tbody id="cart_table_body">
+										<!-- ---<tr>
+											<td>
+												<button class="cart-action" type="button">
+													<i class="ri-delete-bin-6-line"></i>
+												</button>
+											</td>
+											<td>
+												<div class="product-img">
+													<img src="/static/img/gen/prod1.png" alt="Image">
+												</div>
+											</td>
+											<td>
+												<a class="cart-item" href="ekom/default/shop-details.html">
+													<span>Over-ear Headphones</span>
+												</a>
+											</td>
+											<td>
+												<p class="cart-item-price">$58.00</p>
+											</td>
+											
+											<td>
+												<div class="cart-qty">
+													<div class="product-quantity">
+														<div class="qtySelector">
+															<span class="decreaseQty">
+																<i class="ri-subtract-line"></i>
+															</span>
+															<input type="number" class="qtyValue" value="1" />
+															<span class="increaseQty">
+																<i class="ri-add-line"></i>
+															</span>
+														</div>
+													</div>
+												</div>
+											</td>
+											<td>
+												<p class="cart-item-price">$120.00</p>
+											</td>
+                                        </tr> -->
+
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+					</div>
+
+					<!-- --<div class="row mt-30">
+						<div class="col-xl-6 offset-xl-3">
+							<div class="cart-total">
+								<h3 class="cart-box-title">Checkout Summary</h3>
+								<div class="cart-total-item">
+									<p>Subtotal</p>
+									<span>$463</span>
+								</div>
+								<div class="cart-total-item">
+									<p>Shipping</p>
+									<span>$30</span>
+								</div>
+								<div class="cart-total-item">
+									<p>Discount</p>
+									<span>$43</span>
+								</div>
+								<div class="cart-total-item">
+									<p>Total</p>
+									<span>$450</span>
+								</div>
+								<a href="" class="btn style1 d-block w-100">Proceed To
+									Checkout</a>
+							</div>
+						</div>
+					</div> -->
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+
+	<div class="checkout-wrap pt-100 pb-75">
+		<div class="container">
+			<div class="row gx-5">
+				<div class="col-xl-7 col-lg-7">
+
+					{% include "incs/alerts.html" %}
+
+					<form method="post" action="" class="checkout-form">
+						{{ form.hidden_tag() }}
+						<div class="row">
+
+							<div class="col-lg-12">
+								<h3 class="checkout-box-title">Billing Details</h3>
+							</div>
+
+							<div class="row g-3">
+
+								<div class="col-sm-6">
+									<label for="email" class="form-label">Valid email address</label>
+									{# {{ form.email.label}} #}
+									{% if form.email.errors %}
+									{{ form.email(for="email", class="form-label") }}
+									<div class="invalid-feedback">
+										{% for error in form.email.errors %}
+										{{ error }}
+										{% endfor %}
+									</div>
+									{% else %}
+									{{ form.email(class="form-control", id="email", placeholder="you@sales.com") }}
+									{% endif %}
+								</div>
+
+								<div class="col-sm-6">
+									<label for="phone" class="form-label">Active phone number</label>
+									{% if form.phone.errors %}
+									{{ form.phone(for="phone", class="form-label") }}
+									<div class="invalid-feedback">
+										{% for error in form.phone.errors %}
+										{{ error }}
+										{% endfor %}
+									</div>
+									{% else %}
+									{{ form.phone(class="form-control", id="phone", placeholder="+234812345678") }}
+									{% endif %}
+								</div>
+
+								<div class="col-12">
+									<label for="name" class="form-label">Name</label>
+									{% if form.name.errors %}
+									{{ form.name(for="name", class="form-label") }}
+									<div class="invalid-feedback">
+										{% for error in form.name.errors %}
+										{{ error }}
+										{% endfor %}
+									</div>
+									{% else %}
+									{{ form.name(class="form-control", id="name", placeholder="Chris James") }}
+									{% endif %}
+								</div>
+
+								<div class="col-md-8">
+									<label for="adrs" class="form-label">Address</label>
+									{% if form.adrs.errors %}
+									{{ form.adrs(for="adrs", class="form-label") }}
+									<div class="invalid-feedback">
+										{% for error in form.adrs.errors %}
+										{{ error }}
+										{% endfor %}
+									</div>
+									{% else %}
+									{{ form.adrs(class="form-control", id="adrs", placeholder="12, White-jay Street,
+									Ologufe bustop") }}
+									{% endif %}
+								</div>
+
+								<div class="col-md-4">
+									<label for="pment_option" class="form-label">Payment Option</label>
+									{% if form.pment_option.errors %}
+									{{ form.adrs(for="pment_option", class="form-label") }}
+									<div class="invalid-feedback">
+										{% for error in form.pment_option.errors %}
+										{{ error }}
+										{% endfor %}
+									</div>
+									{% else %}
+									{{ form.pment_option(class="form-control", id="pment_option") }}
+									{% endif %}
+								</div>
+
+								<div class="col-md-5">
+									<label for="country" class="form-label">Country</label>
+									{% if form.country.errors %}
+									{{ form.country(for="country", class="form-label") }}
+									<div class="invalid-feedback">
+										{% for error in form.country.errors %}
+										{{ error }}
+										{% endfor %}
+									</div>
+									{% else %}
+									{{ form.country(class="form-control", id="country") }}
+									{% endif %}
+								</div>
+
+								<div class="col-md-4">
+									<label for="state" class="form-label">State</label>
+									{% if form.state.errors %}
+									{{ form.state(for="state", class="form-label") }}
+									<div class="invalid-feedback">
+										{% for error in form.state.errors %}
+										{{ error }}
+										{% endfor %}
+									</div>
+									{% else %}
+									{{ form.state(class="form-control", id="state") }}
+									{% endif %}
+								</div>
+
+								<div class="col-md-3">
+									<label for="zipcode" class="form-label">Zipcode</label>
+									{% if form.zipcode.errors %}
+									{{ form.zipcode(for="zipcode", class="form-label") }}
+									<div class="invalid-feedback">
+										{% for error in form.zipcode.errors %}
+										{{ error }}
+										{% endfor %}
+									</div>
+									{% else %}
+									{{ form.zipcode(class="form-control", id="zipcode", placeholder="10115") }}
+									{% endif %}
+								</div>
+
+								<div class="col-md-3">
+									<label for="order_amt" class="form-label">.</label>
+									{% if form.order_amt.errors %}
+									{{ form.order_amt(for="order_amt", class="form-label ") }}
+									<div class="invalid-feedback">
+										{% for error in form.order_amt.errors %}
+										{{ error }}
+										{% endfor %}
+									</div>
+									{% else %}
+									{{ form.order_amt(class="form-control", id="order_amt") }}
+									{% endif %}
+								</div>
+
+								<div class="col-12">
+									<div class="form-check">
+										{{ form.tnc(class="form-check-input", checked=True, id="tnc") }}
+										<label class="form-check-label" for="tnc">Terms & Condition</label>
+									</div>
+								</div>
+
+								<div class="checkout-footer mt-20">
+									{{ form.submit(class="btn style3 d-block font-weight-bold w-100 mt-25") }}
+								</div>
+
+							</div>
+
+						</div>
+					</form>
+				</div>
+
+				<div class="col-xl-5 col-lg-5">
+					<div class="checkout-details bg-albastor">
+						<h3 class="checkout-box-title">Checkout Summary</h3>
+						<div class="bill-details">
+							<div class="bill-item-wrap">
+
+								<!-- <div class="bill-item">
+									<p class="bill-item-name">Base Headphone</p>
+									<span class="bill-item-price">$100.00</span>
+								</div>
+								<div class="bill-item">
+									<p class="bill-item-name">In-Ear Headphone</p>
+									<span class="bill-item-price">$240.00</span>
+								</div>
+								<div class="bill-item">
+									<p class="bill-item-name">Wireless Headphone</p>
+									<span class="bill-item-price">$20.00</span>
+								</div> -->
+
+								<div id="summary_cart"></div>
+
+								<div class="bill-item">
+									<p class="bill-item-name">Subtotal</p>
+									<span id="summary_cart_subtotal" class="bill-item-price">0.00</span>
+								</div>
+
+								<div class="coupon-item mt-20">
+									<h5 class="checkout-box-subtitle">Have A Coupon Code?</h5>
+									<div class="form-group">
+										<input class="w-100" type="text" placeholder="Enter Coupon Code">
+										<button type="submit">Apply</button>
+									</div>
+								</div>
+								<div class="bill-item">
+									<p class="bill-item-name">Total Amount</p>
+									<span id="summary_cart_total" class="bill-item-price"> 00.00</span>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+{# {% include 'incs/newsleta.html' %} #}
+{% endblock content %}

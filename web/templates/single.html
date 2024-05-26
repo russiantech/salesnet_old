@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% block title %}Ecom{% endblock title %}
+{% block content %}
+<div class="content-wrapper">
+	<section class="product-details-wrap pt-100">
+		<div class="container">
+			<div class="row gx-5 ">
+				<div class="col-lg-6">
+					<div class="single-product-gallery">
+						<div class="swiper-container single-product_slider swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+							
+							<div class="swiper-wrapper" id="swiper-wrapper-f42d6dab6b27adfc" aria-live="polite"
+								style="transform: translate3d(-454px, 0px, 0px); transition-duration: 0ms;">
+								
+								<div class="swiper-slide single-product-item swiper-slide-duplicate swiper-slide-prev"
+									data-swiper-slide-index="3" role="group" aria-label="4/4"
+									style="width: 444px; margin-right: 10px;">
+									<img src="{{url_for('static', filename='img/gen/'+ item.photos[0]|string )}}" img="Image">
+								</div>
+							</div>
+
+							<div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"
+								aria-controls="swiper-wrapper-f42d6dab6b27adfc"> <i class="flaticon-right-arrow"></i>
+							</div>
+							<div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"
+								aria-controls="swiper-wrapper-f42d6dab6b27adfc"><i class="flaticon-left-arrow-1"></i>
+							</div>
+							<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+							
+						</div>
+						
+						<div thumbsslider=""
+							class="swiper-container single-product_thumbs swiper-initialized swiper-horizontal swiper-pointer-events swiper-free-mode swiper-backface-hidden swiper-thumbs">
+							<div class="swiper-wrapper" id="swiper-wrapper-2458164ff23d7417" aria-live="polite"
+								style="transform: translate3d(-464px, 0px, 0px); transition-duration: 0ms;">
+								
+								<div class="swiper-slide single-product-item swiper-slide-active" data-swiper-slide-index="0" role="group" aria-label="1 / 4" style="width: 516px; margin-right: 10px;">
+									<img src="{{url_for('static', filename='img/gen/'+ item.photos[0]|string )}}" img="Image">
+								</div>
+								 <div class="swiper-slide single-product-item swiper-slide-active" data-swiper-slide-index="0" role="group" aria-label="1 / 4" style="width: 516px; margin-right: 10px;">
+									<img src="{{url_for('static', filename='img/gen/'+ item.photos[0]|string )}}" img="Image">
+								</div>
+								<div class="swiper-slide single-product-item swiper-slide-active" data-swiper-slide-index="0" role="group" aria-label="1 / 4" style="width: 516px; margin-right: 10px;">
+									<img src="{{url_for('static', filename='img/gen/'+ item.photos[0]|string )}}" img="Image">
+								</div> 
+
+							</div>
+							<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-6">
+					<div class="single-product-details">
+						<div class="single-product-title">
+							<h2>{{item.attributes[0]}}</h2>
+							<h3><span>N{{item.price}}</span> <span class="discount">$4950</span></h3>
+							<div class="ratings">
+								<ul class="list-style">
+									<li><i class="ri-star-fill"></i></li>
+									<li><i class="ri-star-fill"></i></li>
+									<li><i class="ri-star-fill"></i></li>
+									<li><i class="ri-star-fill"></i></li>
+									<li><i class="ri-star-fill"></i></li>
+								</ul>
+								<span>(12 rating)</span>
+							</div>
+						</div>
+						<p class="single-product-desc">
+							{{item.desc}}
+						</p>
+						<div class="product-more-option">
+							
+							<div class="product-more-option-item">
+								<h5>Category :</h5>
+								<a href="{{url_for('main.shop')}}">Power Generators</a>
+							</div>
+							<div class="product-more-option-item">
+								<h5>Availability :</h5>
+								<span>In Stock</span>
+							</div>
+						</div>
+						<div class="single-product-option">
+							<a href="{{url_for('pay.payform', amt=item.price )}}" class="btn style5">Purchase {{item.name}} Generator Now</a>
+							<a href="{{request.referrer}}" class="btn style5">Go Back</a>
+						</div>
+						<div class="product-more-option">
+							<div class="product-more-option-item">
+								<h5>Share On :</h5>
+								<ul class="social-profile style1 list-style">
+									<li>
+										<a target="_blank" href="https://facebook.com/">
+											<i class="ri-facebook-fill"></i>
+										</a>
+									</li>
+									<li>
+										<a target="_blank" href="https://twitter.com/">
+											<i class="ri-twitter-fill"></i>
+										</a>
+									</li>
+									<li>
+										<a target="_blank" href="https://instagram.com/">
+											<i class="ri-pinterest-fill"></i>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row pt-100">
+				<div class="col-lg-12">
+					<div class="product-description-wrap">
+						<div class="product-description">
+							<div class="desc-title">
+								<h2>Description</h2>
+							</div>
+							<p>{{item.desc}}</p>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="product-wrap pt-100 pb-75">
+		
+		<div class="container">
+			<div class="section-title style1 text-center mb-40">
+				<h2>Browse Related Generators</h2>
+			</div>
+			<div class="product-slider-one owl-carousel owl-loaded owl-drag">
+				{% include "incs/mini_shop.html" %}
+				<div class="owl-dots disabled"></div>
+
+			</div>
+		</div>
+
+	</section>
+</div>
+{% include 'incs/newsleta.html' %}
+{% endblock content %}

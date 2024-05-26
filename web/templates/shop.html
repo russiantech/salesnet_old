@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %}Lovely Store {% endblock title %}
+{% block content %}
+
+<div class="content-wrapper">
+
+	<div class="shop-wrap ptb-10">
+		<div class="container">
+			<div class="row gx-5">
+				<div class="col-xl-5 col-lg-5 col-md-6">
+					<div class="product-result">
+						<p>Showing {{items.page }} of {{items.pages}} Affordable Generator Pages</p>
+					</div>
+				</div>
+
+				<section class="product-wrap" id="shop">
+					<div class="container">
+						<div class="row">
+							<div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+								<div class="section-title style1 text-center mb-40">
+									<h2>Our Latest Generators</h2>
+								</div>
+							</div>
+						</div>
+
+						<div class="row justify-content-center">
+							<div id="result" class="btn text-warning btn">.</div>
+							{% for p in items.items %}
+							<div class="col-lg-3 col-md-3 col-sm-6">
+								<div class="product-card style3">
+									<div class="product-img bg-athens">
+										<img src="{{url_for('static', filename='img/gen/'+ p.photos[0]|string )}}" alt="image">
+										<span class="promo-text"><i class="flaticon-star"></i>4.00</span>
+										<ul class="product-option list-style">
+											<li> <button type="button" data-bs-toggle="modal" data-bs-target="#product-modal">
+													<i class="ri-eye-line"></i></button></li>
+											{# <!-- <li><a href="{{url_for('views.basket', action='save')}}?item={{p.id}}"><i class="ri-shopping-cart-2-line"></i></a></li> -->#}
+											<li> <button onclick="save_cart(this)" data-item="{{p.id}}" id="save_to_cart"><i class="ri-shopping-cart-2-line"></i></button> </li>
+											<li><a href="{{url_for('main.shop')}}/{{p.id}}"><i class="ri-heart-line"></i></a></li>
+										</ul>
+									</div>
+									<div class="product-info">
+										<h3><a href="{{url_for('main.shop')}}/{{p.id}}">{{p.attributes[0]}}</a></h3>
+										<p class="product-price">N{{p.price}}<span class="discount">$150.00</span></p>
+									</div>
+								</div>
+							</div>
+							{%endfor%}
+
+						</div>
+
+						<div class="page-navigation mt-30 mb-25">
+							<ul class="page-nav list-style">
+								
+								<li class='{% if items.page==1  %}  disabled {% endif %}'>
+									<a href="{{url_for('main.shop', page=items.prev_num )}}">
+									<i class="flaticon-left-arrow-2"></i></a>
+								</li>
+								<!-- Loop through the number of pages to display a link for each-->
+								{% for pnum in items.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+									{% if pnum %}
+										{% if items.page == pnum %}
+											<li><a class="active" href="{{url_for('main.shop', page=pnum)}}">{{pnum}}</a></li>
+										{% else %}
+											<li><a class="" href="{{url_for('main.shop', page=pnum)}}">{{pnum}}</a></li>
+										{% endif %}
+									{% endif %}
+								{% endfor %}
+
+								<li class='{% if items.page==1  %}  disabled {% endif %}'>
+									<a href="{{url_for('main.shop', page=items.next_num )}}"><i class="flaticon-next"></i></a></li>
+
+								<li><a href="">All</a></li>
+
+							</ul>
+
+						</div>
+
+					</div>
+				</section>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,20 @@
+1. each other is saved from current cart-history
+2. therefore, since cart is saved as a list of "Item_id : Qty", I can also use this format when saving orders.
+3. like, making my models just like this.
+
+orders-models
+item(id), Qty(int), user(id), order(id)
+
+User-Order-Info
+name(1&2)
+email, 
+phone
+zip-code
+city/town
+state
+country
+
+1. add items to cart
+2. create order/submit order/delivery information
+3. check-out/payment or options for cash-on-delivery
+4. generate-invoice(downloadable/printable receipt)

@@ -1,0 +1,11 @@
+
+
+
+    #dynamically rendered based on category selected cos it differs
+    #listing_type = StringField('Listing Type', validators=[Optional()])
+    vehicle_type = SelectField('Vehicle Type', choices=vehicle_type_choices)
+    property_type = SelectField('Property Type', choices=property_type_choices)
+    job_type = SelectField('Job Type', choices=job_type_choices)
+    service_type = SelectField('Service Type', choices=service_type_choices)
+
+ 

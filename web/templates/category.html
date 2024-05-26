@@ -1,0 +1,16 @@
+{# {{ form.category() | safe }} #}
+
+<!-- macros.html -->
+{% macro render_categories(categories) %}
+<ul>
+    {% for category in categories %}
+        <li>{{ category['name'] }}</li>
+        {% if category['children'] %}
+            {{render_categories(category['children']) }}
+        {% endif %}
+    {% endfor %}
+</ul>
+{% endmacro %}
+{{ render_categories(g.categories)}}
+
+

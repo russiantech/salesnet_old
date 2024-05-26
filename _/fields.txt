@@ -1,0 +1,54 @@
+title =
+desc =
+price =
+cate =
+ip =
+tag =
+images =
+negotiable =
+sku =
+meet_up =
+listing_type =
+company  =
+
+vehicle_listing_type =
+property_listing_type =
+job_listing_type =
+service_listing_type =
+
+stock_qty  =
+discount   =
+size =
+color =
+brand =
+instock =
+
+address =
+price_interval =
+amenities =
+pets =
+condition =
+square_ft =
+bedrooms =
+bathrooms =
+heating =
+parking =
+laundry =
+air_condition =
+property_for  =
+location =
+date_available =
+
+//vehicle
+year =
+fuel_type =
+make =
+model =
+
+//services/jobs
+career_level   =
+min_qualifications    =
+salary_range =
+experience  =
+responsibilities =
+requirement_skills  =

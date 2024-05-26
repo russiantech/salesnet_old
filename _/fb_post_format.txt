@@ -1,0 +1,72 @@
+****************************************************************************************
+Item For Sale
+***********************************************************
+.(You can add upto 10 photos)
+.Title
+.Price
+
+.Negotiable(switch-btn)
+.Category(Note: If vehicle is selected as category, it takes you back to listing under vehicles)
+.Condition(New, Used like new, Used good, Used fair)
+
+More/Advanced Details(Attract more interest by including more details)
+.Brand
+.color(optional)
+.size(optional)
+.type(optioal)
+.Description
+.List As A Single Item(If you're selling a single item, show only 'one' on your listing)
+.List As In Stock(If you're selling more than one item, show 'In Stock' on your listing)
+.Product tags(optional, limit 20)
+.SKU(optional, only visible to you)
+.Location
+
+Meetup preferences (check boxes for this->Developer)
+(Buyers will be able to see your preferences on your listing. Learn more)
+.Public meetup
+(Meet at a public location)
+.Door pickup
+(Buyer picks up at your door)
+.Door dropoff
+(You drop off at buyer's door)
+.Delivery Available)
+
+
+****************************************************************************************
+New Home Listing  
+***********************************************************
+.(You can add upto 50 photos)
+.Rental type(House, Townhouse, Apartment, Commercial, Daily Rental, New Building, Apartment/condo, Room only)
+.Number of bedrooms
+.Number of bathrooms
+.Price per month
+.Rental address
+.Rental description(Include details like utilities, amenities, any deposits needed and when it's available.)
+
+Advanced Details
+.Property square feet
+.Date available
+.Laundry type(In unit laundry, Laundry in building, Laundry available, None)
+.Parking type(Garage parking, Street parking, Off street parking, Parking Available, None)
+.Air conditioning type(Central ac, Ac available, None)
+.Heating type(Central heating, Electric heating, Gas heating, Radiator heating, Heating available, None)
+.Cat friendly (switch btn)
+.Dog friendly (switch btn)       
+
+
+Warning !!!
+(Marketplace items are public and can be seen by anyone on or off Facebook. Items like animals, drugs, weapons, 
+counterfeits, and other items that infringe intellectual property aren't allowed on Marketplace. 
+See our Commerce Policies.) 
+
+****************************************************************************************
+Vehicle For Sale   
+***********************************************************
+.(You can add upto 20 photos) 
+.Vehicle type(Car/Truck, Motor cycle, Powersport, RV/Camper, Trailer, Boat, Commercial/Industrial, Other)
+.Location
+.Year(2010 to 2024)
+.Make
+.Model
+.Price(Enter your price for this vehicle.)  
+.Description(Tell buyers anything that you haven't had the chance to include yet about your vehicle.)                                                                                                                                                                                                                                                                                                                                                                                                                                                             
