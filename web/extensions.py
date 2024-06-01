@@ -80,21 +80,22 @@ def make_available():
     q_categories = Category.query.order_by(Category.id.asc()).limit(num_categories_to_load).all()
     categories = categorylist.build_category_tree(q_categories) 
 
+    print(categories)
     # Create instances of PostForm and SearchForm
     
     # Create a context dictionary with the variables you want to make available
     app_data = {
         'app_name': 'Salesnet.',
         'app_desc': 'Internet of sales. Salesnet is a mordern social sales & connection technologies. \
-            A product of Techa. Techa aims to power sales for business(es) and empower people using mordern technologies.',
-        'app_location': 'adesanya, lekki, lagos, nigeria.',
+        A product of Techa. Techa aims to power sales for business(es) and empower people using mordern technologies.',
+        'app_location': 'lekki, lagos, nigeria.',
         'app_email': 'sales@salesnet.co',
         'app_logo': getenv('logo_url'),
         # Add other data like logo URL
     }
 
     context = {
-        'categories': categories,
+        'categories': categories or { },
         'postform': PostForm(),
         'searchform': SearchForm(),
         'signupform': SignupForm(),

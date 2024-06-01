@@ -74,6 +74,7 @@ def exclude_deleted(query):
 @acct.route('/list', methods=['GET', 'POST'])
 def lists():
     form = PostForm()   
+    #print([x for x in g])
     categories = { x['name'] : [ (c['id'], c['name']) for c in x['children'] ] if x['children'] \
                   else [(x['id'], x['name'])] for x in g.categories }
     return render_template('incs/posts.html',form=form)
@@ -171,7 +172,7 @@ def save_order():
 
         if len(cart) < 1 :
             return jsonify( { 
-                'response': f'Your Shopping Basket Is Empty, Browse Salesnet & Add Listing(s) To Continue',
+                'response': f'Your Shopping Basket! Browse and put products in your basket to continue.',
                 'flash':'alert-primary',
                 'link': f'{url_for("main.index")}',
                 #'receipt': f'{url_for("cart.ordered", o_id=session["recent_order"])}'

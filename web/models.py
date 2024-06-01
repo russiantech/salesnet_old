@@ -872,7 +872,7 @@ class Order(db.Model, PaginatedAPIMixin):
     shipping_address = db.relationship('ShippingAddress', backref='order', lazy='dynamic')
     order_date = db.Column(db.DateTime, nullable=False)
     total_amount = db.Column(db.Float, nullable=False)
-    order_status = db.Column(db.String(100), nullable=False) #ordered, pending etc
+    order_status = db.Column(db.String(100), nullable=False) #ordered, pending, deliverd etc
     items = db.relationship('OrderItem', backref='order', lazy=True)
 
     created = db.Column(db.DateTime(timezone=True), default=datetime.utcnow)
