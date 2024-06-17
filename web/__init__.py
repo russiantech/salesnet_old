@@ -32,7 +32,7 @@ def create_app(config_name):
     # // api-blueprint(s)
     from web.apis.users import user_bp
     from web.apis.listings import listing_bp
-    from web.apis.chatme import chat_api
+    # from web.apis.chatme import chat_api
     app.register_blueprint(user_bp)
     app.register_blueprint(listing_bp)
 
@@ -45,7 +45,7 @@ def create_app(config_name):
     app.register_blueprint(endpoint)
     app.register_blueprint(errors)
 
-    app.register_blueprint(chat_api, url_prefix='/api')
+    # app.register_blueprint(chat_api, url_prefix='/api')
     # error logging setup
     setup_logging(app)
 

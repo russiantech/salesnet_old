@@ -89,7 +89,7 @@ def make_available():
         'app_desc': 'Internet of sales. Salesnet is a mordern social sales & connection technologies. \
         A product of Techa. Techa aims to power sales for business(es) and empower people using mordern technologies.',
         'app_location': 'lekki, lagos, nigeria.',
-        'app_email': 'sales@salesnet.co',
+        'app_email': 'hi@salesnet.co',
         'app_logo': getenv('logo_url'),
         # Add other data like logo URL
     }
